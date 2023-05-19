@@ -3,11 +3,11 @@
 import { useState } from "react";
 
 const GeneratorPage = () => {
-  const [D4, setD4] = useState<number | null>(null);
-  const [D6, setD6] = useState<number | null>(null);
-  const [D8, setD8] = useState<number | null>(null);
-  const [D12, setD12] = useState<number | null>(null);
-  const [D20, setD20] = useState<number | null>(null);
+  const [D4, setD4]     = useState<number | null>(null);
+  const [D6, setD6]     = useState<number | null>(null);
+  const [D8, setD8]     = useState<number | null>(null);
+  const [D12, setD12]   = useState<number | null>(null);
+  const [D20, setD20]   = useState<number | null>(null);
   const [D100, setD100] = useState<number | null>(null);
 
   const generateD4 = () => {
