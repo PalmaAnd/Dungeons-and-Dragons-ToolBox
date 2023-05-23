@@ -41,7 +41,7 @@ const GeneratorPage = () => {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2c2d35] to-[#3f0101]">
+    <main className="flex min-h-screen flex-col items-center bg-gradient-to-b from-[#2c2d35] to-[#3f0101]">
       <div className="container flex items-start gap-12 px-4 py-16 ">
         <section>
           <h3 className="text-2xl font-bold text-white text-center py-4">Dice rolls</h3>
