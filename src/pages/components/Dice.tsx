@@ -1,5 +1,3 @@
-// components/Dice.tsx
-
 import React, { useState } from "react";
 
 interface DiceProps {
@@ -17,14 +15,14 @@ const Dice: React.FC<DiceProps> = ({ sides }) => {
 
   return (
     <button
-      className={`dice-button ${result === null ? "rolling" : ""}`}
+      className={`w-48 h-32 flex flex-col justify-center items-center rounded-lg p-4 bg-gray-600 ${result === null ? "rolling" : ""}`}
       onClick={generateResult}
       aria-label={`Roll D${sides}. ${result !== null ? `Last Result: ${result}` : "Click to roll the dice"}`}
       onKeyDown={(e) => e.key === 'Enter' && generateResult()}
       tabIndex={0}
     >
-      <h3 className="text-2xl font-bold">{`D${sides}`}</h3>
-      <div className="text-lg">Result: {result}</div>
+      <h3 className="mb-2 text-white">{`D${sides}`}</h3>
+      <div className="text-xl text-white">Result: {result}</div>
     </button>
   );
 };

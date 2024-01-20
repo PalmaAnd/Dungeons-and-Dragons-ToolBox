@@ -6,7 +6,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
-import "~/styles/dice.css";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
