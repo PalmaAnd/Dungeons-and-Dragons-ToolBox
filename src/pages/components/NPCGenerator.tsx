@@ -6,6 +6,7 @@ interface NPC {
   class: any;
   mood: any;
   background: any;
+  lifestyle: any;
   // Add more attributes as needed
 }
 
@@ -19,12 +20,14 @@ const NPCGenerator: React.FC = () => {
     "Optimistic",
     "Pensive",
   ];
-  const backgrounds: string[] = [
-    "Noble",
-    "Commoner",
-    "Criminal",
-    "Sage",
-    "Acolyte",
+  const backgrounds: string[] = ["Commoner", "Criminal", "Sage", "Acolyte"];
+  const lifestyle: string[] = [
+    "Squalid",
+    "Poor",
+    "Modest",
+    "Comfortable",
+    "Wealthy",
+    "Aristocratic",
   ];
 
   const generateRandomName = () => {
@@ -41,12 +44,13 @@ const NPCGenerator: React.FC = () => {
 
   const generateNPC = () => {
     const randomRace = races[Math.floor(Math.random() * races.length)];
-    const randomClass =
-      classes[Math.floor(Math.random() * classes.length)];
+    const randomClass = classes[Math.floor(Math.random() * classes.length)];
     const randomMood = moods[Math.floor(Math.random() * moods.length)];
     const randomBackground =
       backgrounds[Math.floor(Math.random() * backgrounds.length)];
     const randomName: string = generateRandomName();
+    const randomLifestyle =
+      lifestyle[Math.floor(Math.random() * lifestyle.length)];
 
     const npc: NPC = {
       name: randomName,
@@ -54,6 +58,7 @@ const NPCGenerator: React.FC = () => {
       class: randomClass,
       mood: randomMood,
       background: randomBackground,
+      lifestyle: randomLifestyle,
       // Add more attributes as needed
     };
 
@@ -84,6 +89,9 @@ const NPCGenerator: React.FC = () => {
           </div>
           <div>
             <strong>Background:</strong> {generatedNPC.background}
+          </div>
+          <div>
+            <strong>Lifetyle:</strong> {generatedNPC.lifestyle}
           </div>
         </div>
       )}
