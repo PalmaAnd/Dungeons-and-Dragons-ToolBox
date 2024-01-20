@@ -22,12 +22,12 @@ const NPCGenerator: React.FC = () => {
   ];
   const backgrounds: string[] = ["Commoner", "Criminal", "Sage", "Acolyte"];
   const lifestyle: string[] = [
-    "Squalid",
-    "Poor",
-    "Modest",
-    "Comfortable",
-    "Wealthy",
-    "Aristocratic",
+    "Squalid $",
+    "Poor $$",
+    "Modest $$$",
+    "Comfortable $$$$",
+    "Wealthy $$$$$",
+    "Aristocratic $$$$$$",
   ];
 
   const generateRandomName = () => {
