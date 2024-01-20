@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
 interface NPC {
-  name: string;
-  race: string;
-  class: string;
-  mood: string;
-  background: string;
+  name: any;
+  race: any;
+  class: any;
+  mood: any;
+  background: any;
   // Add more attributes as needed
 }
 
@@ -30,21 +30,21 @@ const NPCGenerator: React.FC = () => {
   const generateRandomName = () => {
     const prefixes: string[] = ["A", "Be", "Ca", "Do", "E"];
     const suffixes: string[] = ["thor", "dor", "ion", "ara", "wyn"];
-    const randomPrefix: string =
+    const randomPrefix: string | undefined =
       prefixes[Math.floor(Math.random() * prefixes.length)];
-    const randomSuffix: string =
+    const randomSuffix: string | undefined =
       suffixes[Math.floor(Math.random() * suffixes.length)];
-    return `${randomPrefix}${randomSuffix}`;
+    return `${randomPrefix!}${randomSuffix!}`;
   };
 
   const [generatedNPC, setGeneratedNPC] = useState<NPC | null>(null);
 
   const generateNPC = () => {
-    const randomRace: string = races[Math.floor(Math.random() * races.length)];
-    const randomClass: string =
+    const randomRace = races[Math.floor(Math.random() * races.length)];
+    const randomClass =
       classes[Math.floor(Math.random() * classes.length)];
-    const randomMood: string = moods[Math.floor(Math.random() * moods.length)];
-    const randomBackground: string =
+    const randomMood = moods[Math.floor(Math.random() * moods.length)];
+    const randomBackground =
       backgrounds[Math.floor(Math.random() * backgrounds.length)];
     const randomName: string = generateRandomName();
 
