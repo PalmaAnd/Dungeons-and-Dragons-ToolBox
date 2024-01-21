@@ -20,6 +20,8 @@ const NPCGenerator: React.FC = () => {
     "Optimistic",
     "Pensive",
   ];
+  // TODO Beruf
+  // Subclass
   const backgrounds: string[] = ["Commoner", "Criminal", "Sage", "Acolyte"];
   const lifestyle: string[] = [
     "Squalid $",
@@ -91,7 +93,7 @@ const NPCGenerator: React.FC = () => {
             <strong>Background:</strong> {generatedNPC.background}
           </div>
           <div>
-            <strong>Lifetyle:</strong> {generatedNPC.lifestyle}
+            <strong>Lifestyle:</strong> {generatedNPC.lifestyle}
           </div>
         </div>
       )}
