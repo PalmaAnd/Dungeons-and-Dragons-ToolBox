@@ -10,6 +10,10 @@ const Home: NextPage = () => {
         <title>D&D Toolbox</title>
         <meta name="description" content="Tools for Dungeons and Dragons" />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"></link>
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"></link>
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"></link>
+        <link rel="manifest" href="/site.webmanifest"></link>
       </Head>
       {/* <Header></Header> */}
       <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#3f0101] to-[#2c2d35]">
