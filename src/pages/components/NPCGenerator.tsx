@@ -3,25 +3,58 @@ import React, { useState } from "react";
 interface NPC {
   name: any;
   race: any;
-  class: any;
+  job: any;
   mood: any;
   background: any;
   lifestyle: any;
-  // Add more attributes as needed
 }
 
 const NPCGenerator: React.FC = () => {
   const races: string[] = ["Human", "Elf", "Dwarf", "Halfling", "Orc"];
-  const classes: string[] = ["Fighter", "Wizard", "Rogue", "Cleric", "Bard"];
+  const jobs: string[] = [
+    "Blacksmith",
+    "Alchemist",
+    "Bard",
+    "Cleric",
+    "Druid",
+    "Merchant",
+    "Minstrel",
+    "Noble",
+    "Painter",
+    "Ranger",
+    "Sailor",
+    "Scholar",
+    "Thief",
+    "Warrior",
+    "Wizard",
+    "Chef",
+    "Innkeeper",
+    "Farmer",
+    "Scribe",
+    "Tailor",
+  ];
   const moods: string[] = [
     "Friendly",
     "Grumpy",
     "Mysterious",
     "Optimistic",
     "Pensive",
+    "Excitable",
+    "Melancholic",
+    "Jovial",
+    "Sarcastic",
+    "Courageous",
+    "Wise",
+    "Mischievous",
+    "Determined",
+    "Nervous",
+    "Hopeful",
+    "Regretful",
+    "Aloof",
+    "Stubborn",
+    "Reclusive",
+    "Adventurous",
   ];
-  // TODO Beruf
-  // Subclass
   const backgrounds: string[] = ["Commoner", "Criminal", "Sage", "Acolyte"];
   const lifestyle: string[] = [
     "Squalid $",
@@ -32,13 +65,25 @@ const NPCGenerator: React.FC = () => {
     "Aristocratic $$$$$$",
   ];
 
+  const namePrefixes: string[] = ["A", "Be", "Ca", "Do", "E"];
+  const nameSuffixes: string[] = [
+    "thor",
+    "dor",
+    "ion",
+    "ara",
+    "wyn",
+    "fir",
+    "ian",
+    "li",
+    "tra",
+    "zara",
+  ];
+
   const generateRandomName = () => {
-    const prefixes: string[] = ["A", "Be", "Ca", "Do", "E"];
-    const suffixes: string[] = ["thor", "dor", "ion", "ara", "wyn"];
     const randomPrefix: string | undefined =
-      prefixes[Math.floor(Math.random() * prefixes.length)];
+      namePrefixes[Math.floor(Math.random() * namePrefixes.length)];
     const randomSuffix: string | undefined =
-      suffixes[Math.floor(Math.random() * suffixes.length)];
+      nameSuffixes[Math.floor(Math.random() * nameSuffixes.length)];
     return `${randomPrefix!}${randomSuffix!}`;
   };
 
@@ -46,7 +91,7 @@ const NPCGenerator: React.FC = () => {
 
   const generateNPC = () => {
     const randomRace = races[Math.floor(Math.random() * races.length)];
-    const randomClass = classes[Math.floor(Math.random() * classes.length)];
+    const randomJob = jobs[Math.floor(Math.random() * jobs.length)];
     const randomMood = moods[Math.floor(Math.random() * moods.length)];
     const randomBackground =
       backgrounds[Math.floor(Math.random() * backgrounds.length)];
@@ -57,7 +102,7 @@ const NPCGenerator: React.FC = () => {
     const npc: NPC = {
       name: randomName,
       race: randomRace,
-      class: randomClass,
+      job: randomJob,
       mood: randomMood,
       background: randomBackground,
       lifestyle: randomLifestyle,
@@ -84,7 +129,7 @@ const NPCGenerator: React.FC = () => {
             <strong>Race:</strong> {generatedNPC.race}
           </div>
           <div>
-            <strong>Class:</strong> {generatedNPC.class}
+            <strong>Job:</strong> {generatedNPC.job}
           </div>
           <div>
             <strong>Mood:</strong> {generatedNPC.mood}
