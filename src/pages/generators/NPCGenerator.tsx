@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
 interface NPC {
-  name: any;
-  race: any;
-  job: any;
-  mood: any;
-  background: any;
-  lifestyle: any;
+  name: string;
+  race: string;
+  job: string;
+  mood: string;
+  background: string;
+  lifestyle: string;
 }
 
 const NPCGenerator: React.FC = () => {
@@ -56,6 +56,7 @@ const NPCGenerator: React.FC = () => {
     "Adventurous",
   ];
   const backgrounds: string[] = ["Commoner", "Criminal", "Sage", "Acolyte"];
+
   const lifestyle: string[] = [
     "Squalid $",
     "Poor $$",
@@ -90,14 +91,24 @@ const NPCGenerator: React.FC = () => {
   const [generatedNPC, setGeneratedNPC] = useState<NPC | null>(null);
 
   const generateNPC = () => {
-    const randomRace = races[Math.floor(Math.random() * races.length)];
-    const randomJob = jobs[Math.floor(Math.random() * jobs.length)];
-    const randomMood = moods[Math.floor(Math.random() * moods.length)];
-    const randomBackground =
-      backgrounds[Math.floor(Math.random() * backgrounds.length)];
+    const raceString =
+      races[Math.floor(Math.random() * races.length)]?.toString();
+    const jobString = jobs[Math.floor(Math.random() * jobs.length)]?.toString();
+    const moodString =
+      moods[Math.floor(Math.random() * moods.length)]?.toString();
+    const backgroundString =
+      backgrounds[Math.floor(Math.random() * backgrounds.length)]?.toString();
+    const lifestyleString =
+      lifestyle[Math.floor(Math.random() * lifestyle.length)]?.toString();
+
+    const randomRace: string = raceString == undefined ? "" : raceString;
+    const randomJob: string = jobString == undefined ? "" : jobString;
+    const randomMood: string = moodString == undefined ? "" : moodString;
+    const randomBackground: string =
+      backgroundString == undefined ? "" : backgroundString;
     const randomName: string = generateRandomName();
-    const randomLifestyle =
-      lifestyle[Math.floor(Math.random() * lifestyle.length)];
+    const randomLifestyle: string =
+      lifestyleString == undefined ? "" : lifestyleString;
 
     const npc: NPC = {
       name: randomName,
@@ -106,7 +117,6 @@ const NPCGenerator: React.FC = () => {
       mood: randomMood,
       background: randomBackground,
       lifestyle: randomLifestyle,
-      // Add more attributes as needed
     };
 
     setGeneratedNPC(npc);
