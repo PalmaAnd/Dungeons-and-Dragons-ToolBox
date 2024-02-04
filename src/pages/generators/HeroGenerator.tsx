@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
 interface Hero {
-  name: any;
-  race: any;
-  class: any;
-  mood: any;
-  background: any;
-  lifestyle: any;
+  name: string;
+  race: string;
+  heroClass: string;
+  mood: string;
+  background: string;
+  lifestyle: string;
   strength: number;
   dexterity: number;
   constitution: number;
@@ -41,7 +41,7 @@ const HeroGenerator: React.FC = () => {
     "Adventurous",
   ];
   const backgrounds: string[] = ["Commoner", "Criminal", "Sage", "Acolyte"];
-  const lifestyle: string[] = [
+  const lifestyles: string[] = [
     "Squalid $",
     "Poor $$",
     "Modest $$$",
@@ -65,11 +65,10 @@ const HeroGenerator: React.FC = () => {
   ];
 
   const generateRandomName = () => {
-    const randomPrefix: any =
+    const randomPrefix: string | undefined =
       namePrefixes[Math.floor(Math.random() * namePrefixes.length)];
-    const randomSuffix: any =
+    const randomSuffix: string | undefined =
       nameSuffixes[Math.floor(Math.random() * nameSuffixes.length)];
-    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     return `${randomPrefix}${randomSuffix}`;
   };
 
@@ -87,29 +86,34 @@ const HeroGenerator: React.FC = () => {
   const [generatedHero, setGeneratedHero] = useState<Hero | null>(null);
 
   const generateHero = () => {
-    const randomRace: any = races[Math.floor(Math.random() * races.length)];
-    const randomClass: any =
-      classes[Math.floor(Math.random() * classes.length)];
-    const randomMood: any = moods[Math.floor(Math.random() * moods.length)];
-    const randomBackground: any =
-      backgrounds[Math.floor(Math.random() * backgrounds.length)];
-    const randomName: string = generateRandomName();
-    const randomLifestyle: any =
-      lifestyle[Math.floor(Math.random() * lifestyle.length)];
+    const randomRace =
+      races[Math.floor(Math.random() * races.length)]?.toString();
+    const randomClass =
+      classes[Math.floor(Math.random() * classes.length)]?.toString();
+    const randomMood =
+      moods[Math.floor(Math.random() * moods.length)]?.toString();
+    const randomBackground =
+      backgrounds[Math.floor(Math.random() * backgrounds.length)]?.toString();
+    const randomLifestyle =
+      lifestyles[Math.floor(Math.random() * lifestyles.length)]?.toString();
     const randomStats = generateRandomStats();
 
+    const race: string = randomRace == undefined ? "" : randomRace;
+    const heroClass: string = randomClass == undefined ? "" : randomClass;
+    const mood: string = randomMood == undefined ? "" : randomMood;
+    const background: string =
+      randomBackground == undefined ? "" : randomBackground;
+    const name: string = generateRandomName();
+    const lifestyle: string =
+      randomLifestyle == undefined ? "" : randomLifestyle;
+
     const hero: Hero = {
-      name: randomName,
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      race: randomRace,
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      class: randomClass,
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      mood: randomMood,
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      background: randomBackground,
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      lifestyle: randomLifestyle,
+      name: name,
+      race: race,
+      heroClass: heroClass,
+      mood: mood,
+      background: background,
+      lifestyle: lifestyle,
       ...randomStats,
     };
 
@@ -133,7 +137,7 @@ const HeroGenerator: React.FC = () => {
             <strong>Race:</strong> {generatedHero.race}
           </div>
           <div>
-            <strong>Class:</strong> {generatedHero.class}
+            <strong>Class:</strong> {generatedHero.heroClass}
           </div>
           <div>
             <strong>Mood:</strong> {generatedHero.mood}
