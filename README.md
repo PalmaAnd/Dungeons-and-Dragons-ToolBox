@@ -5,8 +5,9 @@
   - [Installation](#installation)
   - [Usage](#usage)
   - [Technologies Used](#technologies-used)
-  - [Contributing](#contributing)
+  - [Contributing Guidelines](#contributing-guidelines)
   - [License](#license)
+  - [Code of Conduct](#code-of-conduct)
 
 ## Project Description
 
@@ -44,10 +45,14 @@ This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3
 - Tailwind CSS
 - tRPC
 
-## Contributing
+## Contributing Guidelines
 
-Guidelines for contributing to this project will be added soon.
+Please refer to our [Contributing Guidelines](.github\CODE_OF_CONDUCT.md) for information on how to contribute to this project.
 
 ## License
 
-I am using the [MIT LICENSE](/LICENSE) for this projet.
+I am using the [MIT LICENSE](/LICENSE) for this project.
+
+## Code of Conduct
+
+Please refer to our [Code of Conduct](.github\CODE_OF_CONDUCT.md) for information on our standards of behavior.
