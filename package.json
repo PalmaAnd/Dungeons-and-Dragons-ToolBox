@@ -27,7 +27,7 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
-    "@types/eslint": "^8.21.3",
+    "@types/eslint": "^8.56.3",
     "@types/node": "^20.11.19",
     "@types/prettier": "^3.0.0",
     "@types/react": "^18.2.58",
