@@ -13,7 +13,6 @@
     - [4. Permanent Ban](#4-permanent-ban)
   - [Attribution](#attribution)
 
-
 ## Our Pledge
 
 We as members, contributors, and leaders pledge to make participation in our

@@ -1,10 +1,7 @@
 ---
 name: Documentation
 about: Updating or adding new documentation
-title: 'docs: '
+title: "docs: "
 labels: docs
-assignees: ''
-
+assignees: ""
 ---
-
-
