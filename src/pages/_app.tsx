@@ -1,21 +1,21 @@
 import { type AppType } from "next/app";
-import { type Session } from "next-auth";
-import { SessionProvider } from "next-auth/react";
+import { Inter } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
 
-const MyApp: AppType<{ session: Session | null }> = ({
-	Component,
-	pageProps: { session, ...pageProps },
-}) => {
+const inter = Inter({
+	subsets: ["latin"],
+	variable: "--font-sans",
+});
+const MyApp: AppType = ({ Component, pageProps }) => {
 	return (
-		<SessionProvider session={session}>
+		<main className={`font-sans ${inter.variable}`}>
 			<Component {...pageProps} />
 			<SpeedInsights />
-		</SessionProvider>
+		</main>
 	);
 };
 

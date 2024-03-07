@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { z } from "zod";
 
 import {
 	createTRPCRouter,
 	publicProcedure,
-	protectedProcedure,
+	protectedProcedure
 } from "~/server/api/trpc";
 
 export const exampleRouter = createTRPCRouter({
