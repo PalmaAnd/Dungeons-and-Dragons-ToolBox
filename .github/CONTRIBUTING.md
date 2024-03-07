@@ -6,7 +6,6 @@
   - [Code of Conduct](#code-of-conduct)
   - [Questions and Feedback](#questions-and-feedback)
 
-
 # Contributing to Dungeons-and-Dragons-ToolBox
 
 🎲 Thank you for your interest in contributing to Dungeons-and-Dragons-ToolBox! 🐉
