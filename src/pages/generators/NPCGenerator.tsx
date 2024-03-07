@@ -101,14 +101,12 @@ const NPCGenerator: React.FC = () => {
 		const lifestyleString =
 			lifestyle[Math.floor(Math.random() * lifestyle.length)]?.toString();
 
-		const randomRace: string = raceString == undefined ? "" : raceString;
-		const randomJob: string = jobString == undefined ? "" : jobString;
-		const randomMood: string = moodString == undefined ? "" : moodString;
-		const randomBackground: string =
-			backgroundString == undefined ? "" : backgroundString;
+		const randomRace: string = raceString ?? "";
+		const randomJob: string = jobString ?? "";
+		const randomMood: string = moodString ?? "";
+		const randomBackground: string = backgroundString ?? "";
 		const randomName: string = generateRandomName();
-		const randomLifestyle: string =
-			lifestyleString == undefined ? "" : lifestyleString;
+		const randomLifestyle: string = lifestyleString ?? "";
 
 		const npc: NPC = {
 			name: randomName,

@@ -98,14 +98,12 @@ const HeroGenerator: React.FC = () => {
 			lifestyles[Math.floor(Math.random() * lifestyles.length)]?.toString();
 		const randomStats = generateRandomStats();
 
-		const race: string = randomRace == undefined ? "" : randomRace;
-		const heroClass: string = randomClass == undefined ? "" : randomClass;
-		const mood: string = randomMood == undefined ? "" : randomMood;
-		const background: string =
-			randomBackground == undefined ? "" : randomBackground;
+		const race: string = randomRace ?? "";
+		const heroClass: string = randomClass ?? "";
+		const mood: string = randomMood ?? "";
+		const background: string = randomBackground ?? "";
 		const name: string = generateRandomName();
-		const lifestyle: string =
-			randomLifestyle == undefined ? "" : randomLifestyle;
+		const lifestyle: string = randomLifestyle ?? "";
 
 		const hero: Hero = {
 			name: name,
