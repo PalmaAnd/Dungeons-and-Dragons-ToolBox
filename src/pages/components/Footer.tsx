@@ -8,6 +8,7 @@ const Footer = () => {
 			<div className="flex flex-row justify-center gap-2 text-white">
 				<Link href="/impressum">Impressum</Link>
 				<Link href="https://github.com/PalmaAnd/Dungeons-and-Dragons-ToolBox">GitHub</Link>
+				<Link href="/about">About</Link>
 			</div>
 			<div className="text-white">
 				Palma André © {new Date().getFullYear()} Dungeons and Dragons Toolbox
