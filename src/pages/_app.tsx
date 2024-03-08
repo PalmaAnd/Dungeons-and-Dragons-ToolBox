@@ -14,7 +14,9 @@ const inter = Inter({
 });
 const MyApp: AppType = ({ Component, pageProps }) => {
 	return (
-		<main className={`font-sans ${inter.variable} bg-gradient-to-b from-[#3f0101] to-[#2c2d35] text-white min-h-screen`}>
+		<main
+			className={`font-sans ${inter.variable} min-h-screen bg-gradient-to-b from-[#3f0101] to-[#2c2d35] text-white`}
+		>
 			<Header></Header>
 			<Component {...pageProps} />
 			<SpeedInsights />
