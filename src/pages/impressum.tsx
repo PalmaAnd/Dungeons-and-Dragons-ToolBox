@@ -2,7 +2,7 @@ import React from "react";
 
 const Impressum: React.FC = () => {
 	return (
-		<div className="mx-auto px-4 py-8 bg-white text-black">
+		<div className="mx-auto px-4 py-8 ">
 			<h1 className="mb-4 text-3xl font-bold">Impressum</h1>
 			<p className="mb-4">
 				Dies ist eine kostenlose Hobby-Website, die Werkzeuge für Dungeons &

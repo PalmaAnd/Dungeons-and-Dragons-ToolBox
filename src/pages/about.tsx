@@ -4,15 +4,13 @@ import React from "react";
 
 const About: React.FC = () => {
 	return (
-		<div className="mx-auto px-4 py-8 text-white h-full">
+		<div className="mx-auto h-full px-4 py-8">
 			<h1 className="mb-4 text-3xl font-bold">About Us</h1>
 			<p className="mb-4">
 				Welcome to our website! We are passionate about Dungeons & Dragons and
 				wanted to create a platform to share our love for the game with others.
 			</p>
-			<p className="mb-4">
-				Our website is a hobby project and open-source.
-			</p>
+			<p className="mb-4">Our website is a hobby project and open-source.</p>
 			<p className="mb-4">
 				We encourage everyone to contribute to our project! Whether you want to
 				add more content, fix bugs, or suggest new features, you can do so by
@@ -29,26 +27,6 @@ const About: React.FC = () => {
 			<p className="mb-4">
 				Thank you for visiting our site and being part of our D&D community!
 			</p>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
 		</div>
 	);
 };

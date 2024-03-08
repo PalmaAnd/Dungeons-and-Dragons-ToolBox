@@ -123,13 +123,13 @@ const NPCGenerator: React.FC = () => {
 	return (
 		<div className="text-center">
 			<button
-				className="mb-2 cursor-pointer rounded bg-blue-500 p-2 text-white hover:bg-blue-700"
+				className="mb-2 cursor-pointer rounded bg-blue-500 p-2  hover:bg-blue-700"
 				onClick={generateNPC}
 			>
 				Generate NPC
 			</button>
 			{generatedNPC && (
-				<div className="mt-5 flex flex-col items-center p-5 text-center text-white">
+				<div className="mt-5 flex flex-col items-center p-5 text-center ">
 					<h2>
 						<strong>Name:</strong> {generatedNPC.name}
 					</h2>

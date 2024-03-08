@@ -21,8 +21,8 @@ const Dice: React.FC<DiceProps> = ({ sides }) => {
 			onKeyDown={(e) => e.key === "Enter" && generateResult()}
 			tabIndex={0}
 		>
-			<h3 className="mb-2 text-white">{`D${sides}`}</h3>
-			<div className="text-xl text-white">Result: {result}</div>
+			<h3 className="mb-2">{`D${sides}`}</h3>
+			<div className="text-xl">Result: {result}</div>
 		</button>
 	);
 };
