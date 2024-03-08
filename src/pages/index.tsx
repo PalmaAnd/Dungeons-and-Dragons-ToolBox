@@ -28,9 +28,8 @@ const Home: NextPage = () => {
 				></link>
 				<link rel="manifest" href="/site.webmanifest"></link>
 			</Head>
-			{/* <Header></Header> */}
-			<main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#3f0101] to-[#2c2d35]">
-				<div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
+			<main className="flex min-h-screen flex-col items-center pt-8 md:pt-[7rem]">
+				<div className="container flex flex-col items-center justify-center gap-12 px-4 pb-16 ">
 					<h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
 						<span className="text-[hsl(0,63%,26%)]">Dungeons and Dragons</span>{" "}
 						- Toolbox

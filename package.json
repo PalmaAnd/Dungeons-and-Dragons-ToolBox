@@ -8,15 +8,14 @@
 		"build": "next build",
 		"db:push": "prisma db push",
 		"db:studio": "prisma studio",
-		"dev": "next dev",
 		"postinstall": "prisma generate",
 		"lint": "next lint",
-		"postinstall": "prisma generate",
 		"start": "next start",
 		"prettier:check": "prettier --check .",
 		"prettier:format": "prettier --write ."
 	},
 	"dependencies": {
+		"@heroicons/react": "^2.1.1",
 		"@planetscale/database": "^1.16.0",
 		"@prisma/adapter-planetscale": "^5.10.2",
 		"@prisma/client": "^5.10.2",

@@ -5,6 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
+import Header from "./components/Header";
 
 const inter = Inter({
 	subsets: ["latin"],
@@ -12,7 +13,8 @@ const inter = Inter({
 });
 const MyApp: AppType = ({ Component, pageProps }) => {
 	return (
-		<main className={`font-sans ${inter.variable}`}>
+		<main className={`font-sans ${inter.variable} bg-gradient-to-b from-[#3f0101] to-[#2c2d35]`}>
+			<Header></Header>
 			<Component {...pageProps} />
 			<SpeedInsights />
 		</main>
