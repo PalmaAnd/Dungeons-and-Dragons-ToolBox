@@ -40,10 +40,9 @@ For environment variables, refer to the `.env.example` file.
 This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
 
 - Next.js
-- NextAuth.js
 - Prisma
 - Tailwind CSS
-- tRPC
+- [Heroicons](https://heroicons.com/)
 
 ## Contributing Guidelines
 
