@@ -1,6 +1,7 @@
 import { type AppType } from "next/app";
 import { Inter } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react"
 
 import { api } from "~/utils/api";
 
@@ -20,6 +21,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
 			<Header></Header>
 			<Component {...pageProps} />
 			<SpeedInsights />
+			<Analytics/>
 			<Footer></Footer>
 		</main>
 	);
