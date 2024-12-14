@@ -1,14 +1,18 @@
-import { type Config } from "tailwindcss";
-import { fontFamily } from "tailwindcss/defaultTheme";
+import type { Config } from "tailwindcss";
 
 export default {
-	content: ["./src/**/*.tsx"],
-	theme: {
-		extend: {
-			fontFamily: {
-				sans: ["var(--font-sans)", ...fontFamily.sans],
-			},
-		},
-	},
-	plugins: [],
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+      },
+    },
+  },
+  plugins: [],
 } satisfies Config;
