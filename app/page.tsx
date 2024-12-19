@@ -29,6 +29,11 @@ export default function Page() {
                         Roll Dice
                     </Button>
                 </Link>
+                <Link href="/campaign-manager" className="w-full">
+                    <Button variant="outline" size="lg" className="w-full">
+                        Manage Campaigns
+                    </Button>
+                </Link>
             </div>
         </div>
     );

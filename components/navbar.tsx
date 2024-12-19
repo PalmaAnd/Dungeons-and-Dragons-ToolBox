@@ -2,11 +2,8 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
 
 export function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
-
     return (
         <nav className="border-b bg-background">
             <div className="container flex h-16 items-center px-4">
@@ -27,6 +24,9 @@ export function Navbar() {
                     </Button>
                     <Button variant="ghost" asChild>
                         <Link href="/dice-roller">Dice Roller</Link>
+                    </Button>
+                    <Button variant="ghost" asChild>
+                        <Link href="/campaign-manager">Campaign Manager</Link>
                     </Button>
                 </div>
             </div>
