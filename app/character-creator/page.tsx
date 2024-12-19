@@ -6,7 +6,7 @@ export default function CharacterCreatorPage() {
             <h1 className="text-3xl font-bold mb-4">Character Creator</h1>
             <p className="mb-4">
                 Create your D&D character by filling out the form below. Choose
-                your character's name, class, race, alignment, and set their
+                your characters name, class, race, alignment, and set their
                 ability scores.
             </p>
             <CharacterCreator />
