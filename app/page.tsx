@@ -24,24 +24,9 @@ export default function Page() {
                         Monster Compendium
                     </Button>
                 </Link>
-                <Link href="/dice-roller" className="w-full">
+                <Link href="/tools" className="w-full">
                     <Button variant="outline" size="lg" className="w-full">
-                        Roll Dice
-                    </Button>
-                </Link>
-                <Link href="/initiative-tracker" className="w-full">
-                    <Button variant="outline" size="lg" className="w-full">
-                        Initiative Tracker
-                    </Button>
-                </Link>
-                <Link href="/weather-generator" className="w-full">
-                    <Button variant="outline" size="lg" className="w-full">
-                        Weather Generator
-                    </Button>
-                </Link>
-                <Link href="/tavern-generator" className="w-full">
-                    <Button variant="outline" size="lg" className="w-full">
-                        Tavern Generator
+                        Tools
                     </Button>
                 </Link>
             </div>
