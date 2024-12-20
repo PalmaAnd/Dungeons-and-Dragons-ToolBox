@@ -28,6 +28,12 @@ export function Navbar() {
                     <Button variant="ghost" asChild>
                         <Link href="/campaign-manager">Campaign Manager</Link>
                     </Button>
+                    <Button variant="ghost" asChild>
+                        <Link href="/initiative-tracker">Initiative Tracker</Link>
+                    </Button>
+                    <Button variant="ghost" asChild>
+                        <Link href="/auth">Login/Register</Link>
+                    </Button>
                 </div>
             </div>
         </nav>
