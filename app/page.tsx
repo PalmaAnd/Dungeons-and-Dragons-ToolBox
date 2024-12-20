@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 
 export default function Page() {
     return (
@@ -8,7 +8,7 @@ export default function Page() {
             <p className="text-xl mb-8 text-muted-foreground">
                 Your ultimate companion for Dungeons and Dragons adventures
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-2xl">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-4xl">
                 <Link href="/character-creator" className="w-full">
                     <Button variant="outline" size="lg" className="w-full">
                         Create a Character
@@ -29,12 +29,23 @@ export default function Page() {
                         Roll Dice
                     </Button>
                 </Link>
-                <Link href="/campaign-manager" className="w-full">
+                <Link href="/initiative-tracker" className="w-full">
                     <Button variant="outline" size="lg" className="w-full">
-                        Manage Campaigns
+                        Initiative Tracker
+                    </Button>
+                </Link>
+                <Link href="/weather-generator" className="w-full">
+                    <Button variant="outline" size="lg" className="w-full">
+                        Weather Generator
+                    </Button>
+                </Link>
+                <Link href="/tavern-generator" className="w-full">
+                    <Button variant="outline" size="lg" className="w-full">
+                        Tavern Generator
                     </Button>
                 </Link>
             </div>
         </div>
-    );
+    )
 }
+
