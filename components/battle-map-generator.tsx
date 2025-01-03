@@ -277,12 +277,12 @@ export function BattleMapGenerator() {
             <div ref={mapRef} className="border border-gray-300 inline-block">
                 {showCoordinates && (
                     <div className="flex">
-                        <div className="w-8"></div>
+                        <div className="w-14"></div>
                         {Array.from({ length: mapSize.width }).map(
                             (_, index) => (
                                 <div
                                     key={index}
-                                    className="w-8 h-8 flex items-center justify-center text-sm font-semibold"
+                                    className="w-14 h-14 flex items-center justify-center text-sm font-semibold"
                                 >
                                     {String.fromCharCode(65 + index)}
                                 </div>
@@ -300,7 +300,7 @@ export function BattleMapGenerator() {
                         {row.map((cell, colIndex) => (
                             <button
                                 key={colIndex}
-                                className={`w-8 h-8 ${
+                                className={`w-14 h-14 ${
                                     terrainColors[cell.terrain]
                                 } border border-gray-400 flex items-center justify-center relative`}
                                 onClick={() =>
