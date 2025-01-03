@@ -42,6 +42,11 @@ export function Navbar() {
                                 <Link href="/tools">All Tools</Link>
                             </DropdownMenuItem>
                             <DropdownMenuItem>
+                                <Link href="/tools/battle-map-generator">
+                                    Battle Map Generator
+                                </Link>
+                            </DropdownMenuItem>
+                            <DropdownMenuItem>
                                 <Link href="/tools/dice-roller">
                                     Dice Roller
                                 </Link>

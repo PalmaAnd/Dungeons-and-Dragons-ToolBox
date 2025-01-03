@@ -1,5 +1,5 @@
-import { Button } from '@/components/ui/button'
-import Link from 'next/link'
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function ToolsPage() {
     return (
@@ -19,14 +19,9 @@ export default function ToolsPage() {
                         Initiative Tracker
                     </Button>
                 </Link>
-                <Link href="/tools/loot-generator" className="w-full">
+                <Link href="/tools/weather-generator" className="w-full">
                     <Button variant="outline" size="lg" className="w-full">
-                        Loot Generator
-                    </Button>
-                </Link>
-                <Link href="/tools/npc-generator" className="w-full">
-                    <Button variant="outline" size="lg" className="w-full">
-                        NPC Generator
+                        Weather Generator
                     </Button>
                 </Link>
                 <Link href="/tools/tavern-generator" className="w-full">
@@ -34,13 +29,12 @@ export default function ToolsPage() {
                         Tavern Generator
                     </Button>
                 </Link>
-                <Link href="/tools/weather-generator" className="w-full">
+                <Link href="/tools/battle-map-generator" className="w-full">
                     <Button variant="outline" size="lg" className="w-full">
-                        Weather Generator
+                        Battle Map Generator
                     </Button>
                 </Link>
             </div>
         </div>
-    )
+    );
 }
-
