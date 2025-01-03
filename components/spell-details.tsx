@@ -4,11 +4,8 @@ import {
     DialogHeader,
     DialogTitle,
     DialogDescription,
-    DialogClose,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { X } from "lucide-react";
 import type { Spell } from "@/components/spell-list";
 
 export function SpellDetails({
@@ -67,16 +64,6 @@ export function SpellDetails({
                         </p>
                     </div>
                 </ScrollArea>
-                <DialogClose asChild>
-                    <Button
-                        variant="outline"
-                        className="absolute right-4 top-4"
-                        onClick={onClose}
-                    >
-                        <X className="h-4 w-4" />
-                        <span className="sr-only">Close</span>
-                    </Button>
-                </DialogClose>
             </DialogContent>
         </Dialog>
     );

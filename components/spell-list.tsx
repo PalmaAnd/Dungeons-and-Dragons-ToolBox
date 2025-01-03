@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Input } from "@/components/ui/input";
 import {
     Table,
@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { SpellDetails } from "@/components/spell-details";
+import { ChevronUp, ChevronDown } from "lucide-react";
 
 export type Spell = {
     id: string;
@@ -36,16 +37,81 @@ export type Spell = {
     classes: string;
 };
 
-export function SpellList({ initialSpells }: { initialSpells: Spell[] }) {
+type SortConfig = {
+    key: keyof Spell;
+    direction: "asc" | "desc";
+};
+
+export function SpellList({
+    initialSpells,
+    classes,
+}: {
+    initialSpells: Spell[];
+    classes: string[];
+}) {
     const [searchTerm, setSearchTerm] = useState("");
     const [filterLevel, setFilterLevel] = useState("all");
+    const [filterClass, setFilterClass] = useState("all");
     const [spells] = useState(initialSpells);
     const [selectedSpell, setSelectedSpell] = useState<Spell | null>(null);
+    const [sortConfig, setSortConfig] = useState<SortConfig>({
+        key: "name",
+        direction: "asc",
+    });
 
-    const filteredSpells = spells.filter(
-        (spell) =>
-            spell.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-            (filterLevel === "all" || spell.level.toString() === filterLevel)
+    const sortedAndFilteredSpells = useMemo(() => {
+        const result = spells.filter(
+            (spell) =>
+                spell.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
+                (filterLevel === "all" ||
+                    spell.level.toString() === filterLevel) &&
+                (filterClass === "all" ||
+                    spell.classes
+                        .toLowerCase()
+                        .includes(filterClass.toLowerCase()))
+        );
+
+        if (sortConfig) {
+            result.sort((a, b) => {
+                // @ts-expect-error: Object is possibly 'null'.
+                if (a[sortConfig.key] < b[sortConfig!.key]) {
+                    return sortConfig.direction === "asc" ? -1 : 1;
+                }
+                // @ts-expect-error: Object is possibly 'null'.
+                if (a[sortConfig.key] > b[sortConfig.key]) {
+                    return sortConfig.direction === "asc" ? 1 : -1;
+                }
+                return 0;
+            });
+        }
+
+        return result;
+    }, [spells, searchTerm, filterLevel, filterClass, sortConfig]);
+
+    const requestSort = (key: keyof Spell) => {
+        let direction: "asc" | "desc" = "asc";
+        if (sortConfig.key === key && sortConfig.direction === "asc") {
+            direction = "desc";
+        }
+        setSortConfig({ key, direction });
+    };
+
+    const SortableHeader = ({ column }: { column: keyof Spell }) => (
+        <TableHead
+            className="cursor-pointer"
+            onClick={() => requestSort(column)}
+        >
+            <div className="flex items-center">
+                {column.charAt(0).toUpperCase() +
+                    column.slice(1).replace("_", " ")}
+                {sortConfig.key === column &&
+                    (sortConfig.direction === "asc" ? (
+                        <ChevronUp className="ml-1 h-4 w-4" />
+                    ) : (
+                        <ChevronDown className="ml-1 h-4 w-4" />
+                    ))}
+            </div>
+        </TableHead>
     );
 
     return (
@@ -63,9 +129,22 @@ export function SpellList({ initialSpells }: { initialSpells: Spell[] }) {
                     </SelectTrigger>
                     <SelectContent>
                         <SelectItem value="all">All Levels</SelectItem>
-                        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((level) => (
+                        {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((level) => (
                             <SelectItem key={level} value={level.toString()}>
                                 {level}
+                            </SelectItem>
+                        ))}
+                    </SelectContent>
+                </Select>
+                <Select value={filterClass} onValueChange={setFilterClass}>
+                    <SelectTrigger className="max-w-[180px]">
+                        <SelectValue placeholder="Filter by class" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="all">All Classes</SelectItem>
+                        {classes.map((className) => (
+                            <SelectItem key={className} value={className}>
+                                {className}
                             </SelectItem>
                         ))}
                     </SelectContent>
@@ -74,18 +153,18 @@ export function SpellList({ initialSpells }: { initialSpells: Spell[] }) {
             <Table>
                 <TableHeader>
                     <TableRow>
-                        <TableHead>Name</TableHead>
-                        <TableHead>Level</TableHead>
-                        <TableHead>School</TableHead>
-                        <TableHead>Casting Time</TableHead>
-                        <TableHead>Range</TableHead>
-                        <TableHead>Components</TableHead>
-                        <TableHead>Duration</TableHead>
+                        <SortableHeader column="name" />
+                        <SortableHeader column="level" />
+                        <SortableHeader column="school" />
+                        <SortableHeader column="casting_time" />
+                        <SortableHeader column="range" />
+                        <SortableHeader column="components" />
+                        <SortableHeader column="duration" />
                         <TableHead>Actions</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {filteredSpells.map((spell) => (
+                    {sortedAndFilteredSpells.map((spell) => (
                         <TableRow key={spell.id}>
                             <TableCell className="font-medium">
                                 {spell.name}
