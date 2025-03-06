@@ -1,14 +1,14 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import { Button } from '@/components/ui/button'
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { ChevronDown } from 'lucide-react'
+} from "@/components/ui/dropdown-menu";
+import { ChevronDown } from "lucide-react";
 
 export function Navbar() {
     return (
@@ -25,7 +25,9 @@ export function Navbar() {
                         <Link href="/spell-list">Spell List</Link>
                     </Button>
                     <Button variant="ghost" asChild>
-                        <Link href="/monster-compendium">Monster Compendium</Link>
+                        <Link href="/monster-compendium">
+                            Monster Compendium
+                        </Link>
                     </Button>
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
@@ -38,31 +40,39 @@ export function Navbar() {
                                 <Link href="/tools">All Tools</Link>
                             </DropdownMenuItem>
                             <DropdownMenuItem>
-                                <Link href="/tools/dice-roller">Dice Roller</Link>
+                                <Link href="/tools/dice-roller">
+                                    Dice Roller
+                                </Link>
                             </DropdownMenuItem>
                             <DropdownMenuItem>
-                                <Link href="/tools/initiative-tracker">Initiative Tracker</Link>
+                                <Link href="/tools/initiative-tracker">
+                                    Initiative Tracker
+                                </Link>
                             </DropdownMenuItem>
                             <DropdownMenuItem>
-                                <Link href="/tools/loot-generator">Loot Generator</Link>
+                                <Link href="/tools/loot-generator">
+                                    Loot Generator
+                                </Link>
                             </DropdownMenuItem>
                             <DropdownMenuItem>
-                                <Link href="/tools/npc-generator">NPC Generator</Link>
+                                <Link href="/tools/npc-generator">
+                                    NPC Generator
+                                </Link>
                             </DropdownMenuItem>
                             <DropdownMenuItem>
-                                <Link href="/tools/tavern-generator">Tavern Generator</Link>
+                                <Link href="/tools/tavern-generator">
+                                    Tavern Generator
+                                </Link>
                             </DropdownMenuItem>
                             <DropdownMenuItem>
-                                <Link href="/tools/weather-generator">Weather Generator</Link>
+                                <Link href="/tools/weather-generator">
+                                    Weather Generator
+                                </Link>
                             </DropdownMenuItem>
                         </DropdownMenuContent>
                     </DropdownMenu>
-                    <Button variant="ghost" asChild>
-                        <Link href="/auth">Login - Register</Link>
-                    </Button>
                 </div>
             </div>
         </nav>
-    )
+    );
 }
-

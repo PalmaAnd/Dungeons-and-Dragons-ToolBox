@@ -1,20 +1,20 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { cn } from "@/lib/utils"
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 const tools = [
-    { name: 'Dice Roller', href: '/tools/dice-roller' },
-    { name: 'Initiative Tracker', href: '/tools/initiative-tracker' },
-    { name: 'Loot Generator', href: '/tools/loot-generator' },
-    { name: 'NPC Generator', href: '/tools/npc-generator' },
-    { name: 'Tavern Generator', href: '/tools/tavern-generator' },
-    { name: 'Weather Generator', href: '/tools/weather-generator' },
-]
+    { name: "Dice Roller", href: "/tools/dice-roller" },
+    { name: "Initiative Tracker", href: "/tools/initiative-tracker" },
+    { name: "Loot Generator", href: "/tools/loot-generator" },
+    { name: "NPC Generator", href: "/tools/npc-generator" },
+    { name: "Tavern Generator", href: "/tools/tavern-generator" },
+    { name: "Weather Generator", href: "/tools/weather-generator" },
+];
 
 export function ToolsSidebar() {
-    const pathname = usePathname()
+    const pathname = usePathname();
 
     return (
         <nav className="w-64 bg-gray-100 p-4">
@@ -37,6 +37,5 @@ export function ToolsSidebar() {
                 ))}
             </ul>
         </nav>
-    )
+    );
 }
-
