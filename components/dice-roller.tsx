@@ -50,7 +50,7 @@ export function DiceRoller() {
                 ))}
             </div>
             <div className="flex items-end gap-2">
-                <div className="flex-grow">
+                <div className="grow">
                     <Label htmlFor="custom-roll">Custom Roll</Label>
                     <Input
                         id="custom-roll"
