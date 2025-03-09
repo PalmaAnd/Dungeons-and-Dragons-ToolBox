@@ -74,3 +74,29 @@
         @apply bg-background text-foreground;
     }
 }
+
+/* Custom focus styles for accessibility */
+.focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+}
+
+/* Skip link for keyboard accessibility */
+.skip-link {
+    @apply sr-only focus:not-sr-only focus:absolute focus:z-50 focus:px-4 focus:py-2 focus:bg-background focus:text-foreground focus:top-2 focus:left-2 focus:outline-none;
+}
+
+/* Custom scrollbar for better visibility in dark mode */
+@media (prefers-color-scheme: dark) {
+    ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        @apply bg-muted;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        @apply bg-accent rounded-full;
+    }
+}
