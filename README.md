@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dungeons and Dragons Toolbox
+
+A Next.js based toolbox for Dungeons and Dragons enthusiasts, designed to streamline game sessions with a suite of interactive tools including dice rolling, character management, and more. This project aims to provide both players and Dungeon Masters with a centralized platform to enhance their gameplay experience.
+
+## Technologies Used
+
+-   [Next.js](https://nextjs.org/)
+-   [React](https://react.dev/)
+-   [Node.js](https://nodejs.org/en)
+-   [Tailwind CSS](https://tailwindcss.com/)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Ensure you have the following installed:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+-   **Node.js** (version 20 or later)
+-   **npm** or **yarn** package manager
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Clone the Repository:**
 
-## Learn More
+    ```bash
+    git clone https://github.com/PalmaAnd/Dungeons-and-Dragons-ToolBox.git
+    cd Dungeons-and-Dragons-ToolBox
+    ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Install Dependencies:**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    Using npm:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    ```bash
+    npm install
+    ```
 
-## Deploy on Vercel
+    Or with yarn:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    ```bash
+    yarn install
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. **Run the Development Server:**
+
+    Using npm:
+
+    ```bash
+    npm run dev
+    ```
+
+    Or with yarn:
+
+    ```bash
+    yarn dev
+    ```
+
+    Open [http://localhost:3000](http://localhost:3000) in your browser to view the project.
+
+## Usage
+
+-   **Navigation:** Use the intuitive navigation bar to switch between the dice roller, character manager, spell lookup, and session planner.
+-   **Interactive Tools:** Each tool is designed to provide immediate feedback and guidance. Refer to the in-app instructions for detailed usage.
+-   **Customization:** Modify settings or the interface to suit your personal gameplay style.
+
+## Contributing
+
+Contributions are welcome! If you’d like to help improve this project, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Commit your changes with clear messages.
+4. Open a pull request detailing your improvements.
+
+For more details, please see the [CONTRIBUTING.md](.github/CONTRIBUTING.md) file.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
