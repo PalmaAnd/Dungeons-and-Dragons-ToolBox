@@ -39,7 +39,7 @@ export default function Page() {
                     </Button>
                 </Link>
                 <Link
-                    href="/dice-roller"
+                    href="/tools/dice-roller"
                     className="w-full"
                     aria-label="Roll Dice"
                 >
@@ -48,7 +48,7 @@ export default function Page() {
                     </Button>
                 </Link>
                 <Link
-                    href="/initiative-tracker"
+                    href="/tools/initiative-tracker"
                     className="w-full"
                     aria-label="Initiative Tracker"
                 >
@@ -57,7 +57,7 @@ export default function Page() {
                     </Button>
                 </Link>
                 <Link
-                    href="/weather-generator"
+                    href="/tools/weather-generator"
                     className="w-full"
                     aria-label="Weather Generator"
                 >
@@ -66,7 +66,7 @@ export default function Page() {
                     </Button>
                 </Link>
                 <Link
-                    href="/tavern-generator"
+                    href="/tools/tavern-generator"
                     className="w-full"
                     aria-label="Tavern Generator"
                 >

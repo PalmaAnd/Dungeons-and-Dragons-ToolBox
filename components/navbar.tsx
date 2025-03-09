@@ -9,15 +9,24 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { MobileNav } from "@/components/mobile-nav";
 
 export function Navbar() {
     return (
-        <nav className="border-b bg-background">
-            <div className="container flex h-16 items-center px-4">
-                <Link href="/" className="text-xl font-bold">
-                    D&D Toolbox
-                </Link>
-                <div className="ml-auto hidden md:flex space-x-4">
+        <header className="sticky top-0 z-30 w-full border-b bg-background">
+            <nav className="container flex h-16 items-center justify-between px-4">
+                <div className="flex items-center gap-2">
+                    <MobileNav />
+                    <Link
+                        href="/"
+                        className="flex items-center text-xl font-bold"
+                    >
+                        <span>D&D Toolbox</span>
+                    </Link>
+                </div>
+
+                <div className="hidden md:flex md:items-center md:space-x-4">
                     <Button variant="ghost" asChild>
                         <Link href="/character-creator">Character Creator</Link>
                     </Button>
@@ -35,36 +44,46 @@ export function Navbar() {
                                 Tools <ChevronDown className="ml-1 h-4 w-4" />
                             </Button>
                         </DropdownMenuTrigger>
-                        <DropdownMenuContent>
-                            <DropdownMenuItem>
+                        <DropdownMenuContent align="end">
+                            <DropdownMenuItem asChild>
                                 <Link href="/tools">All Tools</Link>
                             </DropdownMenuItem>
-                            <DropdownMenuItem>
+                            <DropdownMenuItem asChild>
+                                <Link href="/tools/backstory-generator">
+                                    Backstory Generator
+                                </Link>
+                            </DropdownMenuItem>
+                            <DropdownMenuItem asChild>
                                 <Link href="/tools/dice-roller">
                                     Dice Roller
                                 </Link>
                             </DropdownMenuItem>
-                            <DropdownMenuItem>
+                            <DropdownMenuItem asChild>
                                 <Link href="/tools/initiative-tracker">
                                     Initiative Tracker
                                 </Link>
                             </DropdownMenuItem>
-                            <DropdownMenuItem>
+                            <DropdownMenuItem asChild>
                                 <Link href="/tools/loot-generator">
                                     Loot Generator
                                 </Link>
                             </DropdownMenuItem>
-                            <DropdownMenuItem>
+                            <DropdownMenuItem asChild>
+                                <Link href="/tools/magic-item-shop">
+                                    Magic Item Shop
+                                </Link>
+                            </DropdownMenuItem>
+                            <DropdownMenuItem asChild>
                                 <Link href="/tools/npc-generator">
                                     NPC Generator
                                 </Link>
                             </DropdownMenuItem>
-                            <DropdownMenuItem>
+                            <DropdownMenuItem asChild>
                                 <Link href="/tools/tavern-generator">
                                     Tavern Generator
                                 </Link>
                             </DropdownMenuItem>
-                            <DropdownMenuItem>
+                            <DropdownMenuItem asChild>
                                 <Link href="/tools/weather-generator">
                                     Weather Generator
                                 </Link>
@@ -72,7 +91,11 @@ export function Navbar() {
                         </DropdownMenuContent>
                     </DropdownMenu>
                 </div>
-            </div>
-        </nav>
+
+                <div className="flex items-center">
+                    <ThemeToggle />
+                </div>
+            </nav>
+        </header>
     );
 }
