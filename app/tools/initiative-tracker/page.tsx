@@ -12,6 +12,8 @@ import {
     Heart,
     User,
     Skull,
+    CheckCircle,
+    XCircle,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -24,6 +26,7 @@ type Combatant = {
     ac: number;
     isPlayer: boolean;
     savingThrows: number;
+    failedSaves: number;
 };
 
 export default function InitiativeTracker() {
@@ -51,6 +54,7 @@ export default function InitiativeTracker() {
                 ac: Number(newCombatant.ac) || 0,
                 isPlayer: newCombatant.isPlayer,
                 savingThrows: newCombatant.savingThrows,
+                failedSaves: 0,
             };
             setCombatants((prev) =>
                 [...prev].sort((a, b) => b.initiative - a.initiative)
@@ -105,6 +109,25 @@ export default function InitiativeTracker() {
                         }
                     }
                     return { ...c, hp: newHp };
+                }
+                return c;
+            })
+        );
+    };
+
+    const handleSaveThrow = (id: number, success: boolean) => {
+        setCombatants((prev) =>
+            prev.map((c) => {
+                if (c.id === id) {
+                    if (success) {
+                        return { ...c, hp: 1, failedSaves: 0 };
+                    } else {
+                        const newFailedSaves = c.failedSaves + 1;
+                        if (newFailedSaves >= 3) {
+                            return { ...c, hp: 0, failedSaves: newFailedSaves };
+                        }
+                        return { ...c, failedSaves: newFailedSaves };
+                    }
                 }
                 return c;
             })
@@ -244,6 +267,10 @@ export default function InitiativeTracker() {
                             index === currentTurn && isCombatActive
                                 ? "border-primary"
                                 : ""
+                        } ${
+                            combatant.hp <= 0 && combatant.failedSaves >= combatant.savingThrows
+                                ? "border-red-500"
+                                : ""
                         }`}
                     >
                         <CardContent className="flex items-center justify-between p-4">
@@ -259,6 +286,12 @@ export default function InitiativeTracker() {
                                             <Skull className="h-4 w-4" />
                                         )}
                                         {combatant.name}
+                                        {combatant.failedSaves > 0 && (
+                                            <span className="flex items-center text-red-500">
+                                                <XCircle className="ml-2 h-4 w-4" />
+                                                {combatant.failedSaves}
+                                            </span>
+                                        )}
                                     </h3>
                                     <div className="flex gap-4 text-sm text-muted-foreground">
                                         {combatant.hp > 0 && (
@@ -278,7 +311,7 @@ export default function InitiativeTracker() {
                                 </div>
                             </div>
                             <div className="flex items-center gap-2">
-                                {combatant.hp > 0 && (
+                                {combatant.hp > 0 ? (
                                     <>
                                         <Button
                                             variant="outline"
@@ -297,6 +330,33 @@ export default function InitiativeTracker() {
                                             }
                                         >
                                             +
+                                        </Button>
+                                    </>
+                                ) : (
+                                    <>
+                                        <Button
+                                            variant="outline"
+                                            size="sm"
+                                            onClick={() =>
+                                                handleSaveThrow(
+                                                    combatant.id,
+                                                    true
+                                                )
+                                            }
+                                        >
+                                            <CheckCircle className="h-4 w-4" />
+                                        </Button>
+                                        <Button
+                                            variant="outline"
+                                            size="sm"
+                                            onClick={() =>
+                                                handleSaveThrow(
+                                                    combatant.id,
+                                                    false
+                                                )
+                                            }
+                                        >
+                                            <XCircle className="h-4 w-4" />
                                         </Button>
                                     </>
                                 )}
