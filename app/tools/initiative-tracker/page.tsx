@@ -41,6 +41,7 @@ export default function InitiativeTracker() {
     });
     const [currentTurn, setCurrentTurn] = useState(0);
     const [isCombatActive, setIsCombatActive] = useState(false);
+    const [hpChange, setHpChange] = useState<{ [key: number]: number }>({});
 
     const addCombatant = (e: React.FormEvent) => {
         e.preventDefault();
@@ -56,9 +57,6 @@ export default function InitiativeTracker() {
                 savingThrows: newCombatant.savingThrows,
                 failedSaves: 0,
             };
-            setCombatants((prev) =>
-                [...prev].sort((a, b) => b.initiative - a.initiative)
-            );
             setCombatants((prev) =>
                 [...prev, combatant].sort((a, b) => b.initiative - a.initiative)
             );
@@ -132,6 +130,10 @@ export default function InitiativeTracker() {
                 return c;
             })
         );
+    };
+
+    const handleHpChange = (id: number, value: number) => {
+        setHpChange((prev) => ({ ...prev, [id]: value }));
     };
 
     return (
@@ -268,7 +270,8 @@ export default function InitiativeTracker() {
                                 ? "border-primary"
                                 : ""
                         } ${
-                            combatant.hp <= 0 && combatant.failedSaves >= combatant.savingThrows
+                            combatant.hp <= 0 &&
+                            combatant.failedSaves >= combatant.savingThrows
                                 ? "border-red-500"
                                 : ""
                         }`}
@@ -313,11 +316,29 @@ export default function InitiativeTracker() {
                             <div className="flex items-center gap-2">
                                 {combatant.hp > 0 ? (
                                     <>
+                                        <Input
+                                            type="number"
+                                            value={hpChange[combatant.id] || 1}
+                                            onChange={(e) =>
+                                                handleHpChange(
+                                                    combatant.id,
+                                                    Number(e.target.value)
+                                                )
+                                            }
+                                            className="w-16"
+                                        />
                                         <Button
                                             variant="outline"
                                             size="sm"
                                             onClick={() =>
-                                                updateHP(combatant.id, -1)
+                                                updateHP(
+                                                    combatant.id,
+                                                    -(
+                                                        hpChange[
+                                                            combatant.id
+                                                        ] || 1
+                                                    )
+                                                )
                                             }
                                         >
                                             -
@@ -326,7 +347,10 @@ export default function InitiativeTracker() {
                                             variant="outline"
                                             size="sm"
                                             onClick={() =>
-                                                updateHP(combatant.id, 1)
+                                                updateHP(
+                                                    combatant.id,
+                                                    hpChange[combatant.id] || 1
+                                                )
                                             }
                                         >
                                             +
