@@ -12,24 +12,24 @@ import {
     User,
     MapPin,
     Star,
+    ChevronDown,
+    ChevronUp,
 } from "lucide-react";
+import { generateTavernName, generateNpcName } from "@/lib/generator";
 
-const tavernNames = [
-    "The Prancing Pony",
-    "The Green Dragon",
-    "The Leaky Cauldron",
-    "The Rusty Nail",
-    "The Drunken Clam",
-    "The Salty Sailor",
-    "The Winking Skeever",
-    "The Eolian",
-    "The Bannered Mare",
-    "The Sleeping Giant",
+const atmospheres = [
+    "Cozy",
+    "Rowdy",
+    "Mysterious",
+    "Elegant",
+    "Seedy",
+    "Rustic",
+    "Luxurious",
+    "Haunted",
+    "Festive",
+    "Quiet",
 ];
-
 const tavernTypes = ["Inn", "Pub", "Tavern", "Alehouse", "Brewery"];
-
-const atmospheres = ["Cozy", "Rowdy", "Mysterious", "Elegant", "Seedy"];
 
 const specialties = [
     "Hearty stew",
@@ -42,6 +42,10 @@ const specialties = [
     "Dragon pepper wings",
     "Dwarven ale",
     "Elven bread",
+    "Mystery meat",
+    "Goblin grog",
+    "Phoenix feather soup",
+    "Giant's brew",
 ];
 
 const entertainments = [
@@ -55,14 +59,10 @@ const entertainments = [
     "Karaoke nights",
     "Poetry readings",
     "Puppet shows",
-];
-
-const owners = [
-    "John the Brave",
-    "Elena the Wise",
-    "Gorim the Strong",
-    "Lila the Swift",
-    "Thorin the Stout",
+    "Juggling acts",
+    "Fire breathing",
+    "Sword swallowing",
+    "Acrobatics",
 ];
 
 const locations = [
@@ -71,6 +71,11 @@ const locations = [
     "By the river",
     "On the outskirts of town",
     "Next to the blacksmith",
+    "Near the docks",
+    "In the forest",
+    "On a hilltop",
+    "In a hidden alley",
+    "Beside the castle",
 ];
 
 const reputations = [
@@ -79,6 +84,11 @@ const reputations = [
     "Famous for its delicious food",
     "Renowned for its entertainment",
     "Infamous for its shady dealings",
+    "Celebrated for its cleanliness",
+    "Notorious for its brawls",
+    "Loved for its friendly staff",
+    "Hated for its high prices",
+    "Admired for its unique decor",
 ];
 
 function getRandomItem<T>(array: T[]): T {
@@ -112,6 +122,10 @@ export default function TavernGenerator() {
         }[]
     >([]);
 
+    const [expandedTaverns, setExpandedTaverns] = useState<Set<number>>(
+        new Set()
+    );
+
     useEffect(() => {
         const storedTaverns = localStorage.getItem("savedTaverns");
         if (storedTaverns) {
@@ -121,13 +135,13 @@ export default function TavernGenerator() {
 
     const generateTavern = () => {
         setTavern({
-            name: getRandomItem(tavernNames),
+            name: generateTavernName(),
             type: getRandomItem(tavernTypes),
             atmosphere: getRandomItem(atmospheres),
             specialty: getRandomItem(specialties),
             entertainment: getRandomItem(entertainments),
             patronCount: Math.floor(Math.random() * 50) + 10,
-            owner: getRandomItem(owners),
+            owner: generateNpcName(),
             location: getRandomItem(locations),
             reputation: getRandomItem(reputations),
         });
@@ -144,6 +158,18 @@ export default function TavernGenerator() {
         }
     };
 
+    const toggleExpand = (index: number) => {
+        setExpandedTaverns((prev) => {
+            const newSet = new Set(prev);
+            if (newSet.has(index)) {
+                newSet.delete(index);
+            } else {
+                newSet.add(index);
+            }
+            return newSet;
+        });
+    };
+
     return (
         <div className="container mx-auto px-4 py-8">
             <h1 className="text-3xl font-bold mb-6">Tavern Generator</h1>
@@ -158,6 +184,14 @@ export default function TavernGenerator() {
                         <CardTitle>{tavern.name}</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-4">
+                        <div className="flex items-center space-x-2">
+                            <User className="h-5 w-5" />
+                            <span>Owner: {tavern.owner}</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                            <MapPin className="h-5 w-5" />
+                            <span>{tavern.location}</span>
+                        </div>
                         <div className="flex items-center space-x-2">
                             <Beer className="h-5 w-5" />
                             <span>{tavern.type}</span>
@@ -179,14 +213,6 @@ export default function TavernGenerator() {
                             <span>Current patrons: {tavern.patronCount}</span>
                         </div>
                         <div className="flex items-center space-x-2">
-                            <User className="h-5 w-5" />
-                            <span>Owner: {tavern.owner}</span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                            <MapPin className="h-5 w-5" />
-                            <span>Location: {tavern.location}</span>
-                        </div>
-                        <div className="flex items-center space-x-2">
                             <Star className="h-5 w-5" />
                             <span>Reputation: {tavern.reputation}</span>
                         </div>
@@ -205,57 +231,65 @@ export default function TavernGenerator() {
                     <h2 className="text-2xl font-bold mb-4">Saved Taverns</h2>
                     {savedTaverns.map((savedTavern, index) => (
                         <Card key={index} className="mb-4">
-                            <CardHeader>
+                            <CardHeader
+                                className="cursor-pointer flex justify-between items-center"
+                                onClick={() => toggleExpand(index)}
+                            >
                                 <CardTitle>{savedTavern.name}</CardTitle>
+                                {expandedTaverns.has(index) ? (
+                                    <ChevronUp className="h-5 w-5" />
+                                ) : (
+                                    <ChevronDown className="h-5 w-5" />
+                                )}
                             </CardHeader>
-                            <CardContent className="space-y-4">
-                                <div className="flex items-center space-x-2">
-                                    <Beer className="h-5 w-5" />
-                                    <span>{savedTavern.type}</span>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                    <Volume2 className="h-5 w-5" />
-                                    <span>
-                                        {savedTavern.atmosphere} atmosphere
-                                    </span>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                    <Utensils className="h-5 w-5" />
-                                    <span>
-                                        Specialty: {savedTavern.specialty}
-                                    </span>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                    <Music className="h-5 w-5" />
-                                    <span>
-                                        Entertainment:{" "}
-                                        {savedTavern.entertainment}
-                                    </span>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                    <Users className="h-5 w-5" />
-                                    <span>
-                                        Current patrons:{" "}
-                                        {savedTavern.patronCount}
-                                    </span>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                    <User className="h-5 w-5" />
-                                    <span>Owner: {savedTavern.owner}</span>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                    <MapPin className="h-5 w-5" />
-                                    <span>
-                                        Location: {savedTavern.location}
-                                    </span>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                    <Star className="h-5 w-5" />
-                                    <span>
-                                        Reputation: {savedTavern.reputation}
-                                    </span>
-                                </div>
-                            </CardContent>
+                            {expandedTaverns.has(index) && (
+                                <CardContent className="space-y-4">
+                                    <div className="flex items-center space-x-2">
+                                        <User className="h-5 w-5" />
+                                        <span>Owner: {savedTavern.owner}</span>
+                                    </div>
+                                    <div className="flex items-center space-x-2">
+                                        <MapPin className="h-5 w-5" />
+                                        <span>{savedTavern.location}</span>
+                                    </div>
+                                    <div className="flex items-center space-x-2">
+                                        <Beer className="h-5 w-5" />
+                                        <span>{savedTavern.type}</span>
+                                    </div>
+                                    <div className="flex items-center space-x-2">
+                                        <Volume2 className="h-5 w-5" />
+                                        <span>
+                                            {savedTavern.atmosphere} atmosphere
+                                        </span>
+                                    </div>
+                                    <div className="flex items-center space-x-2">
+                                        <Utensils className="h-5 w-5" />
+                                        <span>
+                                            Specialty: {savedTavern.specialty}
+                                        </span>
+                                    </div>
+                                    <div className="flex items-center space-x-2">
+                                        <Music className="h-5 w-5" />
+                                        <span>
+                                            Entertainment:{" "}
+                                            {savedTavern.entertainment}
+                                        </span>
+                                    </div>
+                                    <div className="flex items-center space-x-2">
+                                        <Users className="h-5 w-5" />
+                                        <span>
+                                            Current patrons:{" "}
+                                            {savedTavern.patronCount}
+                                        </span>
+                                    </div>
+                                    <div className="flex items-center space-x-2">
+                                        <Star className="h-5 w-5" />
+                                        <span>
+                                            Reputation: {savedTavern.reputation}
+                                        </span>
+                                    </div>
+                                </CardContent>
+                            )}
                         </Card>
                     ))}
                 </div>
