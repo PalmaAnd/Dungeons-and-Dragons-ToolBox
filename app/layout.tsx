@@ -4,7 +4,6 @@ import { Geist } from "next/font/google";
 import { Navbar } from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SkipToContent } from "@/components/skip-to-content";
-import SpinningD20 from "@/components/spinning-d20"; // Import the new component
 import "./globals.css";
 
 const geist = Geist({
@@ -29,7 +28,6 @@ export default function RootLayout({
             >
                 <ThemeProvider defaultTheme="system">
                     <SkipToContent />
-                    <SpinningD20 />
                     <div className="relative flex min-h-screen flex-col">
                         <Navbar />
                         <main id="main-content" className="flex-1">
