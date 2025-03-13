@@ -44,14 +44,6 @@
         "Neutral Evil",
         "Chaotic Evil"
     ],
-    "abilities": [
-        "strength",
-        "dexterity",
-        "constitution",
-        "intelligence",
-        "wisdom",
-        "charisma"
-    ],
     "traits": [
         "Brave",
         "Cautious",
