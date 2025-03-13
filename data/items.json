@@ -1,0 +1,1097 @@
+{
+    "magicalItems": [
+        {
+            "name": "Potion of Healing",
+            "type": "Potion",
+            "rarity": "Common",
+            "basePrice": 50,
+            "description": "Restores 2d4+2 hit points when consumed."
+        },
+        {
+            "name": "Potion of Greater Healing",
+            "type": "Potion",
+            "rarity": "Uncommon",
+            "basePrice": 200,
+            "description": "Restores 4d4+4 hit points when consumed."
+        },
+        {
+            "name": "Potion of Superior Healing",
+            "type": "Potion",
+            "rarity": "Rare",
+            "basePrice": 2000,
+            "description": "Restores 8d4+8 hit points when consumed."
+        },
+        {
+            "name": "Potion of Supreme Healing",
+            "type": "Potion",
+            "rarity": "Very Rare",
+            "basePrice": 20000,
+            "description": "Restores 10d4+20 hit points when consumed."
+        },
+        {
+            "name": "Potion of Invisibility",
+            "type": "Potion",
+            "rarity": "Rare",
+            "basePrice": 1800,
+            "description": "Grants invisibility for 1 hour when consumed."
+        },
+        {
+            "name": "Potion of Flying",
+            "type": "Potion",
+            "rarity": "Very Rare",
+            "basePrice": 5000,
+            "description": "Grants a flying speed of 60 feet for 1 hour when consumed."
+        },
+        {
+            "name": "Potion of Fire Breath",
+            "type": "Potion",
+            "rarity": "Uncommon",
+            "basePrice": 150,
+            "description": "Allows the user to exhale fire in a 15-foot cone for 1 hour."
+        },
+        {
+            "name": "Potion of Poison Resistance",
+            "type": "Potion",
+            "rarity": "Uncommon",
+            "basePrice": 300,
+            "description": "Grants resistance to poison damage for 1 hour."
+        },
+        {
+            "name": "Potion of Water Breathing",
+            "type": "Potion",
+            "rarity": "Uncommon",
+            "basePrice": 180,
+            "description": "Allows the user to breathe underwater for 1 hour."
+        },
+        {
+            "name": "Potion of Animal Friendship",
+            "type": "Potion",
+            "rarity": "Uncommon",
+            "basePrice": 200,
+            "description": "Allows the user to cast Animal Friendship on a beast."
+        },
+        {
+            "name": "Potion of Growth",
+            "type": "Potion",
+            "rarity": "Uncommon",
+            "basePrice": 270,
+            "description": "Increases the user's size by one category for 1d4 hours."
+        },
+        {
+            "name": "Potion of Diminution",
+            "type": "Potion",
+            "rarity": "Rare",
+            "basePrice": 350,
+            "description": "Decreases the user's size by one category for 1d4 hours."
+        },
+        {
+            "name": "Potion of Gaseous Form",
+            "type": "Potion",
+            "rarity": "Rare",
+            "basePrice": 800,
+            "description": "Transforms the user into a misty cloud for up to 1 hour."
+        },
+        {
+            "name": "Potion of Speed",
+            "type": "Potion",
+            "rarity": "Very Rare",
+            "basePrice": 4000,
+            "description": "Grants the effects of the Haste spell for 1 minute."
+        },
+        {
+            "name": "Scroll of Magic Missile",
+            "type": "Scroll",
+            "rarity": "Common",
+            "basePrice": 100,
+            "description": "A scroll containing the Magic Missile spell."
+        },
+        {
+            "name": "Scroll of Fireball",
+            "type": "Scroll",
+            "rarity": "Uncommon",
+            "basePrice": 300,
+            "description": "A scroll containing the Fireball spell."
+        },
+        {
+            "name": "Scroll of Identify",
+            "type": "Scroll",
+            "rarity": "Common",
+            "basePrice": 100,
+            "description": "A scroll containing the Identify spell."
+        },
+        {
+            "name": "Scroll of Revivify",
+            "type": "Scroll",
+            "rarity": "Rare",
+            "basePrice": 950,
+            "description": "A scroll containing the Revivify spell."
+        },
+        {
+            "name": "Scroll of Teleport",
+            "type": "Scroll",
+            "rarity": "Very Rare",
+            "basePrice": 5000,
+            "description": "A scroll containing the Teleport spell."
+        },
+        {
+            "name": "Scroll of Wish",
+            "type": "Scroll",
+            "rarity": "Legendary",
+            "basePrice": 50000,
+            "description": "A scroll containing the Wish spell."
+        },
+        {
+            "name": "Wand of Magic Missiles",
+            "type": "Wand",
+            "rarity": "Uncommon",
+            "basePrice": 600,
+            "description": "A wand that can cast Magic Missile without using a spell slot."
+        },
+        {
+            "name": "Wand of Web",
+            "type": "Wand",
+            "rarity": "Uncommon",
+            "basePrice": 800,
+            "description": "A wand that can cast Web without using a spell slot."
+        },
+        {
+            "name": "Wand of Fireballs",
+            "type": "Wand",
+            "rarity": "Rare",
+            "basePrice": 8000,
+            "description": "A wand that can cast Fireball without using a spell slot."
+        },
+        {
+            "name": "Wand of Lightning Bolts",
+            "type": "Wand",
+            "rarity": "Rare",
+            "basePrice": 8000,
+            "description": "A wand that can cast Lightning Bolt without using a spell slot."
+        },
+        {
+            "name": "Wand of Paralysis",
+            "type": "Wand",
+            "rarity": "Rare",
+            "basePrice": 6000,
+            "description": "A wand that can paralyze a target without using a spell slot."
+        },
+        {
+            "name": "Wand of Wonder",
+            "type": "Wand",
+            "rarity": "Rare",
+            "basePrice": 5000,
+            "description": "A wand that produces unpredictable magical effects."
+        },
+        {
+            "name": "Ring of Protection",
+            "type": "Ring",
+            "rarity": "Rare",
+            "basePrice": 3500,
+            "description": "Grants a +1 bonus to AC and saving throws."
+        },
+        {
+            "name": "Ring of Resistance",
+            "type": "Ring",
+            "rarity": "Rare",
+            "basePrice": 6000,
+            "description": "Grants resistance to one type of damage."
+        },
+        {
+            "name": "Ring of Spell Storing",
+            "type": "Ring",
+            "rarity": "Rare",
+            "basePrice": 12000,
+            "description": "Can store up to 5 levels of spells for later use."
+        },
+        {
+            "name": "Ring of Invisibility",
+            "type": "Ring",
+            "rarity": "Legendary",
+            "basePrice": 75000,
+            "description": "Grants invisibility while worn."
+        },
+        {
+            "name": "Ring of Regeneration",
+            "type": "Ring",
+            "rarity": "Very Rare",
+            "basePrice": 40000,
+            "description": "Regenerates 1d6 hit points every 10 minutes."
+        },
+        {
+            "name": "Ring of Three Wishes",
+            "type": "Ring",
+            "rarity": "Legendary",
+            "basePrice": 97000,
+            "description": "Grants three wishes to the wearer."
+        },
+        {
+            "name": "Cloak of Elvenkind",
+            "type": "Wondrous Item",
+            "rarity": "Uncommon",
+            "basePrice": 500,
+            "description": "Grants advantage on Stealth checks."
+        },
+        {
+            "name": "Cloak of Protection",
+            "type": "Wondrous Item",
+            "rarity": "Uncommon",
+            "basePrice": 3500,
+            "description": "Grants a +1 bonus to AC and saving throws."
+        },
+        {
+            "name": "Cloak of Displacement",
+            "type": "Wondrous Item",
+            "rarity": "Rare",
+            "basePrice": 6000,
+            "description": "Makes the wearer appear to be standing in a different location."
+        },
+        {
+            "name": "Cloak of the Bat",
+            "type": "Wondrous Item",
+            "rarity": "Rare",
+            "basePrice": 5000,
+            "description": "Grants various bat-like abilities to the wearer."
+        },
+        {
+            "name": "Bag of Holding",
+            "type": "Wondrous Item",
+            "rarity": "Uncommon",
+            "basePrice": 500,
+            "description": "A bag that can hold up to 500 pounds of items in an extradimensional space."
+        },
+        {
+            "name": "Boots of Elvenkind",
+            "type": "Wondrous Item",
+            "rarity": "Uncommon",
+            "basePrice": 400,
+            "description": "Makes the wearer's steps silent."
+        },
+        {
+            "name": "Boots of Speed",
+            "type": "Wondrous Item",
+            "rarity": "Rare",
+            "basePrice": 5000,
+            "description": "Doubles the wearer's walking speed."
+        },
+        {
+            "name": "Boots of Striding and Springing",
+            "type": "Wondrous Item",
+            "rarity": "Uncommon",
+            "basePrice": 600,
+            "description": "Triples the wearer's jumping distance."
+        },
+        {
+            "name": "Bracers of Archery",
+            "type": "Wondrous Item",
+            "rarity": "Uncommon",
+            "basePrice": 1500,
+            "description": "Grants proficiency with longbows and shortbows and a +2 bonus to damage rolls."
+        },
+        {
+            "name": "Bracers of Defense",
+            "type": "Wondrous Item",
+            "rarity": "Rare",
+            "basePrice": 6000,
+            "description": "Grants a +2 bonus to AC if not wearing armor or using a shield."
+        },
+        {
+            "name": "Gauntlets of Ogre Power",
+            "type": "Wondrous Item",
+            "rarity": "Uncommon",
+            "basePrice": 8000,
+            "description": "Sets the wearer's Strength score to 19."
+        },
+        {
+            "name": "Gloves of Thievery",
+            "type": "Wondrous Item",
+            "rarity": "Uncommon",
+            "basePrice": 5000,
+            "description": "Grants a +5 bonus to Dexterity (Sleight of Hand) checks and Dexterity checks to pick locks."
+        },
+        {
+            "name": "Hat of Disguise",
+            "type": "Wondrous Item",
+            "rarity": "Uncommon",
+            "basePrice": 5000,
+            "description": "Allows the wearer to cast Disguise Self at will."
+        },
+        {
+            "name": "Headband of Intellect",
+            "type": "Wondrous Item",
+            "rarity": "Uncommon",
+            "basePrice": 8000,
+            "description": "Sets the wearer's Intelligence score to 19."
+        },
+        {
+            "name": "Helm of Telepathy",
+            "type": "Wondrous Item",
+            "rarity": "Uncommon",
+            "basePrice": 12000,
+            "description": "Allows the wearer to cast Detect Thoughts and communicate telepathically."
+        },
+        {
+            "name": "Amulet of Health",
+            "type": "Wondrous Item",
+            "rarity": "Rare",
+            "basePrice": 8000,
+            "description": "Sets the wearer's Constitution score to 19."
+        },
+        {
+            "name": "Amulet of Proof against Detection and Location",
+            "type": "Wondrous Item",
+            "rarity": "Uncommon",
+            "basePrice": 5000,
+            "description": "Hides the wearer from divination magic."
+        },
+        {
+            "name": "Broom of Flying",
+            "type": "Wondrous Item",
+            "rarity": "Uncommon",
+            "basePrice": 8000,
+            "description": "A broom that can fly at a speed of 50 feet."
+        },
+        {
+            "name": "Carpet of Flying",
+            "type": "Wondrous Item",
+            "rarity": "Very Rare",
+            "basePrice": 20000,
+            "description": "A carpet that can fly and carry up to 800 pounds."
+        },
+        {
+            "name": "Deck of Illusions",
+            "type": "Wondrous Item",
+            "rarity": "Uncommon",
+            "basePrice": 6000,
+            "description": "A deck of cards that creates illusions when drawn."
+        },
+        {
+            "name": "Eversmoking Bottle",
+            "type": "Wondrous Item",
+            "rarity": "Uncommon",
+            "basePrice": 1000,
+            "description": "A bottle that releases thick smoke when opened."
+        },
+        {
+            "name": "Eyes of Charming",
+            "type": "Wondrous Item",
+            "rarity": "Uncommon",
+            "basePrice": 8000,
+            "description": "Allows the wearer to cast Charm Person."
+        },
+        {
+            "name": "Eyes of Minute Seeing",
+            "type": "Wondrous Item",
+            "rarity": "Uncommon",
+            "basePrice": 2500,
+            "description": "Grants advantage on Investigation checks that rely on sight."
+        },
+        {
+            "name": "Figurine of Wondrous Power",
+            "type": "Wondrous Item",
+            "rarity": "Rare",
+            "basePrice": 10000,
+            "description": "A statuette that can transform into a creature."
+        },
+        {
+            "name": "Immovable Rod",
+            "type": "Rod",
+            "rarity": "Uncommon",
+            "basePrice": 5000,
+            "description": "A rod that can be fixed in place with a button press."
+        },
+        {
+            "name": "Lantern of Revealing",
+            "type": "Wondrous Item",
+            "rarity": "Uncommon",
+            "basePrice": 5000,
+            "description": "A lantern that reveals invisible creatures and objects."
+        },
+        {
+            "name": "Pipes of Haunting",
+            "type": "Wondrous Item",
+            "rarity": "Uncommon",
+            "basePrice": 6000,
+            "description": "Pipes that create frightening sounds when played."
+        },
+        {
+            "name": "Rope of Climbing",
+            "type": "Wondrous Item",
+            "rarity": "Uncommon",
+            "basePrice": 2000,
+            "description": "A 60-foot length of silk rope that can move on its own."
+        },
+        {
+            "name": "Staff of the Python",
+            "type": "Staff",
+            "rarity": "Uncommon",
+            "basePrice": 2000,
+            "description": "A staff that can transform into a giant constrictor snake."
+        },
+        {
+            "name": "Staff of Healing",
+            "type": "Staff",
+            "rarity": "Rare",
+            "basePrice": 8000,
+            "description": "A staff that can cast various healing spells."
+        },
+        {
+            "name": "Staff of Fire",
+            "type": "Staff",
+            "rarity": "Very Rare",
+            "basePrice": 25000,
+            "description": "A staff that can cast various fire spells."
+        },
+        {
+            "name": "Staff of Frost",
+            "type": "Staff",
+            "rarity": "Very Rare",
+            "basePrice": 25000,
+            "description": "A staff that can cast various cold spells."
+        },
+        {
+            "name": "Staff of Power",
+            "type": "Staff",
+            "rarity": "Very Rare",
+            "basePrice": 50000,
+            "description": "A staff that grants various offensive and defensive abilities."
+        },
+        {
+            "name": "Staff of the Magi",
+            "type": "Staff",
+            "rarity": "Legendary",
+            "basePrice": 150000,
+            "description": "A powerful staff with numerous magical abilities."
+        },
+        {
+            "name": "Sword of Sharpness",
+            "type": "Weapon",
+            "rarity": "Very Rare",
+            "basePrice": 17000,
+            "description": "A magic sword that deals extra slashing damage and can sever limbs."
+        },
+        {
+            "name": "Sword of Life Stealing",
+            "type": "Weapon",
+            "rarity": "Rare",
+            "basePrice": 12000,
+            "description": "A magic sword that steals life force from enemies."
+        },
+        {
+            "name": "Flame Tongue",
+            "type": "Weapon",
+            "rarity": "Rare",
+            "basePrice": 8000,
+            "description": "A magic sword that can burst into flames."
+        },
+        {
+            "name": "Frost Brand",
+            "type": "Weapon",
+            "rarity": "Very Rare",
+            "basePrice": 16000,
+            "description": "A magic sword that deals extra cold damage."
+        },
+        {
+            "name": "Dagger of Venom",
+            "type": "Weapon",
+            "rarity": "Rare",
+            "basePrice": 5000,
+            "description": "A magic dagger that can poison enemies."
+        },
+        {
+            "name": "Mace of Disruption",
+            "type": "Weapon",
+            "rarity": "Rare",
+            "basePrice": 8000,
+            "description": "A magic mace that is deadly to undead."
+        },
+        {
+            "name": "Mace of Smiting",
+            "type": "Weapon",
+            "rarity": "Rare",
+            "basePrice": 7000,
+            "description": "A magic mace that is especially effective against constructs."
+        },
+        {
+            "name": "Mace of Terror",
+            "type": "Weapon",
+            "rarity": "Rare",
+            "basePrice": 8000,
+            "description": "A magic mace that can frighten enemies."
+        },
+        {
+            "name": "Hammer of Thunderbolts",
+            "type": "Weapon",
+            "rarity": "Legendary",
+            "basePrice": 60000,
+            "description": "A powerful magic hammer that can strike with the force of a thunderbolt."
+        },
+        {
+            "name": "Oathbow",
+            "type": "Weapon",
+            "rarity": "Very Rare",
+            "basePrice": 18000,
+            "description": "A magic longbow that is deadly against a chosen enemy."
+        },
+        {
+            "name": "Armor of Resistance",
+            "type": "Armor",
+            "rarity": "Rare",
+            "basePrice": 6000,
+            "description": "Armor that grants resistance to one type of damage."
+        },
+        {
+            "name": "Armor of Vulnerability",
+            "type": "Armor",
+            "rarity": "Rare",
+            "basePrice": 1500,
+            "description": "Armor that grants resistance to some damage types but vulnerability to others."
+        },
+        {
+            "name": "Armor of Invulnerability",
+            "type": "Armor",
+            "rarity": "Legendary",
+            "basePrice": 75000,
+            "description": "Armor that can make the wearer immune to nonmagical damage."
+        },
+        {
+            "name": "Elven Chain",
+            "type": "Armor",
+            "rarity": "Rare",
+            "basePrice": 4500,
+            "description": "Chain mail that doesn't impose disadvantage on Stealth checks."
+        },
+        {
+            "name": "Mithral Armor",
+            "type": "Armor",
+            "rarity": "Uncommon",
+            "basePrice": 3000,
+            "description": "Armor made of mithral, which is lighter than normal metal."
+        },
+        {
+            "name": "Adamantine Armor",
+            "type": "Armor",
+            "rarity": "Uncommon",
+            "basePrice": 5000,
+            "description": "Armor made of adamantine, which prevents critical hits."
+        },
+        {
+            "name": "Shield of Missile Attraction",
+            "type": "Shield",
+            "rarity": "Rare",
+            "basePrice": 2000,
+            "description": "A cursed shield that attracts ranged weapon attacks."
+        },
+        {
+            "name": "Shield of Expression",
+            "type": "Shield",
+            "rarity": "Common",
+            "basePrice": 150,
+            "description": "A shield with a face that can change expressions."
+        },
+        {
+            "name": "Spellguard Shield",
+            "type": "Shield",
+            "rarity": "Very Rare",
+            "basePrice": 30000,
+            "description": "A shield that grants advantage on saving throws against spells."
+        },
+        {
+            "name": "Arrow-Catching Shield",
+            "type": "Shield",
+            "rarity": "Rare",
+            "basePrice": 6000,
+            "description": "A shield that provides extra protection against ranged attacks."
+        },
+        {
+            "name": "Sentinel Shield",
+            "type": "Shield",
+            "rarity": "Uncommon",
+            "basePrice": 3000,
+            "description": "A shield that grants advantage on initiative rolls and Perception checks."
+        }
+    ],
+    "normalItems": [
+        {
+            "name": "Longsword",
+            "type": "Weapon",
+            "basePrice": 15,
+            "description": "A versatile slashing weapon."
+        },
+        {
+            "name": "Shortsword",
+            "type": "Weapon",
+            "basePrice": 10,
+            "description": "A light, one-handed slashing weapon."
+        },
+        {
+            "name": "Greatsword",
+            "type": "Weapon",
+            "basePrice": 50,
+            "description": "A heavy, two-handed slashing weapon."
+        },
+        {
+            "name": "Dagger",
+            "type": "Weapon",
+            "basePrice": 2,
+            "description": "A light, finesse piercing weapon."
+        },
+        {
+            "name": "Rapier",
+            "type": "Weapon",
+            "basePrice": 25,
+            "description": "A finesse piercing weapon."
+        },
+        {
+            "name": "Battleaxe",
+            "type": "Weapon",
+            "basePrice": 10,
+            "description": "A versatile slashing weapon."
+        },
+        {
+            "name": "Warhammer",
+            "type": "Weapon",
+            "basePrice": 15,
+            "description": "A versatile bludgeoning weapon."
+        },
+        {
+            "name": "Mace",
+            "type": "Weapon",
+            "basePrice": 5,
+            "description": "A one-handed bludgeoning weapon."
+        },
+        {
+            "name": "Quarterstaff",
+            "type": "Weapon",
+            "basePrice": 0.2,
+            "description": "A versatile bludgeoning weapon."
+        },
+        {
+            "name": "Spear",
+            "type": "Weapon",
+            "basePrice": 1,
+            "description": "A versatile piercing weapon that can be thrown."
+        },
+        {
+            "name": "Shortbow",
+            "type": "Weapon",
+            "basePrice": 25,
+            "description": "A two-handed ranged weapon."
+        },
+        {
+            "name": "Longbow",
+            "type": "Weapon",
+            "basePrice": 50,
+            "description": "A heavy, two-handed ranged weapon."
+        },
+        {
+            "name": "Light Crossbow",
+            "type": "Weapon",
+            "basePrice": 25,
+            "description": "A two-handed ranged weapon with the loading property."
+        },
+        {
+            "name": "Heavy Crossbow",
+            "type": "Weapon",
+            "basePrice": 50,
+            "description": "A heavy, two-handed ranged weapon with the loading property."
+        },
+        {
+            "name": "Handaxe",
+            "type": "Weapon",
+            "basePrice": 5,
+            "description": "A light throwing weapon."
+        },
+        {
+            "name": "Javelin",
+            "type": "Weapon",
+            "basePrice": 0.5,
+            "description": "A throwing weapon."
+        },
+        {
+            "name": "Leather Armor",
+            "type": "Armor",
+            "basePrice": 10,
+            "description": "Light armor that offers basic protection."
+        },
+        {
+            "name": "Studded Leather Armor",
+            "type": "Armor",
+            "basePrice": 45,
+            "description": "Light armor reinforced with studs."
+        },
+        {
+            "name": "Hide Armor",
+            "type": "Armor",
+            "basePrice": 10,
+            "description": "Medium armor made from thick animal hide."
+        },
+        {
+            "name": "Chain Shirt",
+            "type": "Armor",
+            "basePrice": 50,
+            "description": "Medium armor made of interlocking metal rings."
+        },
+        {
+            "name": "Scale Mail",
+            "type": "Armor",
+            "basePrice": 50,
+            "description": "Medium armor made of overlapping metal scales."
+        },
+        {
+            "name": "Breastplate",
+            "type": "Armor",
+            "basePrice": 400,
+            "description": "Medium armor that covers the torso."
+        },
+        {
+            "name": "Half Plate",
+            "type": "Armor",
+            "basePrice": 750,
+            "description": "Medium armor that covers the torso and legs."
+        },
+        {
+            "name": "Ring Mail",
+            "type": "Armor",
+            "basePrice": 30,
+            "description": "Heavy armor made of leather with metal rings."
+        },
+        {
+            "name": "Chain Mail",
+            "type": "Armor",
+            "basePrice": 75,
+            "description": "Heavy armor made of interlocking metal rings."
+        },
+        {
+            "name": "Splint Armor",
+            "type": "Armor",
+            "basePrice": 200,
+            "description": "Heavy armor made of vertical metal strips."
+        },
+        {
+            "name": "Plate Armor",
+            "type": "Armor",
+            "basePrice": 1500,
+            "description": "Heavy armor that offers the best protection."
+        },
+        {
+            "name": "Shield",
+            "type": "Shield",
+            "basePrice": 10,
+            "description": "A wooden or metal shield that improves AC."
+        },
+        {
+            "name": "Backpack",
+            "type": "Adventuring Gear",
+            "basePrice": 2,
+            "description": "A leather backpack for carrying equipment."
+        },
+        {
+            "name": "Bedroll",
+            "type": "Adventuring Gear",
+            "basePrice": 1,
+            "description": "A portable bedroll for camping."
+        },
+        {
+            "name": "Blanket",
+            "type": "Adventuring Gear",
+            "basePrice": 0.5,
+            "description": "A warm blanket."
+        },
+        {
+            "name": "Candle",
+            "type": "Adventuring Gear",
+            "basePrice": 0.01,
+            "description": "A simple wax candle that provides light."
+        },
+        {
+            "name": "Crowbar",
+            "type": "Adventuring Gear",
+            "basePrice": 2,
+            "description": "A tool for prying things open."
+        },
+        {
+            "name": "Hammer",
+            "type": "Adventuring Gear",
+            "basePrice": 1,
+            "description": "A simple hammer for driving pitons."
+        },
+        {
+            "name": "Piton",
+            "type": "Adventuring Gear",
+            "basePrice": 0.05,
+            "description": "A metal spike for climbing."
+        },
+        {
+            "name": "Torch",
+            "type": "Adventuring Gear",
+            "basePrice": 0.01,
+            "description": "A wooden torch that provides light."
+        },
+        {
+            "name": "Waterskin",
+            "type": "Adventuring Gear",
+            "basePrice": 0.2,
+            "description": "A container for holding water."
+        },
+        {
+            "name": "Rope, Hempen (50 feet)",
+            "type": "Adventuring Gear",
+            "basePrice": 1,
+            "description": "A 50-foot length of sturdy rope."
+        },
+        {
+            "name": "Rope, Silk (50 feet)",
+            "type": "Adventuring Gear",
+            "basePrice": 10,
+            "description": "A 50-foot length of strong, lightweight silk rope."
+        },
+        {
+            "name": "Grappling Hook",
+            "type": "Adventuring Gear",
+            "basePrice": 2,
+            "description": "A metal hook for climbing or grabbing."
+        },
+        {
+            "name": "Healer's Kit",
+            "type": "Adventuring Gear",
+            "basePrice": 5,
+            "description": "A kit for stabilizing dying creatures."
+        },
+        {
+            "name": "Herbalism Kit",
+            "type": "Tools",
+            "basePrice": 5,
+            "description": "Tools for gathering and using herbs."
+        },
+        {
+            "name": "Thieves' Tools",
+            "type": "Tools",
+            "basePrice": 25,
+            "description": "Tools for picking locks and disarming traps."
+        },
+        {
+            "name": "Alchemist's Supplies",
+            "type": "Tools",
+            "basePrice": 50,
+            "description": "Tools for creating alchemical mixtures."
+        },
+        {
+            "name": "Tinker's Tools",
+            "type": "Tools",
+            "basePrice": 50,
+            "description": "Tools for repairing and crafting small devices."
+        },
+        {
+            "name": "Smith's Tools",
+            "type": "Tools",
+            "basePrice": 20,
+            "description": "Tools for working with metal."
+        },
+        {
+            "name": "Woodcarver's Tools",
+            "type": "Tools",
+            "basePrice": 1,
+            "description": "Tools for carving wood."
+        },
+        {
+            "name": "Calligrapher's Supplies",
+            "type": "Tools",
+            "basePrice": 10,
+            "description": "Tools for creating beautiful writing."
+        },
+        {
+            "name": "Cartographer's Tools",
+            "type": "Tools",
+            "basePrice": 15,
+            "description": "Tools for making maps."
+        },
+        {
+            "name": "Navigator's Tools",
+            "type": "Tools",
+            "basePrice": 25,
+            "description": "Tools for navigation."
+        },
+        {
+            "name": "Lantern, Hooded",
+            "type": "Adventuring Gear",
+            "basePrice": 5,
+            "description": "A lantern with a hood to control the light."
+        },
+        {
+            "name": "Lantern, Bullseye",
+            "type": "Adventuring Gear",
+            "basePrice": 10,
+            "description": "A lantern that emits light in a narrow beam."
+        },
+        {
+            "name": "Oil (flask)",
+            "type": "Adventuring Gear",
+            "basePrice": 0.1,
+            "description": "A flask of oil for lanterns or other uses."
+        },
+        {
+            "name": "Antitoxin",
+            "type": "Adventuring Gear",
+            "basePrice": 50,
+            "description": "A vial of liquid that grants advantage on saving throws against poison."
+        },
+        {
+            "name": "Holy Water (flask)",
+            "type": "Adventuring Gear",
+            "basePrice": 25,
+            "description": "A flask of blessed water that is harmful to undead."
+        },
+        {
+            "name": "Spellbook",
+            "type": "Adventuring Gear",
+            "basePrice": 50,
+            "description": "A book for recording spells."
+        },
+        {
+            "name": "Component Pouch",
+            "type": "Adventuring Gear",
+            "basePrice": 25,
+            "description": "A pouch for storing spell components."
+        },
+        {
+            "name": "Arcane Focus",
+            "type": "Adventuring Gear",
+            "basePrice": 10,
+            "description": "An item used for focusing arcane magic."
+        },
+        {
+            "name": "Druidic Focus",
+            "type": "Adventuring Gear",
+            "basePrice": 10,
+            "description": "An item used for focusing druidic magic."
+        },
+        {
+            "name": "Holy Symbol",
+            "type": "Adventuring Gear",
+            "basePrice": 5,
+            "description": "A symbol of a deity used for divine magic."
+        }
+    ],
+    "shopNames": [
+        "The Arcane Emporium",
+        "Mystic Wares",
+        "The Enchanted Blade",
+        "Spellbound Supplies",
+        "The Wizard's Chest",
+        "Eldritch Essentials",
+        "The Magical Menagerie",
+        "Wondrous Wares",
+        "The Alchemist's Attic",
+        "Potions & Notions",
+        "The Curious Curio",
+        "Artifacts & Oddities",
+        "The Sorcerer's Stockpile",
+        "Enchantment Enterprises",
+        "The Mage's Market",
+        "Scrolls & Scrying",
+        "The Wandering Wand",
+        "Charms & Talismans",
+        "The Mystic Merchant",
+        "Runes & Relics"
+    ],
+    "shopkeeperRaces": [
+        "Human",
+        "Elf",
+        "Dwarf",
+        "Gnome",
+        "Halfling",
+        "Half-Elf",
+        "Tiefling",
+        "Dragonborn",
+        "Half-Orc",
+        "Aasimar"
+    ],
+    "shopkeeperTraits": [
+        "Friendly",
+        "Suspicious",
+        "Eccentric",
+        "Scholarly",
+        "Grumpy",
+        "Enthusiastic",
+        "Mysterious",
+        "Talkative",
+        "Reserved",
+        "Shrewd",
+        "Absent-minded",
+        "Paranoid",
+        "Jovial",
+        "Stern",
+        "Wise",
+        "Cryptic",
+        "Flamboyant",
+        "Practical",
+        "Obsessive",
+        "Serene"
+    ],
+    "shopkeeperQuirks": [
+        "Speaks in rhymes",
+        "Has a pet familiar that helps around the shop",
+        "Collects unusual trinkets from customers",
+        "Claims all items have a story (and will tell it at length)",
+        "Constantly rearranges the shop's inventory",
+        "Insists on bartering rather than fixed prices",
+        "Believes certain items are cursed (they're not)",
+        "Only conducts business during certain phases of the moon",
+        "Offers tea to every customer",
+        "Sneezes when handling magical items",
+        "Gives unsolicited advice with every purchase",
+        "Refuses to sell items to certain races or classes",
+        "Tests items on customers before selling",
+        "Speaks to the items as if they're alive",
+        "Wears outlandish, color-changing robes",
+        "Claims to be hundreds of years old",
+        "Insists on knowing what the item will be used for",
+        "Adds 'magical' properties to mundane items",
+        "Forgets prices and makes them up on the spot",
+        "Trades in exotic currencies only"
+    ],
+    "shopAtmospheres": [
+        "Cluttered with items stacked to the ceiling",
+        "Meticulously organized with labeled shelves",
+        "Dimly lit with magical floating lights",
+        "Filled with strange smells and occasional puffs of smoke",
+        "Unnaturally quiet, sounds seem muffled",
+        "Items occasionally move on their own",
+        "Temperature changes in different areas of the shop",
+        "Larger on the inside than it appears from outside",
+        "Constantly shifting layout that seems to change when not looking",
+        "Filled with the sound of ticking clocks",
+        "Magical illusions display item demonstrations",
+        "Plants and vines grow throughout the shop",
+        "Partially open to the elements with a garden inside",
+        "Decorated with artifacts from ancient civilizations",
+        "Populated by small magical constructs that assist customers",
+        "Filled with bubbling potions and alchemical equipment",
+        "Books and scrolls float through the air to shelve themselves",
+        "Enchanted mirrors show customers using various items",
+        "Seemingly normal but with subtle magical effects",
+        "Different sections exist in different elemental planes"
+    ],
+    "shopSpecialties": [
+        "Potions and alchemical supplies",
+        "Weapons and armor",
+        "Scrolls and spellbooks",
+        "Wands, staves, and rods",
+        "Enchanted clothing and accessories",
+        "Magical trinkets and curiosities",
+        "Adventuring gear with minor enchantments",
+        "Rare components for spellcasting",
+        "Magical creatures and familiars",
+        "Divination tools and fortune-telling supplies",
+        "Protective amulets and wards",
+        "Items recovered from dungeons and ruins",
+        "Magical musical instruments",
+        "Enchanted jewelry and gems",
+        "Magical food and beverages",
+        "Cursed items (with warnings)",
+        "Magical transportation devices",
+        "Communication devices",
+        "Healing and restoration items",
+        "Illusion and disguise items"
+    ]
+}

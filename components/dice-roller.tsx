@@ -20,7 +20,7 @@ export function DiceRoller() {
     const handleRoll = (die: DieType) => {
         const sides = parseInt(die.substring(1));
         const result = rollDie(sides);
-        setRolls((prev) => [...prev, { die, result }]);
+        setRolls((prev) => [{ die, result }, ...prev]);
     };
 
     const handleCustomRoll = () => {
@@ -34,8 +34,8 @@ export function DiceRoller() {
         const total = results.reduce((sum, result) => sum + result, 0);
 
         setRolls((prev) => [
-            ...prev,
             { die: `${numDice}d${sides}` as DieType, result: total },
+            ...prev,
         ]);
         setCustomRoll("");
     };
@@ -50,7 +50,7 @@ export function DiceRoller() {
                 ))}
             </div>
             <div className="flex items-end gap-2">
-                <div className="flex-grow">
+                <div className="grow">
                     <Label htmlFor="custom-roll">Custom Roll</Label>
                     <Input
                         id="custom-roll"
