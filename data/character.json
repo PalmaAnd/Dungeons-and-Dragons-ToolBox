@@ -1,0 +1,67 @@
+{
+    "classes": [
+        "Barbarian",
+        "Bard",
+        "Cleric",
+        "Druid",
+        "Fighter",
+        "Monk",
+        "Paladin",
+        "Ranger",
+        "Rogue",
+        "Sorcerer",
+        "Warlock",
+        "Wizard",
+        "Artificer",
+        "Blood Hunter"
+    ],
+    "races": [
+        "Human",
+        "Elf",
+        "Dwarf",
+        "Halfling",
+        "Gnome",
+        "Half-Elf",
+        "Half-Orc",
+        "Tiefling",
+        "Dragonborn",
+        "Aasimar",
+        "Genasi",
+        "Goliath",
+        "Kenku",
+        "Tabaxi",
+        "Triton",
+        "Yuan-ti Pureblood"
+    ],
+    "alignments": [
+        "Lawful Good",
+        "Neutral Good",
+        "Chaotic Good",
+        "Lawful Neutral",
+        "True Neutral",
+        "Chaotic Neutral",
+        "Lawful Evil",
+        "Neutral Evil",
+        "Chaotic Evil"
+    ],
+    "abilities": [
+        "strength",
+        "dexterity",
+        "constitution",
+        "intelligence",
+        "wisdom",
+        "charisma"
+    ],
+    "traits": [
+        "Brave",
+        "Cautious",
+        "Cheerful",
+        "Rude",
+        "Honest",
+        "Loyal",
+        "Ambitious",
+        "Lazy",
+        "Curious",
+        "Stubborn"
+    ]
+}
