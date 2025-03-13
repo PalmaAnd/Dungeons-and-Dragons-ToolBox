@@ -17,7 +17,6 @@ type CharacterData = {
     races: string[];
     alignments: string[];
     traits: string[];
-    abilities: Ability[];
 };
 
 type Ability =
@@ -27,6 +26,14 @@ type Ability =
     | "intelligence"
     | "wisdom"
     | "charisma";
+const abilities: Ability[] = [
+    "strength",
+    "dexterity",
+    "constitution",
+    "intelligence",
+    "wisdom",
+    "charisma",
+];
 
 export function CharacterCreator({
     characterData,
@@ -192,7 +199,7 @@ export function CharacterCreator({
             <div>
                 <h3 className="text-lg font-semibold mb-2">Abilities</h3>
                 <div className="grid grid-cols-2 gap-4">
-                    {characterData.abilities.sort().map((ability) => (
+                    {abilities.map((ability) => (
                         <div key={ability}>
                             <Label htmlFor={ability}>
                                 {ability.charAt(0).toUpperCase() +
