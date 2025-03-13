@@ -68,19 +68,13 @@ export function CharacterCreator({
         });
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        console.log("Character created:", character);
-        // Here you would typically save the character or perform further actions
-    };
-
     const exportToJson = () => {
         const dataStr = JSON.stringify(character, null, 2);
         const dataUri =
             "data:application/json;charset=utf-8," +
             encodeURIComponent(dataStr);
 
-        const exportFileDefaultName = "character.json";
+        const exportFileDefaultName = character.name + ".json";
 
         const linkElement = document.createElement("a");
         linkElement.setAttribute("href", dataUri);
@@ -102,7 +96,7 @@ export function CharacterCreator({
     };
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form className="space-y-4">
             <div>
                 <Label htmlFor="name">Character Name</Label>
                 <Input
