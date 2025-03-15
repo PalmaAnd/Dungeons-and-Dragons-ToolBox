@@ -18,45 +18,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
-
-// This is a mock monster list. In a real application, this would come from an API or database.
-const monsters = [
-    {
-        name: "Goblin",
-        type: "Humanoid",
-        cr: "1/4",
-        size: "Small",
-        alignment: "Neutral Evil",
-    },
-    {
-        name: "Dragon, Red",
-        type: "Dragon",
-        cr: "17",
-        size: "Huge",
-        alignment: "Chaotic Evil",
-    },
-    {
-        name: "Zombie",
-        type: "Undead",
-        cr: "1/4",
-        size: "Medium",
-        alignment: "Neutral Evil",
-    },
-    {
-        name: "Beholder",
-        type: "Aberration",
-        cr: "13",
-        size: "Large",
-        alignment: "Lawful Evil",
-    },
-    {
-        name: "Unicorn",
-        type: "Celestial",
-        cr: "5",
-        size: "Large",
-        alignment: "Lawful Good",
-    },
-];
+import monsters from "@/data/monsters.json";
 
 export default function MonsterCompendium() {
     const [searchTerm, setSearchTerm] = useState("");

@@ -18,49 +18,7 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 
-// This is a mock spell list. In a real application, this would come from an API or database.
-const spells = [
-    {
-        name: "Fireball",
-        level: 3,
-        school: "Evocation",
-        castingTime: "1 action",
-        range: "150 feet",
-        components: "V, S, M",
-    },
-    {
-        name: "Cure Wounds",
-        level: 1,
-        school: "Evocation",
-        castingTime: "1 action",
-        range: "Touch",
-        components: "V, S",
-    },
-    {
-        name: "Mage Armor",
-        level: 1,
-        school: "Abjuration",
-        castingTime: "1 action",
-        range: "Touch",
-        components: "V, S, M",
-    },
-    {
-        name: "Detect Magic",
-        level: 1,
-        school: "Divination",
-        castingTime: "1 action",
-        range: "Self",
-        components: "V, S",
-    },
-    {
-        name: "Thunderwave",
-        level: 1,
-        school: "Evocation",
-        castingTime: "1 action",
-        range: "Self (15-foot cube)",
-        components: "V, S",
-    },
-];
+import spells from "@/data/spells.json";
 
 export default function SpellList() {
     const [searchTerm, setSearchTerm] = useState("");
