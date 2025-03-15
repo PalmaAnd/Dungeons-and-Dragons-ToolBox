@@ -1,4 +1,5 @@
 import { CharacterCreator } from "@/components/character-creator";
+import characterData from "@/data/character.json";
 
 export default function CharacterCreatorPage() {
     return (
@@ -9,7 +10,7 @@ export default function CharacterCreatorPage() {
                 your characters name, class, race, alignment, and set their
                 ability scores.
             </p>
-            <CharacterCreator />
+            <CharacterCreator characterData={characterData} />
         </div>
     );
 }

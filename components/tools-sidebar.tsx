@@ -12,6 +12,7 @@ const tools = [
     { name: "Loot Generator", href: "/tools/loot-generator" },
     { name: "NPC Generator", href: "/tools/npc-generator" },
     { name: "Magic Item Shop", href: "/tools/magic-item-shop" },
+    { name: "Special Materials", href: "/tools/special-materials" },
     { name: "Tavern Generator", href: "/tools/tavern-generator" },
     { name: "Weather Generator", href: "/tools/weather-generator" },
 ];
@@ -21,7 +22,7 @@ export function ToolsSidebar() {
     const isMobile = useIsMobile();
 
     if (isMobile) {
-        return null; // Don't render sidebar on mobile, we use mobile menu instead
+        return null;
     }
 
     return (

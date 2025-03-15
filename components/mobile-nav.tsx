@@ -40,6 +40,7 @@ export function MobileNav() {
         { href: "/tools/loot-generator", label: "Loot Generator" },
         { href: "/tools/magic-item-shop", label: "Magic Item Shop" },
         { href: "/tools/npc-generator", label: "NPC Generator" },
+        { href: "/tools/special-materials", label: "Special Materials" },
         { href: "/tools/tavern-generator", label: "Tavern Generator" },
         { href: "/tools/weather-generator", label: "Weather Generator" },
     ];
