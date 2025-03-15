@@ -1,0 +1,704 @@
+{
+    "armor": [
+        {
+            "name": "Adamantine",
+            "properties": "Grants damage reduction based on armor category.",
+            "source": "DMG"
+        },
+        {
+            "name": "Arandur",
+            "properties": "Grants sonic resistance.",
+            "source": "MoF"
+        },
+        {
+            "name": "Astral Driftmetal",
+            "properties": "Effective against incorporeal attacks as if made of force. Only a breastplate, shield, or heavy armor can be made from this material.",
+            "source": "PH"
+        },
+        {
+            "name": "Aurorum",
+            "properties": "Restores itself if sundered.",
+            "source": "BoED"
+        },
+        {
+            "name": "Blended Quartz",
+            "properties": "Reduces arcane spell failure chance.",
+            "source": "A&EG"
+        },
+        {
+            "name": "Blueice",
+            "properties": "Reduces armor category, armor check penalty, and arcane spell failure (for cold spells) and increases maximum Dexterity bonus.",
+            "source": "FB"
+        },
+        {
+            "name": "Bronzewood",
+            "properties": "Reduces weight, doesn't affect hide in woodlands.",
+            "source": "A&EG"
+        },
+        {
+            "name": "Camoflauge Dye",
+            "properties": "Grants a hide bonus (only with specific light armors).",
+            "source": "RoF"
+        },
+        {
+            "name": "Chitin",
+            "properties": "Replaces metal, increases maximum Dexterity bonus.",
+            "source": "RotD"
+        },
+        {
+            "name": "Copper, Alchemical",
+            "properties": "Grants cold resistance.",
+            "source": "MoF"
+        },
+        {
+            "name": "Cyrite (Arcane Steel)",
+            "properties": "Grants a +1 resistance bonus to saves.",
+            "source": "PGtE"
+        },
+        {
+            "name": "Darkleaf, Elven",
+            "properties": "Reduces arcane spell failure, armor check penalty, armor category and increases maximum Dexterity bonus.",
+            "source": "A&EG"
+        },
+        {
+            "name": "Darksteel",
+            "properties": "Grants acid resistance.",
+            "source": "MoF"
+        },
+        {
+            "name": "Darkwood (Zalantar)",
+            "properties": "Reduces weight and armor check penalty (shields only).",
+            "source": "DMG"
+        },
+        {
+            "name": "Dlarun",
+            "properties": "Grants fire resistance.",
+            "source": "MoF"
+        },
+        {
+            "name": "Dragoncraft Armor/Shield",
+            "properties": "Grants energy resistance 5 against the respective dragon as an extraordinary ability. Reduces armor category and armor check penalty, only available for certain armor types.",
+            "source": "Draco"
+        },
+        {
+            "name": "Dragonhide",
+            "properties": "Replaces metal to craft most armors. Immune to the breath weapon of the respective dragon species (armor only).",
+            "source": "DMG/Draco"
+        },
+        {
+            "name": "Dragonhide Mantle",
+            "properties": "Grants energy resistance as dragoncraft armor, but uses the shoulder body slot.",
+            "source": "Draco"
+        },
+        {
+            "name": "Duskwood",
+            "properties": "Breastplate only; reduces armor category, arcane spell failure and armor check penalty, increases maximum Dexterity bonus.",
+            "source": "MoF"
+        },
+        {
+            "name": "Elukian Clay",
+            "properties": "Increases armor check penalty, does not apply armor check penalty to swim.",
+            "source": "A&EG"
+        },
+        {
+            "name": "Entropium",
+            "properties": "Increases armor category and Strength armor check penalty, reduces Dexterity armor check penalty, arcane spell failure and increase maximum Dexterity bonus.",
+            "source": "A&EG"
+        },
+        {
+            "name": "Fever Iron",
+            "properties": "Grants fire resistance.",
+            "source": "MoF"
+        },
+        {
+            "name": "Flametouched Iron",
+            "properties": "Grants a saving throw bonus vs. evil outsider spells, spell-like and supernatural abilities.",
+            "source": "ECS"
+        },
+        {
+            "name": "Glassteel",
+            "properties": "Reduces armor category, armor check penalty and arcane spell failure, increases maximum Dexterity bonus.",
+            "source": "RoF"
+        },
+        {
+            "name": "Gold, Alchemical",
+            "properties": "Grants fire and acid resistance, increases armor category, armor check penalty and arcane spell failure, decreases maximum Dexterity bonus.",
+            "source": "MoF"
+        },
+        {
+            "name": "Leafweave, Elven",
+            "properties": "Reduces arcane spell failure and armor check penalty, increases maximum Dexterity bonus, cannot replace metal armors.",
+            "source": "A&EG"
+        },
+        {
+            "name": "Living Metal",
+            "properties": "Reduces armor check penalty and arcane spell failure, increases maximum Dexterity bonus.",
+            "source": "MoF"
+        },
+        {
+            "name": "Mithral",
+            "properties": "Reduces armor category, armor check penalty and arcane spell failure, raises maximum Dexterity bonus.",
+            "source": "DMG"
+        },
+        {
+            "name": "Mournlode, Purple",
+            "properties": "Resistance bonus vs. the spells, spell-like and supernatural abilities of undead.",
+            "source": "MoE"
+        },
+        {
+            "name": "Platinum, Alchemical",
+            "properties": "Grants cold and sonic resistance, increases armor category, armor check penalty and arcane spell failure, decreases maximum Dexterity bonus.",
+            "source": "MoF"
+        },
+        {
+            "name": "Riverine",
+            "properties": "Half the armor bonus becomes deflection (see misc. for more properties).",
+            "source": "SW"
+        },
+        {
+            "name": "Sentira",
+            "properties": "Replicates mithral, required to craft emotional armor (emotional armor has some pretty decent bonuses. All three are published in the same book: Calming, Dreadful, and Vengeful).",
+            "source": "SoS"
+        },
+        {
+            "name": "Shadowsilk",
+            "properties": "Can only be used to make certain light armors, grants a bonus to hide/move silently, increases maximum Dexterity bonus, reduces armor check penalty and arcane spell failure (in shadows/darkness).",
+            "source": "ToM"
+        },
+        {
+            "name": "Starmetal",
+            "properties": "Replicates adamantine.",
+            "source": "CAr"
+        },
+        {
+            "name": "Susalian Chainweave",
+            "properties": "Grants damage reduction /piercing.",
+            "source": "CM"
+        },
+        {
+            "name": "Thistledown",
+            "properties": "Used for padded armor, provides a bonus to hide checks in shadowy/dark areas.",
+            "source": "RotW"
+        },
+        {
+            "name": "Urdrukar (mindsteel)",
+            "properties": "Increases the DC vs. scrying on the wearer, doubles arcane spell failure.",
+            "source": "A&EG"
+        },
+        {
+            "name": "Wildwood",
+            "properties": "Reduces the AC bonus, armor check penalty and arcane spell failure, increases maximum Dexterity bonus and has no armor check penalty when used to hide in undergrowth. Wildwood heals itself if soaked in water or while in sunlight.",
+            "source": "RotW"
+        },
+        {
+            "name": "Ysgardian Heartwire",
+            "properties": "Increases AC vs. crit confirms.",
+            "source": "A&EG"
+        }
+    ],
+    "misc": [
+        {
+            "name": "Blueice",
+            "properties": "Weighs half as much as metal, maintains a freezing temperature.",
+            "source": "FB"
+        },
+        {
+            "name": "Bluewood",
+            "properties": "Items weigh half, not effective for weapons.",
+            "source": "UE"
+        },
+        {
+            "name": "Colored Metal",
+            "properties": "Makes anything your favorite color.",
+            "source": "RotD"
+        },
+        {
+            "name": "Crystal",
+            "properties": "Replaces metal.",
+            "source": "EXH"
+        },
+        {
+            "name": "Darkwood (Zalantar)",
+            "properties": "Reduces the weight of wooden items by half.",
+            "source": "DMG"
+        },
+        {
+            "name": "Densewood",
+            "properties": "Increases weight and the break DC of the item.",
+            "source": "ECS"
+        },
+        {
+            "name": "Dragonshard",
+            "properties": "Grants special abilities, usually crafted to make wondrous items.",
+            "source": "ECS"
+        },
+        {
+            "name": "Dwarvencraft",
+            "properties": "Increases an items hp, hardness, and break DC (this modifies a material, similar to a template).",
+            "source": "RoS"
+        },
+        {
+            "name": "Flametouched Iron",
+            "properties": "Increases your effective level for turning.",
+            "source": "ECS"
+        },
+        {
+            "name": "Livewood",
+            "properties": "Allows the item to be affected by most spells that affect living plants.",
+            "source": "ECS"
+        },
+        {
+            "name": "Mithral",
+            "properties": "Reduces the weight of an item by half.",
+            "source": "DMG"
+        },
+        {
+            "name": "Moonblood",
+            "properties": "Sacred bonus to AC.",
+            "source": "BoED"
+        },
+        {
+            "name": "Mournlode, Purple",
+            "properties": "Damages undead when used as a holy symbol for turning.",
+            "source": "MoE"
+        },
+        {
+            "name": "Obdurium",
+            "properties": "Hardness 30, HP 60 per inch.",
+            "source": "SBG"
+        },
+        {
+            "name": "Riverine",
+            "properties": "Invulnerable to physical damage, susceptible to certain dispelling effects.",
+            "source": "SW"
+        },
+        {
+            "name": "Soarwood",
+            "properties": "Increases the speed of a boat or ship.",
+            "source": "ECS"
+        },
+        {
+            "name": "Storm Tears",
+            "properties": "Replicates the spell heart's ease.",
+            "source": "BoED"
+        },
+        {
+            "name": "Targath",
+            "properties": "Saving throw bonus vs. disease.",
+            "source": "ECS"
+        }
+    ],
+    "weaponry": [
+        {
+            "name": "Abyssal Bloodiron",
+            "properties": "Replicates cold iron, bonus to confirm crits.",
+            "source": "PH"
+        },
+        {
+            "name": "Adamantine",
+            "properties": "Bypasses /adamantine damage reduction, ignores hardness 20 and below when used to sunder items.",
+            "source": "DMG"
+        },
+        {
+            "name": "Aurorum",
+            "properties": "Restores itself if sundered.",
+            "source": "BoED"
+        },
+        {
+            "name": "Baatorian Green Steel",
+            "properties": "Enhancement bonus to damage.",
+            "source": "A&EG"
+        },
+        {
+            "name": "Blueice",
+            "properties": "Slashing weapons deal bonus damage.",
+            "source": "FB"
+        },
+        {
+            "name": "Bronzewood",
+            "properties": "Reduces weight.",
+            "source": "A&EG"
+        },
+        {
+            "name": "Byeshk",
+            "properties": "Deals bonus damage with bludgeoning weapons, bypasses the damage reduction of daelkyr.",
+            "source": "ECS"
+        },
+        {
+            "name": "Calomal",
+            "properties": "Overcomes the damage reduction of creatures with the fire subtype.",
+            "source": "MoE"
+        },
+        {
+            "name": "Crystal, Deep",
+            "properties": "Deals bonus damage by channeling power points.",
+            "source": "EXH"
+        },
+        {
+            "name": "Cyrite (Arcane Steel)",
+            "properties": "Bypasses /magic damage reduction.",
+            "source": "PGtE"
+        },
+        {
+            "name": "Darksteel",
+            "properties": "Deals bonus electricity damage.",
+            "source": "MoF"
+        },
+        {
+            "name": "Dlarun",
+            "properties": "Deals bonus frost damage.",
+            "source": "MoF"
+        },
+        {
+            "name": "Dragonbone Bow",
+            "properties": "Increases the range by 20' and makes the bow composite.",
+            "source": "Draco"
+        },
+        {
+            "name": "Dragonfang",
+            "properties": "Grants an enhancement bonus to attacks and energy damage of the respective dragon as an extraordinary ability.",
+            "source": "Draco"
+        },
+        {
+            "name": "Duskwood",
+            "properties": "Steel weapons weigh half as much.",
+            "source": "MoF"
+        },
+        {
+            "name": "Fever Iron",
+            "properties": "Deals bonus fire damage.",
+            "source": "MoF"
+        },
+        {
+            "name": "Flametouched Iron",
+            "properties": "Weapon is considered good-aligned.",
+            "source": "ECS"
+        },
+        {
+            "name": "Frystalline",
+            "properties": "Weapon is considered good-aligned.",
+            "source": "BoED"
+        },
+        {
+            "name": "Gehennan Moghuth-Iron",
+            "properties": "Penalty to attack and damage, but naturally poisonous.",
+            "source": "A&EG"
+        },
+        {
+            "name": "Glassteel",
+            "properties": "Makes hidden weapons harder to spot.",
+            "source": "RoF"
+        },
+        {
+            "name": "Gold, Alchemical",
+            "properties": "Increases the damage dice of a weapon. Makes a weapon 'heavy' and requires exotic weapon proficiency to wield.",
+            "source": "MoF"
+        },
+        {
+            "name": "Hizagkuur",
+            "properties": "Deals bonus electricity damage.",
+            "source": "MoF"
+        },
+        {
+            "name": "Iron, Cold",
+            "properties": "Bypasses /cold iron damage reduction.",
+            "source": "DMG"
+        },
+        {
+            "name": "Kheferu",
+            "properties": "Bypasses the damage reduction of creatures with the earth subtype.",
+            "source": "SS"
+        },
+        {
+            "name": "Mournlode, Purple",
+            "properties": "Overcomes undead damage reduction as silver or cold iron.",
+            "source": "MoE"
+        },
+        {
+            "name": "Pandemonic Silver",
+            "properties": "Replicates silver, creates a 30 ft. aura of fear when unsheathed in windy conditions.",
+            "source": "CW"
+        },
+        {
+            "name": "Pearlsteel",
+            "properties": "Reduces the penalties of using a weapon underwater.",
+            "source": "SW"
+        },
+        {
+            "name": "Platinum, Alchemical",
+            "properties": "Increases the damage dice of a weapon. Makes a weapon 'heavy' and requires exotic weapon proficiency to wield.",
+            "source": "MoF"
+        },
+        {
+            "name": "Riedran Crysteel",
+            "properties": "Deals bonus damage to psionic creatures.",
+            "source": "ECS"
+        },
+        {
+            "name": "Rimefire Ice",
+            "properties": "Deals bonus cold damage.",
+            "source": "FB"
+        },
+        {
+            "name": "Silver, Alchemical",
+            "properties": "Bypasses /silver damage reduction, reduces weapon damage.",
+            "source": "DMG"
+        },
+        {
+            "name": "Serren",
+            "properties": "Adds the ghost touched property.",
+            "source": "BoED"
+        },
+        {
+            "name": "Solarian Truesteel",
+            "properties": "Bonus to confirm crits.",
+            "source": "BoED"
+        },
+        {
+            "name": "Starmetal",
+            "properties": "Replicates adamantine, but deals extra damage to extraplanar creatures.",
+            "source": "CAr"
+        },
+        {
+            "name": "Stygian Ice",
+            "properties": "Chance to break when dealing damage, deals bonus cold damage and chance to deal WIS damage on hit.",
+            "source": "FB"
+        },
+        {
+            "name": "Targath",
+            "properties": "Overcomes the damage reduction of Aerenal deathless, reduces attack and damage.",
+            "source": "ECS"
+        },
+        {
+            "name": "Thinaun",
+            "properties": "Absorbs the souls of those who die while touching the weapon, and prevents their resurrection unless the caster has the weapon at hand.",
+            "source": "CW"
+        }
+    ],
+    "gems": [
+        {
+            "name": "Amaratha",
+            "properties": "Increases caster level for energy resist spells.",
+            "source": "MoF"
+        },
+        {
+            "name": "Beljuril",
+            "properties": "Enhances electricity descriptors.",
+            "source": "MoF"
+        },
+        {
+            "name": "Black Opal",
+            "properties": "Enhances force descriptors.",
+            "source": "MoF"
+        },
+        {
+            "name": "Black Sapphire",
+            "properties": "Enhances darkness descriptors.",
+            "source": "MoF"
+        },
+        {
+            "name": "Diamond",
+            "properties": "Increases caster level for healing spells.",
+            "source": "MoF"
+        },
+        {
+            "name": "Emerald",
+            "properties": "Enhances enchantments.",
+            "source": "MoF"
+        },
+        {
+            "name": "Fire Opal",
+            "properties": "Enhances fire descriptors.",
+            "source": "MoF"
+        },
+        {
+            "name": "Jacinth",
+            "properties": "Enhances fire descriptors.",
+            "source": "MoF"
+        },
+        {
+            "name": "Jasmal",
+            "properties": "Increases caster level for spells that provide enhancements to armaments.",
+            "source": "MoF"
+        },
+        {
+            "name": "King's Tear",
+            "properties": "Enhances divinations.",
+            "source": "MoF"
+        },
+        {
+            "name": "Moonbar",
+            "properties": "Enhances conjuration (calling) spells.",
+            "source": "MoF"
+        },
+        {
+            "name": "Opal",
+            "properties": "Enhances enchantment (charm) spells.",
+            "source": "MoF"
+        },
+        {
+            "name": "Orblen",
+            "properties": "Enhances conjuration (creation) spells.",
+            "source": "MoF"
+        },
+        {
+            "name": "Orl",
+            "properties": "Enhances chaotic descriptors and spells that provide luck bonuses.",
+            "source": "MoF"
+        },
+        {
+            "name": "Ravenar",
+            "properties": "Enhances sonic descriptor.",
+            "source": "MoF"
+        },
+        {
+            "name": "Red Tear",
+            "properties": "Enhances transmutation.",
+            "source": "MoF"
+        },
+        {
+            "name": "Rogue Stone",
+            "properties": "Enhances teleportation and chaotic spells.",
+            "source": "MoF"
+        },
+        {
+            "name": "Ruby",
+            "properties": "Enhances evocation.",
+            "source": "MoF"
+        },
+        {
+            "name": "Sapphire",
+            "properties": "Enhances conjuration (summoning).",
+            "source": "MoF"
+        },
+        {
+            "name": "Star Ruby",
+            "properties": "Enhances illusion.",
+            "source": "MoF"
+        },
+        {
+            "name": "Star Sapphire",
+            "properties": "Enhances abjuration.",
+            "source": "MoF"
+        },
+        {
+            "name": "Tomb Jade",
+            "properties": "Enhances enchantment (compulsion).",
+            "source": "MoF"
+        },
+        {
+            "name": "Water Opal",
+            "properties": "Enhances divination.",
+            "source": "MoF"
+        },
+        {
+            "name": "Zendalure",
+            "properties": "Enhances necromancy.",
+            "source": "MoF"
+        }
+    ],
+    "templates": [
+        {
+            "name": "Feycraft (Armor)",
+            "properties": "Reduces weight and arcane spell failure, grants a bonus to bluff checks.",
+            "source": "DMGII"
+        },
+        {
+            "name": "Feycraft (Weapon)",
+            "properties": "Reduces weight and size category.",
+            "source": "DMGII"
+        },
+        {
+            "name": "Fireshaped (Armor)",
+            "properties": "Bonus to saves vs. fire and heat effects.",
+            "source": "DMGII"
+        },
+        {
+            "name": "Fireshaped (Weapon)",
+            "properties": "Deals bonus damage to creatures with the cold subtype.",
+            "source": "DMGII"
+        },
+        {
+            "name": "Githcraft (Armor)",
+            "properties": "Reduces arcane spell failure, grants a bonus to concentration checks.",
+            "source": "DMGII"
+        },
+        {
+            "name": "Githcraft (Weapon)",
+            "properties": "Deals bonus damage to psionic creatures.",
+            "source": "DMGII"
+        },
+        {
+            "name": "Gloryborn (Armor)",
+            "properties": "Bonus to AC when charging.",
+            "source": "DMGII"
+        },
+        {
+            "name": "Gloryborn (Weapon)",
+            "properties": "Bonus to damage when charging.",
+            "source": "DMGII"
+        },
+        {
+            "name": "Hellforged (Armor)",
+            "properties": "Increases armor check penalty and arcane spell failure, reduces maximum Dexterity bonus, grants bonus AC while adjacent to an ally.",
+            "source": "DMGII"
+        },
+        {
+            "name": "Hellforged (Weapon)",
+            "properties": "Deals bonus damage to targets that are flanked.",
+            "source": "DMGII"
+        },
+        {
+            "name": "Pitspawned (Armor)",
+            "properties": "Deals damage to melee attackers.",
+            "source": "DMGII"
+        },
+        {
+            "name": "Pitspawned (Weapon)",
+            "properties": "Bonus to confirm crits.",
+            "source": "DMGII"
+        },
+        {
+            "name": "Soulforged (Armor)",
+            "properties": "Bonus to resist bullrushes or trip attempts.",
+            "source": "DMGII"
+        },
+        {
+            "name": "Soulforged (Weapon)",
+            "properties": "Bonus damage against a charging foe.",
+            "source": "DMGII"
+        },
+        {
+            "name": "Dwarvencraft",
+            "properties": "Increases an items hp, hardness, and break DC (this modifies a material, similar to a template).",
+            "source": "RoS"
+        }
+    ],
+    "sources": [
+        { "abbreviation": "A&EG", "name": "Arms and Equipment Guide" },
+        { "abbreviation": "BoED", "name": "Book of Exalted Deeds" },
+        { "abbreviation": "CAr", "name": "Complete Arcane" },
+        { "abbreviation": "CM", "name": "Complete Mage" },
+        { "abbreviation": "CW", "name": "Complete Warrior" },
+        { "abbreviation": "DMG", "name": "Dungeon Master's Guide" },
+        { "abbreviation": "DMGII", "name": "Dungeon Master's Guide II" },
+        { "abbreviation": "Draco", "name": "Draconomicon" },
+        { "abbreviation": "ECS", "name": "Eberron Campaign Setting" },
+        { "abbreviation": "EXH", "name": "Expanded Psionics Handbook" },
+        { "abbreviation": "FB", "name": "Frostburn" },
+        { "abbreviation": "MoE", "name": "Magic of Eberron" },
+        { "abbreviation": "MoF", "name": "Magic of Faerun" },
+        { "abbreviation": "PGtE", "name": "Player's Guide to Eberron" },
+        { "abbreviation": "PH", "name": "Planar Handbook" },
+        { "abbreviation": "RoF", "name": "Races of Faerun" },
+        { "abbreviation": "RoS", "name": "Races of Stone" },
+        { "abbreviation": "RotD", "name": "Races of the Dragon" },
+        { "abbreviation": "RotW", "name": "Races of the Wild" },
+        { "abbreviation": "SoS", "name": "Secrets of Sarlona" },
+        { "abbreviation": "SBG", "name": "Stronghold Builder's Guide" },
+        { "abbreviation": "SS", "name": "Sandstorm" },
+        { "abbreviation": "SW", "name": "Stormwrack" },
+        { "abbreviation": "ToM", "name": "Tome of Magic" },
+        { "abbreviation": "UE", "name": "Unapproachable East" }
+    ]
+}

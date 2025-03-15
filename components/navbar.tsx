@@ -79,6 +79,11 @@ export function Navbar() {
                                 </Link>
                             </DropdownMenuItem>
                             <DropdownMenuItem asChild>
+                                <Link href="/tools/special-materials">
+                                    Special Materials
+                                </Link>
+                            </DropdownMenuItem>
+                            <DropdownMenuItem asChild>
                                 <Link href="/tools/tavern-generator">
                                     Tavern Generator
                                 </Link>
