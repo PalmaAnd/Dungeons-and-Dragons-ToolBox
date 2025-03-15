@@ -19,16 +19,22 @@ import {
 } from "@/components/ui/select";
 
 import spells from "@/data/spells.json";
+import React from "react";
 
 export default function SpellList() {
     const [searchTerm, setSearchTerm] = useState("");
     const [filterLevel, setFilterLevel] = useState("all");
+    const [expandedRow, setExpandedRow] = useState<number | null>(null);
 
     const filteredSpells = spells.filter(
         (spell) =>
             spell.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
             (filterLevel === "all" || spell.level.toString() === filterLevel)
     );
+
+    const toggleExpandRow = (index: number) => {
+        setExpandedRow(expandedRow === index ? null : index);
+    };
 
     return (
         <div className="container mx-auto px-4 py-8">
@@ -67,16 +73,35 @@ export default function SpellList() {
                 </TableHeader>
                 <TableBody>
                     {filteredSpells.map((spell, index) => (
-                        <TableRow key={index}>
-                            <TableCell className="font-medium">
-                                {spell.name}
-                            </TableCell>
-                            <TableCell>{spell.level}</TableCell>
-                            <TableCell>{spell.school}</TableCell>
-                            <TableCell>{spell.castingTime}</TableCell>
-                            <TableCell>{spell.range}</TableCell>
-                            <TableCell>{spell.components}</TableCell>
-                        </TableRow>
+                        <React.Fragment key={index}>
+                            <TableRow
+                                onClick={() => toggleExpandRow(index)}
+                                className="cursor-pointer"
+                            >
+                                <TableCell className="font-medium">
+                                    {spell.name}
+                                </TableCell>
+                                <TableCell>{spell.level}</TableCell>
+                                <TableCell>{spell.school}</TableCell>
+                                <TableCell>{spell.castingTime}</TableCell>
+                                <TableCell>{spell.range}</TableCell>
+                                <TableCell>{spell.components}</TableCell>
+                            </TableRow>
+                            {expandedRow === index && (
+                                <TableRow>
+                                    <TableCell colSpan={6} className="p-4">
+                                        <div>
+                                            <strong>Description:</strong>{" "}
+                                            {spell.description}
+                                        </div>
+                                        <div>
+                                            <strong>Duration:</strong>{" "}
+                                            {spell.duration}
+                                        </div>
+                                    </TableCell>
+                                </TableRow>
+                            )}
+                        </React.Fragment>
                     ))}
                 </TableBody>
             </Table>
