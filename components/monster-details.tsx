@@ -2,11 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { ScrollArea } from "@/components/ui/scroll-area";
-// import Image from "next/image";
-
-interface MonsterDetailsProps {
-    monster: Monster;
-}
+import Image from "next/image";
 
 interface Monster {
     name: string;
@@ -37,30 +33,51 @@ interface Monster {
     Actions: string;
     "Legendary Actions"?: string;
     img_url: string;
+    type: string;
+    size: string;
+    alignment: string;
+    cr: string;
+}
+
+interface MonsterDetailsProps {
+    monster: Monster;
 }
 
 export function MonsterDetails({ monster }: MonsterDetailsProps) {
+    // Use cr if available, otherwise fallback to Challenge
+    const challengeRating = monster.cr || monster.Challenge;
     return (
         <Card className="overflow-hidden">
             <div className="relative h-64 w-full">
-                {/* <Image
+                <Image
                     src={monster.img_url || "/placeholder.svg"}
                     alt={monster.name}
                     fill
                     className="object-cover"
                     sizes="100vw"
-                /> */}
+                />
             </div>
             <CardHeader className="pb-2">
                 <div className="flex justify-between items-start flex-wrap gap-2">
                     <CardTitle className="text-2xl">{monster.name}</CardTitle>
-                    <Badge variant="outline">{monster.Challenge}</Badge>
+                    <Badge variant="outline">CR {challengeRating}</Badge>
                 </div>
                 <p className="text-muted-foreground">{monster.meta}</p>
             </CardHeader>
             <CardContent>
                 <ScrollArea className="h-[60vh]">
                     <div className="space-y-6">
+                        {/* Monster Type Information */}
+                        <div className="flex flex-wrap gap-2 mb-2">
+                            <Badge variant="secondary">{monster.type}</Badge>
+                            <Badge variant="secondary">{monster.size}</Badge>
+                            <Badge variant="secondary">
+                                {monster.alignment}
+                            </Badge>
+                        </div>
+
+                        <Separator />
+
                         {/* Basic Stats */}
                         <div className="grid grid-cols-3 gap-4">
                             <div>

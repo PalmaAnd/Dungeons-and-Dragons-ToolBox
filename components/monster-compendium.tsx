@@ -17,8 +17,6 @@ import { MonsterDetails } from "@/components/monster-details";
 import { Search } from "lucide-react";
 
 interface Monster {
-    cr: string;
-    type: string;
     name: string;
     meta: string;
     "Armor Class": string;
@@ -47,8 +45,10 @@ interface Monster {
     Actions: string;
     "Legendary Actions"?: string;
     img_url: string;
+    type: string;
     size: string;
     alignment: string;
+    cr: string;
 }
 
 interface MonsterCompendiumProps {
@@ -59,47 +59,106 @@ export function MonsterCompendium({ monsters }: MonsterCompendiumProps) {
     const [searchTerm, setSearchTerm] = useState("");
     const [typeFilter, setTypeFilter] = useState("all");
     const [crFilter, setCrFilter] = useState("all");
+    const [sizeFilter, setSizeFilter] = useState("all");
+    const [alignmentFilter, setAlignmentFilter] = useState("all");
     const [selectedMonster, setSelectedMonster] = useState<Monster | null>(
         null
     );
 
-    // Get unique monster types for filter
-    const monsterTypes = useMemo(() => {
-        const types = new Set(
-            monsters
-                .map((monster) => monster.type)
-                .filter((type): type is string => type !== undefined)
-        );
-        return Array.from(types).sort();
-    }, [monsters]);
-
-    // Get unique challenge ratings for filter
-    const challengeRatings = useMemo(() => {
-        const ratings = new Set(monsters.map((monster) => monster.cr));
-        return Array.from(ratings).sort((a, b) => {
-            // Sort numerically, handling fractions
-            const aNum =
-                a && a.includes("/") ? eval(a) : Number.parseFloat(a || "0");
-            const bNum = b?.includes("/")
-                ? eval(b)
-                : Number.parseFloat(b ?? "0");
-            return aNum - bNum;
+    // Process monster data to ensure consistent CR field
+    const processedMonsters = useMemo(() => {
+        return monsters.map((monster) => {
+            // If cr is missing but Challenge exists, use that
+            if (!monster.cr && monster.Challenge) {
+                return {
+                    ...monster,
+                    cr: monster.Challenge.replace("CR ", "").split(" (")[0], // Remove "CR " prefix if present
+                };
+            }
+            return monster;
         });
     }, [monsters]);
 
+    const monsterTypes = useMemo(
+        () =>
+            Array.from(
+                new Set(
+                    processedMonsters.map((monster) => {
+                        const type = monster.meta
+                            .split(" ")[1]
+                            .replace(",", "");
+                        monster.type =
+                            type.charAt(0).toUpperCase() + type.slice(1);
+                        return monster.type;
+                    })
+                )
+            ).sort(),
+        [processedMonsters]
+    );
+    const monsterSizes = useMemo(
+        () =>
+            Array.from(
+                new Set(
+                    processedMonsters.map(
+                        (monster) => monster.meta.split(" ")[0]
+                    )
+                )
+            ).sort(),
+        [processedMonsters]
+    );
+    const monsterAlignments = useMemo(
+        () =>
+            Array.from(
+                new Set(
+                    processedMonsters.map(
+                        (monster) => monster.meta.split(" ")[2]
+                    )
+                )
+            ).sort(),
+        [processedMonsters]
+    );
+
+    // Get unique challenge ratings for filter
+    const challengeRatings = useMemo(() => {
+        const ratings = new Set(processedMonsters.map((monster) => monster.cr));
+        return Array.from(ratings).sort((a, b) => {
+            const aNum = a.includes("/") ? eval(a) : parseFloat(a);
+            const bNum = b.includes("/") ? eval(b) : parseFloat(b);
+            return aNum - bNum;
+        });
+    }, [processedMonsters]);
+
     // Filter monsters based on search term and filters
     const filteredMonsters = useMemo(() => {
-        return monsters.filter((monster) => {
+        return processedMonsters.filter((monster) => {
             const matchesSearch = monster.name
                 .toLowerCase()
                 .includes(searchTerm.toLowerCase());
             const matchesType =
                 typeFilter === "all" || monster.type === typeFilter;
             const matchesCR = crFilter === "all" || monster.cr === crFilter;
+            const matchesSize =
+                sizeFilter === "all" || monster.size === sizeFilter;
+            const matchesAlignment =
+                alignmentFilter === "all" ||
+                monster.alignment === alignmentFilter;
 
-            return matchesSearch && matchesType && matchesCR;
+            return (
+                matchesSearch &&
+                matchesType &&
+                matchesCR &&
+                matchesSize &&
+                matchesAlignment
+            );
         });
-    }, [monsters, searchTerm, typeFilter, crFilter]);
+    }, [
+        processedMonsters,
+        searchTerm,
+        typeFilter,
+        crFilter,
+        sizeFilter,
+        alignmentFilter,
+    ]);
 
     return (
         <div className="space-y-6">
@@ -155,11 +214,61 @@ export function MonsterCompendium({ monsters }: MonsterCompendiumProps) {
                             <SelectContent>
                                 <SelectItem value="all">All CRs</SelectItem>
                                 {challengeRatings.map((cr) => (
-                                    <SelectItem
-                                        key={cr}
-                                        value={cr ?? "unknown"}
-                                    >
+                                    <SelectItem key={cr} value={cr}>
                                         CR {cr}
+                                    </SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
+                    </div>
+                    <div>
+                        <Label htmlFor="size-filter" className="sr-only">
+                            Filter by Size
+                        </Label>
+                        <Select
+                            value={sizeFilter}
+                            onValueChange={setSizeFilter}
+                        >
+                            <SelectTrigger
+                                id="size-filter"
+                                className="w-[180px]"
+                            >
+                                <SelectValue placeholder="Filter by size" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="all">All Sizes</SelectItem>
+                                {monsterSizes.map((size) => (
+                                    <SelectItem key={size} value={size}>
+                                        {size}
+                                    </SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
+                    </div>
+                    <div>
+                        <Label htmlFor="alignment-filter" className="sr-only">
+                            Filter by Alignment
+                        </Label>
+                        <Select
+                            value={alignmentFilter}
+                            onValueChange={setAlignmentFilter}
+                        >
+                            <SelectTrigger
+                                id="alignment-filter"
+                                className="w-[180px]"
+                            >
+                                <SelectValue placeholder="Filter by alignment" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="all">
+                                    All Alignments
+                                </SelectItem>
+                                {monsterAlignments.map((alignment) => (
+                                    <SelectItem
+                                        key={alignment}
+                                        value={alignment}
+                                    >
+                                        {alignment}
                                     </SelectItem>
                                 ))}
                             </SelectContent>
