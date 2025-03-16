@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
     Card,
@@ -31,55 +31,7 @@ import {
     Sparkles,
     DollarSign,
 } from "lucide-react";
-
-type LootData = {
-    tiers: {
-        name: string;
-        label: string;
-        goldRange: number[];
-        gemChance: number;
-        artObjectChance: number;
-        magicItemChance: number;
-    }[];
-    items: {
-        common: {
-            name: string;
-            description: string;
-            value: string;
-        }[];
-        uncommon: {
-            name: string;
-            description: string;
-            value: string;
-        }[];
-        rare: {
-            name: string;
-            description: string;
-            value: string;
-        }[];
-        veryRare: {
-            name: string;
-            description: string;
-            value: string;
-        }[];
-        legendary: {
-            name: string;
-            description: string;
-            value: string;
-        }[];
-    };
-    gems: {
-        name: string;
-        description: string;
-        value: string;
-    }[];
-    artObjects: {
-        name: string;
-        description: string;
-        value: string;
-    }[];
-    containers: string[];
-};
+import lootData from "@/data/loot-generator.json";
 
 type LootItem = {
     name: string;
@@ -114,7 +66,6 @@ function getRandomGold(min: number, max: number): number {
 }
 
 export function LootGenerator() {
-    const [lootData, setLootData] = useState<LootData | null>(null);
     const [loot, setLoot] = useState<Loot | null>(null);
     const [tier, setTier] = useState<string>("low");
     const [isLoading, setIsLoading] = useState(false);
@@ -122,24 +73,7 @@ export function LootGenerator() {
     const [includeArtObjects, setIncludeArtObjects] = useState(true);
     const [includeMagicItems, setIncludeMagicItems] = useState(true);
 
-    useEffect(() => {
-        // Load the loot data
-        const loadLootData = async () => {
-            try {
-                const response = await fetch("/data/loot-generator.json");
-                const data = await response.json();
-                setLootData(data);
-            } catch (error) {
-                console.error("Failed to load loot data:", error);
-            }
-        };
-
-        loadLootData();
-    }, []);
-
     const generateLoot = () => {
-        if (!lootData) return;
-
         setIsLoading(true);
 
         setTimeout(() => {
@@ -450,7 +384,7 @@ export function LootGenerator() {
                                     <SelectValue placeholder="Select tier" />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    {lootData?.tiers.map((t) => (
+                                    {lootData.tiers.map((t) => (
                                         <SelectItem key={t.name} value={t.name}>
                                             {t.label}
                                         </SelectItem>
@@ -513,7 +447,7 @@ export function LootGenerator() {
                     <Button
                         onClick={generateLoot}
                         className="w-full"
-                        disabled={isLoading || !lootData}
+                        disabled={isLoading}
                     >
                         {isLoading ? "Generating..." : "Generate Loot"}
                     </Button>
