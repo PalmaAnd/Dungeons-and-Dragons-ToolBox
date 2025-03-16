@@ -1,0 +1,337 @@
+{
+    "races": [
+        {
+            "name": "Human",
+            "description": "Versatile and adaptable, humans are the most common race in most worlds.",
+            "traits": ["Adaptable", "Ambitious", "Diverse"]
+        },
+        {
+            "name": "Elf",
+            "description": "Graceful and long-lived, elves are magical beings with a strong connection to nature.",
+            "traits": ["Graceful", "Long-lived", "Magical"]
+        },
+        {
+            "name": "Dwarf",
+            "description": "Stout and sturdy, dwarves are known for their craftsmanship and resilience.",
+            "traits": ["Sturdy", "Crafty", "Traditional"]
+        },
+        {
+            "name": "Halfling",
+            "description": "Small but brave, halflings value comfort and community.",
+            "traits": ["Lucky", "Brave", "Friendly"]
+        },
+        {
+            "name": "Gnome",
+            "description": "Curious and eccentric, gnomes have a natural aptitude for magic and invention.",
+            "traits": ["Curious", "Inventive", "Cheerful"]
+        },
+        {
+            "name": "Half-Elf",
+            "description": "Combining the best traits of humans and elves, half-elves are diplomatic and adaptable.",
+            "traits": ["Diplomatic", "Versatile", "Charismatic"]
+        },
+        {
+            "name": "Half-Orc",
+            "description": "Strong and enduring, half-orcs combine human ingenuity with orcish might.",
+            "traits": ["Strong", "Enduring", "Intimidating"]
+        },
+        {
+            "name": "Tiefling",
+            "description": "With infernal heritage, tieflings are often mistrusted but possess unique abilities.",
+            "traits": ["Charismatic", "Resilient", "Mysterious"]
+        },
+        {
+            "name": "Dragonborn",
+            "description": "Proud and honorable, dragonborn possess draconic heritage and breath weapons.",
+            "traits": ["Proud", "Honorable", "Draconic"]
+        },
+        {
+            "name": "Aasimar",
+            "description": "Blessed with celestial heritage, aasimar often serve as champions of good.",
+            "traits": ["Radiant", "Blessed", "Determined"]
+        }
+    ],
+    "classes": [
+        {
+            "name": "Fighter",
+            "description": "Masters of martial combat, skilled with weapons and armor.",
+            "skills": ["Weapon Mastery", "Combat Tactics", "Endurance"]
+        },
+        {
+            "name": "Wizard",
+            "description": "Scholarly magic-users who learn their spells through dedicated study.",
+            "skills": ["Arcane Knowledge", "Spellcasting", "Intelligence"]
+        },
+        {
+            "name": "Rogue",
+            "description": "Skilled infiltrators and trap-finders who excel at stealth and precision.",
+            "skills": ["Stealth", "Lockpicking", "Trap Disarming"]
+        },
+        {
+            "name": "Cleric",
+            "description": "Divine spellcasters who serve deities and channel their power.",
+            "skills": ["Divine Magic", "Healing", "Religious Knowledge"]
+        },
+        {
+            "name": "Paladin",
+            "description": "Holy warriors who combine martial prowess with divine magic.",
+            "skills": ["Divine Smite", "Protection", "Leadership"]
+        },
+        {
+            "name": "Ranger",
+            "description": "Wilderness experts who combine martial skill with nature magic.",
+            "skills": ["Tracking", "Survival", "Animal Handling"]
+        },
+        {
+            "name": "Barbarian",
+            "description": "Fierce warriors who can enter a powerful battle rage.",
+            "skills": ["Rage", "Wilderness Survival", "Intimidation"]
+        },
+        {
+            "name": "Bard",
+            "description": "Magical entertainers who weave magic through music and performance.",
+            "skills": ["Performance", "Inspiration", "Versatile Magic"]
+        },
+        {
+            "name": "Druid",
+            "description": "Nature priests who can shapeshift and command elemental forces.",
+            "skills": ["Shapeshifting", "Nature Magic", "Animal Empathy"]
+        },
+        {
+            "name": "Monk",
+            "description": "Martial artists who harness the power of their body and soul.",
+            "skills": ["Martial Arts", "Unarmored Defense", "Ki Manipulation"]
+        },
+        {
+            "name": "Sorcerer",
+            "description": "Innate spellcasters with magic in their blood.",
+            "skills": ["Innate Magic", "Metamagic", "Charismatic Presence"]
+        },
+        {
+            "name": "Warlock",
+            "description": "Spellcasters who form pacts with powerful otherworldly entities.",
+            "skills": ["Eldritch Magic", "Pact Magic", "Otherworldly Knowledge"]
+        },
+        {
+            "name": "Artificer",
+            "description": "Innovative crafters who infuse magic into objects and create magical items.",
+            "skills": [
+                "Magical Crafting",
+                "Tool Expertise",
+                "Magical Innovation"
+            ]
+        }
+    ],
+    "alignments": [
+        {
+            "name": "Lawful Good",
+            "description": "Believes in order, honor, and compassion. Follows rules and helps others."
+        },
+        {
+            "name": "Neutral Good",
+            "description": "Believes in helping others without regard for rules or chaos."
+        },
+        {
+            "name": "Chaotic Good",
+            "description": "Values freedom, individuality, and kindness. Rebels against unjust rules."
+        },
+        {
+            "name": "Lawful Neutral",
+            "description": "Believes in order and organization above all else."
+        },
+        {
+            "name": "True Neutral",
+            "description": "Believes in balance and avoids taking sides."
+        },
+        {
+            "name": "Chaotic Neutral",
+            "description": "Values personal freedom and avoids authority."
+        },
+        {
+            "name": "Lawful Evil",
+            "description": "Uses order and rules to get what they want, regardless of who gets hurt."
+        },
+        {
+            "name": "Neutral Evil",
+            "description": "Does whatever they can get away with to advance themselves."
+        },
+        {
+            "name": "Chaotic Evil",
+            "description": "Acts with arbitrary violence and destruction, valuing only their desires."
+        }
+    ],
+    "traits": [
+        "Brave",
+        "Cautious",
+        "Cheerful",
+        "Rude",
+        "Honest",
+        "Loyal",
+        "Ambitious",
+        "Lazy",
+        "Curious",
+        "Stubborn",
+        "Generous",
+        "Greedy",
+        "Patient",
+        "Impulsive",
+        "Suspicious",
+        "Trusting",
+        "Arrogant",
+        "Humble",
+        "Optimistic",
+        "Pessimistic",
+        "Scholarly",
+        "Athletic",
+        "Artistic",
+        "Practical",
+        "Spiritual",
+        "Skeptical",
+        "Flirtatious",
+        "Reserved"
+    ],
+    "quirks": [
+        "Always speaks in rhyme",
+        "Collects unusual rocks",
+        "Afraid of heights",
+        "Constantly checks the time",
+        "Speaks to inanimate objects",
+        "Always wears mismatched socks",
+        "Obsessed with cleanliness",
+        "Tells bad jokes",
+        "Whistles when nervous",
+        "Carries a lucky charm",
+        "Never makes eye contact",
+        "Speaks in third person",
+        "Constantly quotes an obscure philosopher",
+        "Believes they're being followed by an invisible entity",
+        "Refuses to sleep in a building with more than one floor",
+        "Insists on tasting everything before eating a meal",
+        "Carries a small plant everywhere and talks to it",
+        "Writes down everything they hear in a small notebook",
+        "Believes copper coins are bad luck",
+        "Refuses to use contractions when speaking",
+        "Collects teeth from various creatures",
+        "Always stands facing north when possible",
+        "Interprets bird calls as omens",
+        "Believes reflections show a person's true nature",
+        "Refuses to step on cracks or lines"
+    ],
+    "occupations": [
+        "Blacksmith",
+        "Merchant",
+        "Farmer",
+        "Guard",
+        "Scholar",
+        "Sailor",
+        "Miner",
+        "Healer",
+        "Innkeeper",
+        "Hunter",
+        "Tailor",
+        "Carpenter",
+        "Alchemist",
+        "Jeweler",
+        "Entertainer",
+        "Soldier",
+        "Priest/Priestess",
+        "Fisherman",
+        "Stable Master",
+        "Librarian",
+        "Courier",
+        "Artisan",
+        "Scribe",
+        "Bounty Hunter",
+        "Smuggler",
+        "Diplomat",
+        "Explorer",
+        "Herbalist"
+    ],
+    "goals": [
+        "Find a legendary artifact",
+        "Avenge a fallen family member",
+        "Establish a trading empire",
+        "Discover a new land",
+        "Become the greatest in their craft",
+        "Find true love",
+        "Overthrow a tyrant",
+        "Restore a fallen noble house",
+        "Discover the truth about their origins",
+        "Achieve immortality",
+        "Spread their faith",
+        "Accumulate vast wealth",
+        "Find a cure for a rare disease",
+        "Protect their homeland",
+        "Uncover ancient knowledge",
+        "Redeem themselves for past misdeeds",
+        "Fulfill an ancient prophecy",
+        "Escape a powerful enemy",
+        "Free their enslaved people",
+        "Create a masterpiece"
+    ],
+    "namePrefixes": [
+        "Al",
+        "Bar",
+        "Ced",
+        "Dor",
+        "El",
+        "Fal",
+        "Gor",
+        "Hel",
+        "Il",
+        "Jor",
+        "Kal",
+        "Lor",
+        "Mor",
+        "Nor",
+        "Ol",
+        "Per",
+        "Quin",
+        "Ral",
+        "Sal",
+        "Tal",
+        "Ul",
+        "Val",
+        "Wil",
+        "Xan",
+        "Yor",
+        "Zar",
+        "Bel",
+        "Cris",
+        "Dae",
+        "Fen",
+        "Gal",
+        "Har",
+        "Isa",
+        "Jen",
+        "Kir",
+        "Lys"
+    ],
+    "nameSuffixes": [
+        "an",
+        "or",
+        "in",
+        "ith",
+        "us",
+        "ar",
+        "en",
+        "ia",
+        "wyn",
+        "iel",
+        "on",
+        "ett",
+        "ard",
+        "ric",
+        "lyn",
+        "ira",
+        "ola",
+        "ina",
+        "ira",
+        "ora",
+        "ira",
+        "ana",
+        "ira",
+        "ella",
+        "ira"
+    ]
+}
