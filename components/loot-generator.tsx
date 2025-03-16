@@ -27,7 +27,6 @@ import {
     Gem,
     Palette,
     RefreshCw,
-    Printer,
     Sparkles,
     DollarSign,
 } from "lucide-react";
@@ -271,67 +270,6 @@ export function LootGenerator() {
         }
     };
 
-    const printLoot = () => {
-        if (!loot) return;
-
-        const printWindow = window.open("", "_blank");
-        if (!printWindow) return;
-
-        const content = `
-      <html>
-        <head>
-          <title>D&D Loot</title>
-          <style>
-            body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; }
-            h1 { text-align: center; border-bottom: 2px solid #333; padding-bottom: 10px; }
-            h2 { color: #444; margin-top: 20px; }
-            .section { margin-bottom: 20px; }
-            .item { margin-bottom: 10px; }
-            .item-name { font-weight: bold; }
-            .item-description { font-style: italic; color: #555; }
-            .item-value { color: #777; }
-            .total { font-weight: bold; margin-top: 20px; font-size: 1.2em; }
-          </style>
-        </head>
-        <body>
-          <h1>Treasure Hoard</h1>
-          <div class="section">
-            <h2>Container</h2>
-            <p>The treasure is stored in a ${loot.container}.</p>
-          </div>
-          <div class="section">
-            <h2>Gold</h2>
-            <p>${loot.gold} gp</p>
-          </div>
-          <div class="section">
-            <h2>Items</h2>
-            ${loot.items
-                .map(
-                    (item) => `
-              <div class="item">
-                <div class="item-name">${item.name} (${getItemTypeLabel(
-                        item.type
-                    )})</div>
-                <div class="item-description">${item.description}</div>
-                <div class="item-value">Value: ${item.value}</div>
-              </div>
-            `
-                )
-                .join("")}
-          </div>
-          <div class="total">
-            Total Approximate Value: ${getTotalValue()}
-          </div>
-        </body>
-      </html>
-    `;
-
-        printWindow.document.open();
-        printWindow.document.write(content);
-        printWindow.document.close();
-        printWindow.print();
-    };
-
     return (
         <div className="space-y-6">
             <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-end">
@@ -343,24 +281,14 @@ export function LootGenerator() {
                 </div>
                 <div className="flex gap-2">
                     {loot && (
-                        <>
-                            <Button
-                                variant="outline"
-                                size="sm"
-                                onClick={printLoot}
-                            >
-                                <Printer className="h-4 w-4 mr-2" />
-                                Print
-                            </Button>
-                            <Button
-                                variant="outline"
-                                size="sm"
-                                onClick={() => setLoot(null)}
-                            >
-                                <RefreshCw className="h-4 w-4 mr-2" />
-                                Reset
-                            </Button>
-                        </>
+                        <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => setLoot(null)}
+                        >
+                            <RefreshCw className="h-4 w-4 mr-2" />
+                            Reset
+                        </Button>
                     )}
                 </div>
             </div>
