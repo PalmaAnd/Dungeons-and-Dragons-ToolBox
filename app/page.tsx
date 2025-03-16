@@ -39,15 +39,6 @@ export default function Page() {
                     </Button>
                 </Link>
                 <Link
-                    href="/tools/dice-roller"
-                    className="w-full"
-                    aria-label="Roll Dice"
-                >
-                    <Button variant="outline" size="lg" className="w-full">
-                        Roll Dice
-                    </Button>
-                </Link>
-                <Link
                     href="/tools/initiative-tracker"
                     className="w-full"
                     aria-label="Initiative Tracker"
@@ -57,12 +48,12 @@ export default function Page() {
                     </Button>
                 </Link>
                 <Link
-                    href="/tools/weather-generator"
+                    href="/tools/dice-roller"
                     className="w-full"
-                    aria-label="Weather Generator"
+                    aria-label="Roll Dice"
                 >
                     <Button variant="outline" size="lg" className="w-full">
-                        Weather Generator
+                        Roll Dice
                     </Button>
                 </Link>
                 <Link
@@ -75,12 +66,21 @@ export default function Page() {
                     </Button>
                 </Link>
                 <Link
-                    href="/campaign-dashboard"
+                    href="/tools/weather-generator"
                     className="w-full"
-                    aria-label="Campaign Dashboard"
+                    aria-label="Weather Generator"
                 >
                     <Button variant="outline" size="lg" className="w-full">
-                        Campaign Dashboard
+                        Weather Generator
+                    </Button>
+                </Link>
+                <Link
+                    href="/tools/magic-item-shop"
+                    className="w-full"
+                    aria-label="Magic Item Shop"
+                >
+                    <Button variant="outline" size="lg" className="w-full">
+                        Magic Item Shop
                     </Button>
                 </Link>
                 <Link href="/tools" className="w-full" aria-label="More Tools">

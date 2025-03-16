@@ -12,41 +12,12 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 
-const classes = [
-    "Barbarian",
-    "Bard",
-    "Cleric",
-    "Druid",
-    "Fighter",
-    "Monk",
-    "Paladin",
-    "Ranger",
-    "Rogue",
-    "Sorcerer",
-    "Warlock",
-    "Wizard",
-];
-const races = [
-    "Human",
-    "Elf",
-    "Dwarf",
-    "Halfling",
-    "Gnome",
-    "Half-Elf",
-    "Half-Orc",
-    "Tiefling",
-];
-const alignments = [
-    "Lawful Good",
-    "Neutral Good",
-    "Chaotic Good",
-    "Lawful Neutral",
-    "True Neutral",
-    "Chaotic Neutral",
-    "Lawful Evil",
-    "Neutral Evil",
-    "Chaotic Evil",
-];
+type CharacterData = {
+    classes: string[];
+    races: string[];
+    alignments: string[];
+    traits: string[];
+};
 
 type Ability =
     | "strength"
@@ -64,12 +35,17 @@ const abilities: Ability[] = [
     "charisma",
 ];
 
-export function CharacterCreator() {
+export function CharacterCreator({
+    characterData,
+}: {
+    characterData: CharacterData;
+}) {
     const [character, setCharacter] = useState({
         name: "",
         class: "",
         race: "",
         alignment: "",
+        trait: "",
         abilities: {
             strength: 10,
             dexterity: 10,
@@ -99,14 +75,35 @@ export function CharacterCreator() {
         });
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        console.log("Character created:", character);
-        // Here you would typically save the character or perform further actions
+    const exportToJson = () => {
+        const dataStr = JSON.stringify(character, null, 2);
+        const dataUri =
+            "data:application/json;charset=utf-8," +
+            encodeURIComponent(dataStr);
+
+        const exportFileDefaultName = character.name + ".json";
+
+        const linkElement = document.createElement("a");
+        linkElement.setAttribute("href", dataUri);
+        linkElement.setAttribute("download", exportFileDefaultName);
+        linkElement.click();
+    };
+
+    const importFromJson = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            const json = event.target?.result as string;
+            const importedCharacter = JSON.parse(json);
+            setCharacter(importedCharacter);
+        };
+        reader.readAsText(file);
     };
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form className="space-y-4">
             <div>
                 <Label htmlFor="name">Character Name</Label>
                 <Input
@@ -130,7 +127,7 @@ export function CharacterCreator() {
                         <SelectValue placeholder="Select a class" />
                     </SelectTrigger>
                     <SelectContent>
-                        {classes.map((c) => (
+                        {characterData.classes.sort().map((c) => (
                             <SelectItem key={c} value={c}>
                                 {c}
                             </SelectItem>
@@ -149,7 +146,7 @@ export function CharacterCreator() {
                         <SelectValue placeholder="Select a race" />
                     </SelectTrigger>
                     <SelectContent>
-                        {races.map((r) => (
+                        {characterData.races.sort().map((r) => (
                             <SelectItem key={r} value={r}>
                                 {r}
                             </SelectItem>
@@ -170,9 +167,30 @@ export function CharacterCreator() {
                         <SelectValue placeholder="Select an alignment" />
                     </SelectTrigger>
                     <SelectContent>
-                        {alignments.map((a) => (
+                        {characterData.alignments.map((a) => (
                             <SelectItem key={a} value={a}>
                                 {a}
+                            </SelectItem>
+                        ))}
+                    </SelectContent>
+                </Select>
+            </div>
+            <div>
+                <Label htmlFor="trait">Trait</Label>
+                <Select
+                    name="trait"
+                    value={character.trait}
+                    onValueChange={(value) =>
+                        handleSelectChange("trait", value)
+                    }
+                >
+                    <SelectTrigger>
+                        <SelectValue placeholder="Select a trait" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        {characterData.traits.sort().map((t) => (
+                            <SelectItem key={t} value={t}>
+                                {t}
                             </SelectItem>
                         ))}
                     </SelectContent>
@@ -202,7 +220,10 @@ export function CharacterCreator() {
                     ))}
                 </div>
             </div>
-            <Button type="submit">Create Character</Button>
+            <Button type="button" onClick={exportToJson}>
+                Export to JSON
+            </Button>
+            <Input type="file" accept=".json" onChange={importFromJson} />
         </form>
     );
 }
