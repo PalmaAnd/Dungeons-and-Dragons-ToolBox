@@ -1,0 +1,411 @@
+{
+    "tiers": [
+        {
+            "name": "low",
+            "label": "Low Tier (CR 0-4)",
+            "goldRange": [10, 100],
+            "gemChance": 0.2,
+            "artObjectChance": 0.1,
+            "magicItemChance": 0.1
+        },
+        {
+            "name": "medium",
+            "label": "Medium Tier (CR 5-10)",
+            "goldRange": [100, 500],
+            "gemChance": 0.4,
+            "artObjectChance": 0.3,
+            "magicItemChance": 0.3
+        },
+        {
+            "name": "high",
+            "label": "High Tier (CR 11-16)",
+            "goldRange": [500, 1000],
+            "gemChance": 0.6,
+            "artObjectChance": 0.5,
+            "magicItemChance": 0.5
+        },
+        {
+            "name": "legendary",
+            "label": "Legendary Tier (CR 17+)",
+            "goldRange": [1000, 5000],
+            "gemChance": 0.8,
+            "artObjectChance": 0.7,
+            "magicItemChance": 0.7
+        }
+    ],
+    "items": {
+        "common": [
+            {
+                "name": "Potion of Healing",
+                "description": "Restores 2d4+2 hit points when consumed.",
+                "value": "50 gp"
+            },
+            {
+                "name": "Rope (50 ft.)",
+                "description": "Strong hemp rope that can hold up to 400 pounds.",
+                "value": "1 gp"
+            },
+            {
+                "name": "Torch",
+                "description": "Burns for 1 hour, providing bright light in a 20-foot radius.",
+                "value": "1 cp"
+            },
+            {
+                "name": "Backpack",
+                "description": "A sturdy leather backpack with multiple compartments.",
+                "value": "2 gp"
+            },
+            {
+                "name": "Bedroll",
+                "description": "A portable sleeping roll for resting outdoors.",
+                "value": "1 gp"
+            },
+            {
+                "name": "Rations (1 day)",
+                "description": "Preserved food sufficient to sustain a creature for one day.",
+                "value": "5 sp"
+            },
+            {
+                "name": "Waterskin",
+                "description": "A container that holds up to 4 pints of liquid.",
+                "value": "2 sp"
+            },
+            {
+                "name": "Crowbar",
+                "description": "A useful tool for prying open doors or containers.",
+                "value": "2 gp"
+            },
+            {
+                "name": "Tinderbox",
+                "description": "Contains flint, steel, and tinder for starting fires.",
+                "value": "5 sp"
+            },
+            {
+                "name": "Chalk (10 pieces)",
+                "description": "Used for marking surfaces or leaving messages.",
+                "value": "1 cp"
+            },
+            {
+                "name": "Grappling Hook",
+                "description": "Used with rope for climbing or securing a line.",
+                "value": "2 gp"
+            },
+            {
+                "name": "Healer's Kit",
+                "description": "Contains bandages and herbs for treating wounds.",
+                "value": "5 gp"
+            }
+        ],
+        "uncommon": [
+            {
+                "name": "Potion of Greater Healing",
+                "description": "Restores 4d4+4 hit points when consumed.",
+                "value": "100 gp"
+            },
+            {
+                "name": "Bag of Holding",
+                "description": "An extradimensional space that can hold up to 500 pounds.",
+                "value": "500 gp"
+            },
+            {
+                "name": "Boots of Elvenkind",
+                "description": "Makes the wearer's steps nearly silent.",
+                "value": "250 gp"
+            },
+            {
+                "name": "Cloak of Elvenkind",
+                "description": "Helps the wearer blend into natural surroundings.",
+                "value": "250 gp"
+            },
+            {
+                "name": "Wand of Magic Missiles",
+                "description": "Casts Magic Missile without using a spell slot.",
+                "value": "300 gp"
+            },
+            {
+                "name": "Potion of Fire Breath",
+                "description": "Allows the drinker to exhale fire in a 15-foot cone.",
+                "value": "150 gp"
+            },
+            {
+                "name": "Dust of Disappearance",
+                "description": "Makes the user invisible for 2d4 minutes.",
+                "value": "300 gp"
+            },
+            {
+                "name": "Eyes of Minute Seeing",
+                "description": "Grants advantage on Investigation checks that rely on sight.",
+                "value": "250 gp"
+            },
+            {
+                "name": "Goggles of Night",
+                "description": "Grants darkvision up to 60 feet.",
+                "value": "300 gp"
+            },
+            {
+                "name": "Sending Stones",
+                "description": "Allows communication between two distant locations once per day.",
+                "value": "400 gp"
+            }
+        ],
+        "rare": [
+            {
+                "name": "Flame Tongue",
+                "description": "A magic sword that can be wreathed in flames.",
+                "value": "2,000 gp"
+            },
+            {
+                "name": "Ring of Protection",
+                "description": "Grants a +1 bonus to AC and saving throws.",
+                "value": "3,500 gp"
+            },
+            {
+                "name": "Staff of the Woodlands",
+                "description": "A staff that grants various nature-based abilities.",
+                "value": "5,000 gp"
+            },
+            {
+                "name": "Wand of Fireballs",
+                "description": "Casts Fireball without using a spell slot.",
+                "value": "4,000 gp"
+            },
+            {
+                "name": "Wings of Flying",
+                "description": "A cloak that transforms into wings, granting a flying speed.",
+                "value": "5,000 gp"
+            },
+            {
+                "name": "Amulet of Health",
+                "description": "Sets the wearer's Constitution score to 19.",
+                "value": "4,000 gp"
+            },
+            {
+                "name": "Belt of Giant Strength",
+                "description": "Sets the wearer's Strength score to 21.",
+                "value": "4,500 gp"
+            },
+            {
+                "name": "Cloak of Displacement",
+                "description": "Makes the wearer appear to be standing in a different location.",
+                "value": "5,000 gp"
+            },
+            {
+                "name": "Ring of Evasion",
+                "description": "Allows the wearer to automatically succeed on Dexterity saving throws.",
+                "value": "5,500 gp"
+            },
+            {
+                "name": "Rod of the Pact Keeper",
+                "description": "Enhances a warlock's spellcasting abilities.",
+                "value": "4,000 gp"
+            }
+        ],
+        "veryRare": [
+            {
+                "name": "Cloak of Invisibility",
+                "description": "Makes the wearer invisible while worn.",
+                "value": "15,000 gp"
+            },
+            {
+                "name": "Rod of Lordly Might",
+                "description": "A rod with multiple magical functions.",
+                "value": "20,000 gp"
+            },
+            {
+                "name": "Staff of Power",
+                "description": "A powerful staff with various offensive and defensive abilities.",
+                "value": "25,000 gp"
+            },
+            {
+                "name": "Vorpal Sword",
+                "description": "A sword that can sever heads with a critical hit.",
+                "value": "30,000 gp"
+            },
+            {
+                "name": "Manual of Bodily Health",
+                "description": "Increases the reader's Constitution score.",
+                "value": "27,500 gp"
+            },
+            {
+                "name": "Robe of Stars",
+                "description": "Allows the wearer to travel to the Astral Plane and cast Magic Missile.",
+                "value": "18,000 gp"
+            },
+            {
+                "name": "Ring of Regeneration",
+                "description": "Restores 1d6 hit points every 10 minutes.",
+                "value": "22,000 gp"
+            },
+            {
+                "name": "Ring of Shooting Stars",
+                "description": "Grants various light and fire-based abilities.",
+                "value": "20,000 gp"
+            },
+            {
+                "name": "Staff of Thunder and Lightning",
+                "description": "A staff with various thunder and lightning abilities.",
+                "value": "25,000 gp"
+            },
+            {
+                "name": "Wand of Polymorph",
+                "description": "Casts Polymorph without using a spell slot.",
+                "value": "20,000 gp"
+            }
+        ],
+        "legendary": [
+            {
+                "name": "Holy Avenger",
+                "description": "A powerful sword that grants special abilities to paladins.",
+                "value": "100,000 gp"
+            },
+            {
+                "name": "Ring of Djinni Summoning",
+                "description": "Summons a djinni to serve the wearer.",
+                "value": "125,000 gp"
+            },
+            {
+                "name": "Sphere of Annihilation",
+                "description": "A hole in the multiverse that destroys matter.",
+                "value": "150,000 gp"
+            },
+            {
+                "name": "Talisman of Pure Good",
+                "description": "A powerful item that can be used by good-aligned creatures.",
+                "value": "120,000 gp"
+            },
+            {
+                "name": "Deck of Many Things",
+                "description": "A deck of cards with powerful and unpredictable effects.",
+                "value": "200,000 gp"
+            },
+            {
+                "name": "Efreeti Chain",
+                "description": "Grants fire resistance and the ability to cast various fire spells.",
+                "value": "130,000 gp"
+            },
+            {
+                "name": "Cubic Gate",
+                "description": "A cube that can open portals to other planes.",
+                "value": "160,000 gp"
+            },
+            {
+                "name": "Iron Flask",
+                "description": "Can trap extraplanar creatures and force them to serve the user.",
+                "value": "170,000 gp"
+            },
+            {
+                "name": "Robe of the Archmagi",
+                "description": "Enhances a spellcaster's abilities and provides protection.",
+                "value": "150,000 gp"
+            },
+            {
+                "name": "Staff of the Magi",
+                "description": "An incredibly powerful staff with numerous magical abilities.",
+                "value": "200,000 gp"
+            }
+        ]
+    },
+    "gems": [
+        {
+            "name": "Azurite",
+            "description": "Deep blue mottled stone",
+            "value": "10 gp"
+        },
+        {
+            "name": "Quartz",
+            "description": "Clear or white crystal",
+            "value": "25 gp"
+        },
+        {
+            "name": "Amber",
+            "description": "Transparent golden yellow to red-brown",
+            "value": "50 gp"
+        },
+        {
+            "name": "Jade",
+            "description": "Light green, deep green, or white",
+            "value": "100 gp"
+        },
+        {
+            "name": "Topaz",
+            "description": "Golden yellow to rich brown",
+            "value": "250 gp"
+        },
+        {
+            "name": "Opal",
+            "description": "Pale blue with green and golden mottling",
+            "value": "500 gp"
+        },
+        {
+            "name": "Ruby",
+            "description": "Clear red to deep crimson",
+            "value": "1,000 gp"
+        },
+        {
+            "name": "Emerald",
+            "description": "Deep bright green",
+            "value": "2,500 gp"
+        },
+        {
+            "name": "Diamond",
+            "description": "Clear blue-white, rich blue, yellow, or pink",
+            "value": "5,000 gp"
+        }
+    ],
+    "artObjects": [
+        {
+            "name": "Silver ewer",
+            "description": "A decorative pitcher made of silver",
+            "value": "25 gp"
+        },
+        {
+            "name": "Carved bone statuette",
+            "description": "A small figurine carved from bone",
+            "value": "50 gp"
+        },
+        {
+            "name": "Small gold bracelet",
+            "description": "A simple bracelet made of gold",
+            "value": "100 gp"
+        },
+        {
+            "name": "Silk robe with gold embroidery",
+            "description": "A luxurious robe with intricate gold patterns",
+            "value": "250 gp"
+        },
+        {
+            "name": "Silver chalice with moonstones",
+            "description": "A ceremonial cup adorned with precious stones",
+            "value": "500 gp"
+        },
+        {
+            "name": "Gold music box",
+            "description": "An ornate box that plays a melody when opened",
+            "value": "1,000 gp"
+        },
+        {
+            "name": "Gold dragon comb with red garnet eye",
+            "description": "An exquisite hair ornament shaped like a dragon",
+            "value": "2,500 gp"
+        },
+        {
+            "name": "Painted gold war mask",
+            "description": "A ceremonial mask used by ancient warriors",
+            "value": "5,000 gp"
+        }
+    ],
+    "containers": [
+        "wooden chest",
+        "iron strongbox",
+        "leather pouch",
+        "hidden compartment",
+        "buried cache",
+        "ornate jewelry box",
+        "locked safe",
+        "secret wall panel",
+        "hollow statue",
+        "false bottom in a barrel",
+        "magical extradimensional space",
+        "enchanted lockbox"
+    ]
+}

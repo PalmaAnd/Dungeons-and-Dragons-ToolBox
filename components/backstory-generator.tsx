@@ -3,47 +3,46 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+    origins,
+    motivations,
+    events,
+    connections,
+} from "@/data/backstory-generator.json";
+import { Star, Heart, Shield, Users } from "lucide-react";
 
-const origins = [
-    "You were born into nobility, but lost everything due to a family scandal.",
-    "You grew up on the streets, learning to survive by your wits.",
-    "You were raised in a secluded monastery, trained in ancient traditions.",
-    "You come from a long line of soldiers and were expected to follow in their footsteps.",
-    "You were found as an infant in the depths of a mysterious forest.",
-];
-
-const motivations = [
-    "You seek revenge against those who wronged your family.",
-    "You're on a quest to uncover a long-lost artifact of immense power.",
-    "You want to prove yourself worthy of a prophecy that foretells your greatness.",
-    "You're searching for a cure to a rare disease that afflicts your loved one.",
-    "You aim to become the greatest in your chosen profession or craft.",
-];
-
-const events = [
-    "You witnessed a crime committed by a powerful figure and now hold a dangerous secret.",
-    "You accidentally activated an ancient magical artifact, gaining both power and a curse.",
-    "You survived a catastrophic event that destroyed your hometown.",
-    "You made a pact with a mysterious entity, granting you abilities but at a cost.",
-    "You discovered you have a long-lost sibling and are now searching for them.",
-];
+interface Backstory {
+    origin: {
+        text: string;
+        hooks: string[];
+    };
+    motivation: {
+        text: string;
+        complications: string[];
+    };
+    event: {
+        text: string;
+        consequences: string[];
+    };
+    connection: {
+        text: string;
+        details: string[];
+    };
+}
 
 function getRandomItem<T>(array: T[]): T {
     return array[Math.floor(Math.random() * array.length)];
 }
 
 export function BackstoryGenerator() {
-    const [backstory, setBackstory] = useState<{
-        origin: string;
-        motivation: string;
-        event: string;
-    } | null>(null);
+    const [backstory, setBackstory] = useState<Backstory | null>(null);
 
     const generateBackstory = () => {
         setBackstory({
             origin: getRandomItem(origins),
             motivation: getRandomItem(motivations),
             event: getRandomItem(events),
+            connection: getRandomItem(connections),
         });
     };
 
@@ -57,18 +56,58 @@ export function BackstoryGenerator() {
                     </CardHeader>
                     <CardContent className="space-y-4">
                         <div>
-                            <h3 className="font-semibold">Origin:</h3>
-                            <p>{backstory.origin}</p>
+                            <h3 className="font-semibold flex items-center gap-2">
+                                <Star className="h-5 w-5" />
+                                Origin:
+                            </h3>
+                            <p>{backstory.origin.text}</p>
+                            <ul className="list-disc list-inside">
+                                {backstory.origin.hooks.map((hook, index) => (
+                                    <li key={index}>{hook}</li>
+                                ))}
+                            </ul>
                         </div>
                         <div>
-                            <h3 className="font-semibold">Motivation:</h3>
-                            <p>{backstory.motivation}</p>
+                            <h3 className="font-semibold flex items-center gap-2">
+                                <Heart className="h-5 w-5" />
+                                Motivation:
+                            </h3>
+                            <p>{backstory.motivation.text}</p>
+                            <ul className="list-disc list-inside">
+                                {backstory.motivation.complications.map(
+                                    (complication, index) => (
+                                        <li key={index}>{complication}</li>
+                                    )
+                                )}
+                            </ul>
                         </div>
                         <div>
-                            <h3 className="font-semibold">
+                            <h3 className="font-semibold flex items-center gap-2">
+                                <Shield className="h-5 w-5" />
                                 Significant Event:
                             </h3>
-                            <p>{backstory.event}</p>
+                            <p>{backstory.event.text}</p>
+                            <ul className="list-disc list-inside">
+                                {backstory.event.consequences.map(
+                                    (consequence, index) => (
+                                        <li key={index}>{consequence}</li>
+                                    )
+                                )}
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 className="font-semibold flex items-center gap-2">
+                                <Users className="h-5 w-5" />
+                                Connection:
+                            </h3>
+                            <p>{backstory.connection.text}</p>
+                            <ul className="list-disc list-inside">
+                                {backstory.connection.details.map(
+                                    (detail, index) => (
+                                        <li key={index}>{detail}</li>
+                                    )
+                                )}
+                            </ul>
                         </div>
                     </CardContent>
                 </Card>
