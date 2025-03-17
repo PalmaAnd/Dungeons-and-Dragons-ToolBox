@@ -28,7 +28,6 @@ import {
     Palette,
     RefreshCw,
     Sparkles,
-    DollarSign,
 } from "lucide-react";
 import lootData from "@/data/loot-generator.json";
 
@@ -456,7 +455,7 @@ export function LootGenerator() {
                                                         {item.description}
                                                     </p>
                                                     <div className="flex items-center text-sm">
-                                                        <DollarSign className="h-3.5 w-3.5 mr-1 text-green-600" />
+                                                        <Coins className="h-3.5 w-3.5 mr-1 text-yellow-500" />
                                                         <span>
                                                             {item.value}
                                                         </span>
@@ -522,7 +521,7 @@ export function LootGenerator() {
                                                         {item.description}
                                                     </p>
                                                     <div className="flex items-center text-sm">
-                                                        <DollarSign className="h-3.5 w-3.5 mr-1 text-green-600" />
+                                                        <Coins className="h-3.5 w-3.5 mr-1 text-yellow-500" />
                                                         <span>
                                                             {item.value}
                                                         </span>
@@ -590,7 +589,7 @@ export function LootGenerator() {
                                                         {item.description}
                                                     </p>
                                                     <div className="flex items-center text-sm">
-                                                        <DollarSign className="h-3.5 w-3.5 mr-1 text-green-600" />
+                                                        <Coins className="h-3.5 w-3.5 mr-1 text-yellow-500" />
                                                         <span>
                                                             {item.value}
                                                         </span>
