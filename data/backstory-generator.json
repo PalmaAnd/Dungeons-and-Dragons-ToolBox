@@ -1,0 +1,322 @@
+{
+    "origins": [
+        {
+            "text": "You were born into nobility, but lost everything due to a family scandal.",
+            "hooks": [
+                "Reclaim family honor",
+                "Find the person who betrayed your family",
+                "Rebuild your family's fortune"
+            ]
+        },
+        {
+            "text": "You grew up on the streets, learning to survive by your wits.",
+            "hooks": [
+                "Help others like yourself",
+                "Find the mentor who taught you to survive",
+                "Prove yourself to society"
+            ]
+        },
+        {
+            "text": "You were raised in a secluded monastery, trained in ancient traditions.",
+            "hooks": [
+                "Spread your monastery's teachings",
+                "Defend against those who destroyed your home",
+                "Find a sacred relic"
+            ]
+        },
+        {
+            "text": "You come from a long line of soldiers and were expected to follow in their footsteps.",
+            "hooks": [
+                "Live up to your family's reputation",
+                "Forge your own path",
+                "Defend your homeland"
+            ]
+        },
+        {
+            "text": "You were found as an infant in the depths of a mysterious forest.",
+            "hooks": [
+                "Discover your true parentage",
+                "Protect the forest that sheltered you",
+                "Understand the strange birthmark you bear"
+            ]
+        },
+        {
+            "text": "You were apprenticed to a famous artisan who recognized your talent.",
+            "hooks": [
+                "Create a masterpiece",
+                "Find your missing mentor",
+                "Surpass your teacher's legacy"
+            ]
+        },
+        {
+            "text": "You are the last survivor of a village destroyed by a terrible disaster.",
+            "hooks": [
+                "Rebuild what was lost",
+                "Prevent similar tragedies",
+                "Discover the true cause of the disaster"
+            ]
+        },
+        {
+            "text": "You were raised by a creature not of your race, learning unusual customs and abilities.",
+            "hooks": [
+                "Find others like your adoptive parent",
+                "Bridge understanding between different species",
+                "Discover why you were chosen"
+            ]
+        },
+        {
+            "text": "You were born during a rare celestial event, marked for a special destiny.",
+            "hooks": [
+                "Fulfill a prophecy",
+                "Defy your predetermined fate",
+                "Find others born under the same sign"
+            ]
+        },
+        {
+            "text": "You were once wealthy but chose to give it all away for a cause you believed in.",
+            "hooks": [
+                "Continue supporting your cause",
+                "Convince others of its importance",
+                "Deal with the consequences of your sacrifice"
+            ]
+        }
+    ],
+    "motivations": [
+        {
+            "text": "You seek revenge against those who wronged your family.",
+            "complications": [
+                "Your target is now a changed person",
+                "Revenge might harm innocent people",
+                "You're not certain you have the right culprit"
+            ]
+        },
+        {
+            "text": "You're on a quest to uncover a long-lost artifact of immense power.",
+            "complications": [
+                "Others seek it for evil purposes",
+                "The artifact may be cursed",
+                "The artifact's location changes constantly"
+            ]
+        },
+        {
+            "text": "You want to prove yourself worthy of a prophecy that foretells your greatness.",
+            "complications": [
+                "The prophecy has multiple interpretations",
+                "Others believe they are the chosen one",
+                "Fulfilling it might require terrible sacrifice"
+            ]
+        },
+        {
+            "text": "You're searching for a cure to a rare disease that afflicts your loved one.",
+            "complications": [
+                "The cure has dangerous side effects",
+                "The only known cure is guarded by hostile forces",
+                "Time is running out"
+            ]
+        },
+        {
+            "text": "You aim to become the greatest in your chosen profession or craft.",
+            "complications": [
+                "Your rival uses underhanded tactics",
+                "Your methods are controversial",
+                "Success might cost you everything else you value"
+            ]
+        },
+        {
+            "text": "You seek to atone for a terrible mistake or crime from your past.",
+            "complications": [
+                "Those you wronged won't easily forgive",
+                "Your past identity might be discovered",
+                "Complete atonement seems impossible"
+            ]
+        },
+        {
+            "text": "You're determined to explore uncharted territories and make discoveries.",
+            "complications": [
+                "Ancient guardians protect these places",
+                "The environments are extremely hazardous",
+                "Others want to exploit what you find"
+            ]
+        },
+        {
+            "text": "You want to restore a fallen organization or kingdom to its former glory.",
+            "complications": [
+                "Not everyone wants it restored",
+                "The original fall had good reasons",
+                "Powerful forces oppose its return"
+            ]
+        },
+        {
+            "text": "You seek to break a curse that has plagued your family for generations.",
+            "complications": [
+                "Breaking it requires rare components",
+                "The curse adapts to resistance",
+                "It might transfer to someone else if broken"
+            ]
+        },
+        {
+            "text": "You're collecting ancient knowledge to prevent a prophesied catastrophe.",
+            "complications": [
+                "The knowledge is scattered and hidden",
+                "Some believe the catastrophe should happen",
+                "Understanding the texts requires rare skills"
+            ]
+        }
+    ],
+    "events": [
+        {
+            "text": "You witnessed a crime committed by a powerful figure and now hold a dangerous secret.",
+            "consequences": [
+                "The criminal is hunting you",
+                "You're not sure who to trust with the information",
+                "The evidence you have is incomplete"
+            ]
+        },
+        {
+            "text": "You accidentally activated an ancient magical artifact, gaining both power and a curse.",
+            "consequences": [
+                "The power is addictive but harmful",
+                "Others want to take the artifact from you",
+                "The curse grows stronger with each use"
+            ]
+        },
+        {
+            "text": "You survived a catastrophic event that destroyed your hometown.",
+            "consequences": [
+                "You suffer from survivor's guilt",
+                "You have recurring nightmares",
+                "You're afraid it might happen again"
+            ]
+        },
+        {
+            "text": "You made a pact with a mysterious entity, granting you abilities but at a cost.",
+            "consequences": [
+                "The entity's true motives are unclear",
+                "The cost is greater than you expected",
+                "Breaking the pact has severe consequences"
+            ]
+        },
+        {
+            "text": "You discovered you have a long-lost sibling and are now searching for them.",
+            "consequences": [
+                "They may not want to be found",
+                "Your search has attracted unwanted attention",
+                "What you discover about them may change your self-identity"
+            ]
+        },
+        {
+            "text": "You were chosen as the champion of a deity or powerful being.",
+            "consequences": [
+                "Their enemies target you",
+                "Their demands conflict with your personal goals",
+                "Others doubt your claims or motives"
+            ]
+        },
+        {
+            "text": "You found an ancient text that revealed a world-changing truth.",
+            "consequences": [
+                "Powerful organizations want to suppress this knowledge",
+                "The truth is difficult to prove",
+                "Revealing it could cause panic or chaos"
+            ]
+        },
+        {
+            "text": "You were falsely accused of a serious crime and had to flee your home.",
+            "consequences": [
+                "Your name is still not cleared",
+                "Some still believe you're guilty",
+                "The real culprit is still at large"
+            ]
+        },
+        {
+            "text": "You were transformed temporarily by wild magic, giving you insight into another form of existence.",
+            "consequences": [
+                "You sometimes revert partially to that form",
+                "You're drawn to return to that state",
+                "Others of that kind sense your connection"
+            ]
+        }
+    ],
+    "connections": [
+        {
+            "text": "A mentor who taught you your skills but disappeared under mysterious circumstances.",
+            "details": [
+                "Left you with an unfinished task",
+                "Gave you a cryptic warning",
+                "Has enemies who now target you"
+            ]
+        },
+        {
+            "text": "A rival who competes with you and uses underhanded tactics.",
+            "details": [
+                "Was once your friend",
+                "Has connections you lack",
+                "Knows your weaknesses"
+            ]
+        },
+        {
+            "text": "A sibling or close relative who chose a very different path in life.",
+            "details": [
+                "Disapproves of your choices",
+                "Needs your help despite differences",
+                "Holds a family secret"
+            ]
+        },
+        {
+            "text": "A powerful patron who supports you but has their own agenda.",
+            "details": [
+                "Demands favors at inconvenient times",
+                "Doesn't fully disclose their motives",
+                "Has other protégés who resent you"
+            ]
+        },
+        {
+            "text": "A childhood friend who now works for an opposing faction.",
+            "details": [
+                "Still values your friendship",
+                "Could be convinced to help you secretly",
+                "Has valuable information"
+            ]
+        },
+        {
+            "text": "A person whose life you saved, who now follows you devotedly.",
+            "details": [
+                "Sometimes gets in your way",
+                "Would sacrifice everything for you",
+                "Has unexpected skills that prove useful"
+            ]
+        },
+        {
+            "text": "Someone who saved your life, to whom you owe a debt.",
+            "details": [
+                "Occasionally asks for dangerous favors",
+                "Disappeared and needs finding",
+                "Is not what they appeared to be"
+            ]
+        },
+        {
+            "text": "A former enemy who now seeks reconciliation.",
+            "details": [
+                "You're unsure if you can trust them",
+                "They bring valuable allies",
+                "They've changed in surprising ways"
+            ]
+        },
+        {
+            "text": "A relative of someone you failed to save, who doesn't blame you.",
+            "details": [
+                "Reminds you of your failure",
+                "Needs your protection",
+                "Has information about what really happened"
+            ]
+        },
+        {
+            "text": "A mysterious figure who appears at crucial moments in your life.",
+            "details": [
+                "Offers cryptic advice",
+                "Seems to know your destiny",
+                "Has connections to your unknown past"
+            ]
+        }
+    ]
+}
