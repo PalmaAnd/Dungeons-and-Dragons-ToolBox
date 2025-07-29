@@ -4,7 +4,14 @@
             "hitDie": "d12",
             "primaryAbilities": ["strength"],
             "savingThrows": ["strength", "constitution"],
-            "skillOptions": ["Animal Handling", "Athletics", "Intimidation", "Nature", "Perception", "Survival"],
+            "skillOptions": [
+                "Animal Handling",
+                "Athletics",
+                "Intimidation",
+                "Nature",
+                "Perception",
+                "Survival"
+            ],
             "proficiencies": {
                 "armor": ["Light armor", "Medium armor", "Shields"],
                 "weapons": ["Simple weapons", "Martial weapons"],
@@ -46,7 +53,13 @@
             "skillOptions": ["Any three"],
             "proficiencies": {
                 "armor": ["Light armor"],
-                "weapons": ["Simple weapons", "Hand crossbows", "Longswords", "Rapiers", "Shortswords"],
+                "weapons": [
+                    "Simple weapons",
+                    "Hand crossbows",
+                    "Longswords",
+                    "Rapiers",
+                    "Shortswords"
+                ],
                 "tools": ["Three musical instruments of your choice"]
             },
             "subclasses": [
@@ -82,7 +95,13 @@
             "hitDie": "d8",
             "primaryAbilities": ["wisdom"],
             "savingThrows": ["wisdom", "charisma"],
-            "skillOptions": ["History", "Insight", "Medicine", "Persuasion", "Religion"],
+            "skillOptions": [
+                "History",
+                "Insight",
+                "Medicine",
+                "Persuasion",
+                "Religion"
+            ],
             "proficiencies": {
                 "armor": ["Light armor", "Medium armor", "Shields"],
                 "weapons": ["Simple weapons"],
@@ -122,10 +141,30 @@
             "hitDie": "d8",
             "primaryAbilities": ["wisdom"],
             "savingThrows": ["intelligence", "wisdom"],
-            "skillOptions": ["Arcana", "Animal Handling", "Insight", "Medicine", "Nature", "Perception", "Religion", "Survival"],
+            "skillOptions": [
+                "Arcana",
+                "Animal Handling",
+                "Insight",
+                "Medicine",
+                "Nature",
+                "Perception",
+                "Religion",
+                "Survival"
+            ],
             "proficiencies": {
                 "armor": ["Light armor", "Medium armor", "Shields (non-metal)"],
-                "weapons": ["Clubs", "Daggers", "Darts", "Javelins", "Maces", "Quarterstaffs", "Scimitars", "Sickles", "Slings", "Spears"],
+                "weapons": [
+                    "Clubs",
+                    "Daggers",
+                    "Darts",
+                    "Javelins",
+                    "Maces",
+                    "Quarterstaffs",
+                    "Scimitars",
+                    "Sickles",
+                    "Slings",
+                    "Spears"
+                ],
                 "tools": ["Herbalism kit"]
             },
             "subclasses": [
@@ -160,7 +199,15 @@
             "hitDie": "d10",
             "primaryAbilities": ["strength", "dexterity"],
             "savingThrows": ["strength", "constitution"],
-            "skillOptions": ["Acrobatics", "Animal Handling", "Athletics", "History", "Intimidation", "Perception", "Survival"],
+            "skillOptions": [
+                "Acrobatics",
+                "Animal Handling",
+                "Athletics",
+                "History",
+                "Intimidation",
+                "Perception",
+                "Survival"
+            ],
             "proficiencies": {
                 "armor": ["All armor", "Shields"],
                 "weapons": ["Simple weapons", "Martial weapons"],
@@ -199,11 +246,20 @@
             "hitDie": "d8",
             "primaryAbilities": ["dexterity", "wisdom"],
             "savingThrows": ["strength", "dexterity"],
-            "skillOptions": ["Acrobatics", "Athletics", "History", "Insight", "Religion", "Stealth"],
+            "skillOptions": [
+                "Acrobatics",
+                "Athletics",
+                "History",
+                "Insight",
+                "Religion",
+                "Stealth"
+            ],
             "proficiencies": {
                 "armor": [],
                 "weapons": ["Simple weapons", "Shortswords"],
-                "tools": ["One type of artisan's tools or one musical instrument"]
+                "tools": [
+                    "One type of artisan's tools or one musical instrument"
+                ]
             },
             "subclasses": [
                 {
@@ -237,7 +293,14 @@
             "hitDie": "d10",
             "primaryAbilities": ["strength", "charisma"],
             "savingThrows": ["wisdom", "charisma"],
-            "skillOptions": ["Athletics", "Insight", "Intimidation", "Medicine", "Persuasion", "Religion"],
+            "skillOptions": [
+                "Athletics",
+                "Insight",
+                "Intimidation",
+                "Medicine",
+                "Persuasion",
+                "Religion"
+            ],
             "proficiencies": {
                 "armor": ["All armor", "Shields"],
                 "weapons": ["Simple weapons", "Martial weapons"],
@@ -277,7 +340,16 @@
             "hitDie": "d10",
             "primaryAbilities": ["dexterity", "wisdom"],
             "savingThrows": ["strength", "dexterity"],
-            "skillOptions": ["Animal Handling", "Athletics", "Insight", "Investigation", "Nature", "Perception", "Stealth", "Survival"],
+            "skillOptions": [
+                "Animal Handling",
+                "Athletics",
+                "Insight",
+                "Investigation",
+                "Nature",
+                "Perception",
+                "Stealth",
+                "Survival"
+            ],
             "proficiencies": {
                 "armor": ["Light armor", "Medium armor", "Shields"],
                 "weapons": ["Simple weapons", "Martial weapons"],
@@ -316,10 +388,28 @@
             "hitDie": "d8",
             "primaryAbilities": ["dexterity"],
             "savingThrows": ["dexterity", "intelligence"],
-            "skillOptions": ["Acrobatics", "Athletics", "Deception", "Insight", "Intimidation", "Investigation", "Perception", "Performance", "Persuasion", "Sleight of Hand", "Stealth"],
+            "skillOptions": [
+                "Acrobatics",
+                "Athletics",
+                "Deception",
+                "Insight",
+                "Intimidation",
+                "Investigation",
+                "Perception",
+                "Performance",
+                "Persuasion",
+                "Sleight of Hand",
+                "Stealth"
+            ],
             "proficiencies": {
                 "armor": ["Light armor"],
-                "weapons": ["Simple weapons", "Hand crossbows", "Longswords", "Rapiers", "Shortswords"],
+                "weapons": [
+                    "Simple weapons",
+                    "Hand crossbows",
+                    "Longswords",
+                    "Rapiers",
+                    "Shortswords"
+                ],
                 "tools": ["Thieves' tools"]
             },
             "subclasses": [
@@ -355,10 +445,23 @@
             "hitDie": "d6",
             "primaryAbilities": ["charisma"],
             "savingThrows": ["constitution", "charisma"],
-            "skillOptions": ["Arcana", "Deception", "Insight", "Intimidation", "Persuasion", "Religion"],
+            "skillOptions": [
+                "Arcana",
+                "Deception",
+                "Insight",
+                "Intimidation",
+                "Persuasion",
+                "Religion"
+            ],
             "proficiencies": {
                 "armor": [],
-                "weapons": ["Daggers", "Darts", "Slings", "Quarterstaffs", "Light crossbows"],
+                "weapons": [
+                    "Daggers",
+                    "Darts",
+                    "Slings",
+                    "Quarterstaffs",
+                    "Light crossbows"
+                ],
                 "tools": []
             },
             "subclasses": [
@@ -394,7 +497,15 @@
             "hitDie": "d8",
             "primaryAbilities": ["charisma"],
             "savingThrows": ["wisdom", "charisma"],
-            "skillOptions": ["Arcana", "Deception", "History", "Intimidation", "Investigation", "Nature", "Religion"],
+            "skillOptions": [
+                "Arcana",
+                "Deception",
+                "History",
+                "Intimidation",
+                "Investigation",
+                "Nature",
+                "Religion"
+            ],
             "proficiencies": {
                 "armor": ["Light armor"],
                 "weapons": ["Simple weapons"],
@@ -433,10 +544,23 @@
             "hitDie": "d6",
             "primaryAbilities": ["intelligence"],
             "savingThrows": ["intelligence", "wisdom"],
-            "skillOptions": ["Arcana", "History", "Insight", "Investigation", "Medicine", "Religion"],
+            "skillOptions": [
+                "Arcana",
+                "History",
+                "Insight",
+                "Investigation",
+                "Medicine",
+                "Religion"
+            ],
             "proficiencies": {
                 "armor": [],
-                "weapons": ["Daggers", "Darts", "Slings", "Quarterstaffs", "Light crossbows"],
+                "weapons": [
+                    "Daggers",
+                    "Darts",
+                    "Slings",
+                    "Quarterstaffs",
+                    "Light crossbows"
+                ],
                 "tools": []
             },
             "subclasses": [
@@ -513,23 +637,34 @@
                 {
                     "name": "High Elf",
                     "abilityScoreIncrease": {
-                        "intelligence": 1
+                        "intelligence": 1,
+                        "wisdom": 0,
+                        "charisma": 0
                     },
-                    "traits": ["Cantrip", "Extra Language", "Longsword Proficiency"]
+                    "traits": ["Cantrip", "Extra Language"]
                 },
                 {
                     "name": "Wood Elf",
                     "abilityScoreIncrease": {
-                        "wisdom": 1
+                        "wisdom": 1,
+                        "intelligence": 0,
+                        "charisma": 0
                     },
-                    "traits": ["Longsword Proficiency", "Longbow Proficiency", "Mask of the Wild"]
+                    "traits": ["Fleet of Foot", "Mask of the Wild"]
                 },
                 {
                     "name": "Dark Elf (Drow)",
                     "abilityScoreIncrease": {
-                        "charisma": 1
+                        "charisma": 1,
+                        "intelligence": 0,
+                        "wisdom": 0
                     },
-                    "traits": ["Superior Darkvision", "Sunlight Sensitivity", "Drow Magic", "Rapier Proficiency"]
+                    "traits": [
+                        "Superior Darkvision",
+                        "Sunlight Sensitivity",
+                        "Drow Magic",
+                        "Drow Weapon Training"
+                    ]
                 }
             ]
         },
@@ -590,7 +725,14 @@
             "description": "You have spent your life in the service of a temple",
             "skillProficiencies": ["Insight", "Religion"],
             "languages": ["Two of your choice"],
-            "equipment": ["Holy symbol", "Prayer book", "Incense", "Vestments", "Common clothes", "Belt pouch with 15 gp"],
+            "equipment": [
+                "Holy symbol",
+                "Prayer book",
+                "Incense",
+                "Vestments",
+                "Common clothes",
+                "Belt pouch with 15 gp"
+            ],
             "feature": "Shelter of the Faithful"
         },
         {
@@ -598,15 +740,29 @@
             "description": "You are an experienced criminal with a history of breaking the law",
             "skillProficiencies": ["Deception", "Stealth"],
             "toolProficiencies": ["One type of gaming set", "Thieves' tools"],
-            "equipment": ["Crowbar", "Dark common clothes with hood", "Belt pouch with 15 gp"],
+            "equipment": [
+                "Crowbar",
+                "Dark common clothes with hood",
+                "Belt pouch with 15 gp"
+            ],
             "feature": "Criminal Contact"
         },
         {
             "name": "Folk Hero",
             "description": "You come from a humble social rank, but you are destined for so much more",
             "skillProficiencies": ["Animal Handling", "Survival"],
-            "toolProficiencies": ["One type of artisan's tools", "Vehicles (land)"],
-            "equipment": ["Artisan's tools", "Shovel", "Iron pot", "Set of artisan's tools", "Common clothes", "Belt pouch with 10 gp"],
+            "toolProficiencies": [
+                "One type of artisan's tools",
+                "Vehicles (land)"
+            ],
+            "equipment": [
+                "Artisan's tools",
+                "Shovel",
+                "Iron pot",
+                "Set of artisan's tools",
+                "Common clothes",
+                "Belt pouch with 10 gp"
+            ],
             "feature": "Rustic Hospitality"
         },
         {
@@ -615,7 +771,12 @@
             "skillProficiencies": ["History", "Persuasion"],
             "toolProficiencies": ["One type of gaming set"],
             "languages": ["One of your choice"],
-            "equipment": ["Fine clothes", "Signet ring", "Scroll of pedigree", "Purse with 25 gp"],
+            "equipment": [
+                "Fine clothes",
+                "Signet ring",
+                "Scroll of pedigree",
+                "Purse with 25 gp"
+            ],
             "feature": "Position of Privilege"
         },
         {
@@ -623,7 +784,14 @@
             "description": "You spent years learning the lore of the multiverse",
             "skillProficiencies": ["Arcana", "History"],
             "languages": ["Two of your choice"],
-            "equipment": ["Bottle of black ink", "Quill", "Small knife", "Letter from colleague", "Common clothes", "Belt pouch with 10 gp"],
+            "equipment": [
+                "Bottle of black ink",
+                "Quill",
+                "Small knife",
+                "Letter from colleague",
+                "Common clothes",
+                "Belt pouch with 10 gp"
+            ],
             "feature": "Researcher"
         },
         {
@@ -631,7 +799,13 @@
             "description": "You had a military career",
             "skillProficiencies": ["Athletics", "Intimidation"],
             "toolProficiencies": ["One type of gaming set", "Vehicles (land)"],
-            "equipment": ["Rank insignia", "Trophy from fallen enemy", "Deck of cards", "Common clothes", "Belt pouch with 10 gp"],
+            "equipment": [
+                "Rank insignia",
+                "Trophy from fallen enemy",
+                "Deck of cards",
+                "Common clothes",
+                "Belt pouch with 10 gp"
+            ],
             "feature": "Military Rank"
         }
     ],
@@ -680,7 +854,11 @@
                     "cost": "50 gp",
                     "damage": "1d8 piercing",
                     "weight": "2 lb",
-                    "properties": ["Ammunition (range 150/600)", "Heavy", "Two-handed"]
+                    "properties": [
+                        "Ammunition (range 150/600)",
+                        "Heavy",
+                        "Two-handed"
+                    ]
                 }
             ]
         },
@@ -713,17 +891,51 @@
             {
                 "name": "Burglar's Pack",
                 "cost": "16 gp",
-                "contents": ["Backpack", "Ball bearings (1,000)", "10 feet of string", "Bell", "5 candles", "Crowbar", "Hammer", "10 pitons", "Hooded lantern", "2 flasks of oil", "5 days rations", "Tinderbox", "Waterskin", "50 feet of hempen rope"]
+                "contents": [
+                    "Backpack",
+                    "Ball bearings (1,000)",
+                    "10 feet of string",
+                    "Bell",
+                    "5 candles",
+                    "Crowbar",
+                    "Hammer",
+                    "10 pitons",
+                    "Hooded lantern",
+                    "2 flasks of oil",
+                    "5 days rations",
+                    "Tinderbox",
+                    "Waterskin",
+                    "50 feet of hempen rope"
+                ]
             },
             {
                 "name": "Dungeoneer's Pack",
                 "cost": "12 gp",
-                "contents": ["Backpack", "Crowbar", "Hammer", "10 pitons", "10 torches", "Tinderbox", "10 days of rations", "Waterskin", "50 feet of hempen rope"]
+                "contents": [
+                    "Backpack",
+                    "Crowbar",
+                    "Hammer",
+                    "10 pitons",
+                    "10 torches",
+                    "Tinderbox",
+                    "10 days of rations",
+                    "Waterskin",
+                    "50 feet of hempen rope"
+                ]
             },
             {
                 "name": "Explorer's Pack",
                 "cost": "10 gp",
-                "contents": ["Backpack", "Bedroll", "Mess kit", "Tinderbox", "10 torches", "10 days of rations", "Waterskin", "50 feet of hempen rope"]
+                "contents": [
+                    "Backpack",
+                    "Bedroll",
+                    "Mess kit",
+                    "Tinderbox",
+                    "10 torches",
+                    "10 days of rations",
+                    "Waterskin",
+                    "50 feet of hempen rope"
+                ]
             }
         ]
     },
@@ -741,7 +953,7 @@
             },
             {
                 "name": "Blade Ward",
-                "school": "Abjuration", 
+                "school": "Abjuration",
                 "classes": ["Bard", "Sorcerer", "Warlock", "Wizard"],
                 "castingTime": "1 action",
                 "range": "Self",
@@ -823,7 +1035,7 @@
                 "name": "Mage Hand",
                 "school": "Conjuration",
                 "classes": ["Bard", "Sorcerer", "Warlock", "Wizard"],
-                "castingTime": "1 action", 
+                "castingTime": "1 action",
                 "range": "30 feet",
                 "components": "V, S",
                 "duration": "1 minute",
@@ -924,7 +1136,15 @@
             {
                 "name": "Detect Magic",
                 "school": "Divination",
-                "classes": ["Bard", "Cleric", "Druid", "Paladin", "Ranger", "Sorcerer", "Wizard"],
+                "classes": [
+                    "Bard",
+                    "Cleric",
+                    "Druid",
+                    "Paladin",
+                    "Ranger",
+                    "Sorcerer",
+                    "Wizard"
+                ],
                 "castingTime": "1 action",
                 "range": "Self",
                 "components": "V, S",
@@ -986,7 +1206,14 @@
             {
                 "name": "Hold Person",
                 "school": "Enchantment",
-                "classes": ["Bard", "Cleric", "Druid", "Sorcerer", "Warlock", "Wizard"],
+                "classes": [
+                    "Bard",
+                    "Cleric",
+                    "Druid",
+                    "Sorcerer",
+                    "Warlock",
+                    "Wizard"
+                ],
                 "castingTime": "1 action",
                 "range": "60 feet",
                 "components": "V, S, M",
@@ -1018,7 +1245,15 @@
             {
                 "name": "Dispel Magic",
                 "school": "Abjuration",
-                "classes": ["Bard", "Cleric", "Druid", "Paladin", "Sorcerer", "Warlock", "Wizard"],
+                "classes": [
+                    "Bard",
+                    "Cleric",
+                    "Druid",
+                    "Paladin",
+                    "Sorcerer",
+                    "Warlock",
+                    "Wizard"
+                ],
                 "castingTime": "1 action",
                 "range": "120 feet",
                 "components": "V, S",
@@ -1039,7 +1274,12 @@
         "racialSpells": {
             "High Elf": {
                 "cantrips": 1,
-                "available": ["Fire Bolt", "Mage Hand", "Minor Illusion", "Prestidigitation"]
+                "available": [
+                    "Fire Bolt",
+                    "Mage Hand",
+                    "Minor Illusion",
+                    "Prestidigitation"
+                ]
             },
             "Drow": {
                 "cantrips": ["Dancing Lights"],
@@ -1100,7 +1340,11 @@
     "levelProgression": {
         "1": {
             "proficiencyBonus": 2,
-            "features": ["Class features", "Background features", "Racial traits"]
+            "features": [
+                "Class features",
+                "Background features",
+                "Racial traits"
+            ]
         },
         "2": {
             "proficiencyBonus": 2,

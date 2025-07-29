@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import { useState, useEffect, useRef } from "react";
@@ -30,9 +31,13 @@ import {
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Separator } from "@/components/ui/separator";
+import {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog";
 
 type Condition = {
     name: string;
@@ -60,86 +65,86 @@ const CONDITIONS: Record<string, Condition> = {
         name: "Blinded",
         description: "Can't see, attacks have disadvantage",
         icon: <EyeOff className="h-3 w-3" />,
-        color: "bg-gray-500"
+        color: "bg-gray-500",
     },
     charmed: {
         name: "Charmed",
         description: "Can't attack the charmer",
         icon: <Heart className="h-3 w-3" />,
-        color: "bg-pink-500"
+        color: "bg-pink-500",
     },
     deafened: {
-        name: "Deafened", 
+        name: "Deafened",
         description: "Can't hear, auto-fail sound-based checks",
         icon: <Brain className="h-3 w-3" />,
-        color: "bg-purple-500"
+        color: "bg-purple-500",
     },
     frightened: {
         name: "Frightened",
         description: "Disadvantage on ability checks and attacks",
         icon: <AlertTriangle className="h-3 w-3" />,
-        color: "bg-yellow-500"
+        color: "bg-yellow-500",
     },
     grappled: {
         name: "Grappled",
         description: "Speed becomes 0",
         icon: <Target className="h-3 w-3" />,
-        color: "bg-orange-500"
+        color: "bg-orange-500",
     },
     incapacitated: {
         name: "Incapacitated",
         description: "Can't take actions or reactions",
         icon: <Skull className="h-3 w-3" />,
-        color: "bg-red-500"
+        color: "bg-red-500",
     },
     invisible: {
         name: "Invisible",
         description: "Can't be seen, attacks have advantage",
         icon: <Eye className="h-3 w-3" />,
-        color: "bg-blue-500"
+        color: "bg-blue-500",
     },
     paralyzed: {
         name: "Paralyzed",
         description: "Incapacitated, auto-fail Str and Dex saves",
         icon: <Zap className="h-3 w-3" />,
-        color: "bg-indigo-500"
+        color: "bg-indigo-500",
     },
     petrified: {
         name: "Petrified",
         description: "Transformed into stone, incapacitated",
         icon: <Snowflake className="h-3 w-3" />,
-        color: "bg-gray-600"
+        color: "bg-gray-600",
     },
     poisoned: {
         name: "Poisoned",
         description: "Disadvantage on attacks and ability checks",
         icon: <Flame className="h-3 w-3" />,
-        color: "bg-green-500"
+        color: "bg-green-500",
     },
     prone: {
         name: "Prone",
         description: "Lying flat, disadvantage on attacks",
         icon: <RotateCcw className="h-3 w-3" />,
-        color: "bg-brown-500"
+        color: "bg-brown-500",
     },
     restrained: {
         name: "Restrained",
         description: "Speed 0, disadvantage on attacks and Dex saves",
         icon: <Target className="h-3 w-3" />,
-        color: "bg-red-600"
+        color: "bg-red-600",
     },
     stunned: {
         name: "Stunned",
         description: "Incapacitated, auto-fail Str and Dex saves",
         icon: <Sparkles className="h-3 w-3" />,
-        color: "bg-yellow-600"
+        color: "bg-yellow-600",
     },
     unconscious: {
         name: "Unconscious",
         description: "Incapacitated, prone, auto-fail Str and Dex saves",
         icon: <Skull className="h-3 w-3" />,
-        color: "bg-black"
-    }
+        color: "bg-black",
+    },
 };
 
 export default function InitiativeTracker() {
@@ -159,8 +164,12 @@ export default function InitiativeTracker() {
     const [turnTimer, setTurnTimer] = useState(0);
     const [maxTurnTime, setMaxTurnTime] = useState(120); // 2 minutes default
     const [timerActive, setTimerActive] = useState(false);
-    const [selectedConditions, setSelectedConditions] = useState<{ [key: number]: string[] }>({});
-    const [showConditionDialog, setShowConditionDialog] = useState<number | null>(null);
+    const [, setSelectedConditions] = useState<{
+        [key: number]: string[];
+    }>({});
+    const [showConditionDialog, setShowConditionDialog] = useState<
+        number | null
+    >(null);
     const timerRef = useRef<NodeJS.Timeout | null>(null);
 
     // Timer effect
@@ -192,7 +201,7 @@ export default function InitiativeTracker() {
     const formatTime = (seconds: number): string => {
         const mins = Math.floor(seconds / 60);
         const secs = seconds % 60;
-        return `${mins}:${secs.toString().padStart(2, '0')}`;
+        return `${mins}:${secs.toString().padStart(2, "0")}`;
     };
 
     const getTimerColor = (): string => {
@@ -216,7 +225,7 @@ export default function InitiativeTracker() {
                 isPlayer: true,
                 savingThrows: 3,
                 failedSaves: 0,
-                conditions: ["poisoned"]
+                conditions: ["poisoned"],
             },
             {
                 id: 1002,
@@ -229,7 +238,7 @@ export default function InitiativeTracker() {
                 isPlayer: true,
                 savingThrows: 3,
                 failedSaves: 0,
-                conditions: []
+                conditions: [],
             },
             {
                 id: 1003,
@@ -242,7 +251,7 @@ export default function InitiativeTracker() {
                 isPlayer: true,
                 savingThrows: 3,
                 failedSaves: 0,
-                conditions: ["charmed"]
+                conditions: ["charmed"],
             },
             // NPCs/Monsters
             {
@@ -256,7 +265,7 @@ export default function InitiativeTracker() {
                 isPlayer: false,
                 savingThrows: 3,
                 failedSaves: 0,
-                conditions: []
+                conditions: [],
             },
             {
                 id: 2002,
@@ -269,7 +278,7 @@ export default function InitiativeTracker() {
                 isPlayer: false,
                 savingThrows: 3,
                 failedSaves: 0,
-                conditions: ["frightened"]
+                conditions: ["frightened"],
             },
             {
                 id: 2003,
@@ -282,7 +291,7 @@ export default function InitiativeTracker() {
                 isPlayer: false,
                 savingThrows: 3,
                 failedSaves: 0,
-                conditions: []
+                conditions: [],
             },
             {
                 id: 2004,
@@ -295,15 +304,17 @@ export default function InitiativeTracker() {
                 isPlayer: false,
                 savingThrows: 3,
                 failedSaves: 0,
-                conditions: ["grappled"]
-            }
+                conditions: ["grappled"],
+            },
         ];
 
-        setCombatants(exampleCombatants.sort((a, b) => b.initiative - a.initiative));
-        
+        setCombatants(
+            exampleCombatants.sort((a, b) => b.initiative - a.initiative)
+        );
+
         // Set up conditions
         const conditionsMap: { [key: number]: string[] } = {};
-        exampleCombatants.forEach(combatant => {
+        exampleCombatants.forEach((combatant) => {
             if (combatant.conditions.length > 0) {
                 conditionsMap[combatant.id] = combatant.conditions;
             }
@@ -318,7 +329,8 @@ export default function InitiativeTracker() {
                 id: Date.now(),
                 name: newCombatant.name,
                 initiative: Number(newCombatant.initiative),
-                initiativeModifier: Number(newCombatant.initiativeModifier) || 0,
+                initiativeModifier:
+                    Number(newCombatant.initiativeModifier) || 0,
                 hp: Number(newCombatant.hp) || 0,
                 maxHp: Number(newCombatant.hp) || 0,
                 ac: Number(newCombatant.ac) || 0,
@@ -381,14 +393,16 @@ export default function InitiativeTracker() {
 
     const rollInitiative = (combatantId: number) => {
         setCombatants((prev) =>
-            prev.map((c) => {
-                if (c.id === combatantId) {
-                    const d20Roll = Math.floor(Math.random() * 20) + 1;
-                    const newInitiative = d20Roll + c.initiativeModifier;
-                    return { ...c, initiative: newInitiative };
-                }
-                return c;
-            }).sort((a, b) => b.initiative - a.initiative)
+            prev
+                .map((c) => {
+                    if (c.id === combatantId) {
+                        const d20Roll = Math.floor(Math.random() * 20) + 1;
+                        const newInitiative = d20Roll + c.initiativeModifier;
+                        return { ...c, initiative: newInitiative };
+                    }
+                    return c;
+                })
+                .sort((a, b) => b.initiative - a.initiative)
         );
     };
 
@@ -398,7 +412,7 @@ export default function InitiativeTracker() {
             if (!current.includes(condition)) {
                 return {
                     ...prev,
-                    [combatantId]: [...current, condition]
+                    [combatantId]: [...current, condition],
                 };
             }
             return prev;
@@ -409,7 +423,10 @@ export default function InitiativeTracker() {
                 if (c.id === combatantId) {
                     const currentConditions = c.conditions || [];
                     if (!currentConditions.includes(condition)) {
-                        return { ...c, conditions: [...currentConditions, condition] };
+                        return {
+                            ...c,
+                            conditions: [...currentConditions, condition],
+                        };
                     }
                 }
                 return c;
@@ -422,16 +439,18 @@ export default function InitiativeTracker() {
             const current = prev[combatantId] || [];
             return {
                 ...prev,
-                [combatantId]: current.filter(c => c !== condition)
+                [combatantId]: current.filter((c) => c !== condition),
             };
         });
 
         setCombatants((prev) =>
             prev.map((c) => {
                 if (c.id === combatantId) {
-                    return { 
-                        ...c, 
-                        conditions: (c.conditions || []).filter(cond => cond !== condition) 
+                    return {
+                        ...c,
+                        conditions: (c.conditions || []).filter(
+                            (cond) => cond !== condition
+                        ),
                     };
                 }
                 return c;
@@ -507,24 +526,35 @@ export default function InitiativeTracker() {
                     <CardContent>
                         <div className="flex items-center gap-4">
                             <div className="flex items-center gap-2">
-                                <Label htmlFor="max-time">Max Turn Time (seconds):</Label>
+                                <Label htmlFor="max-time">
+                                    Max Turn Time (seconds):
+                                </Label>
                                 <Input
                                     id="max-time"
                                     type="number"
                                     value={maxTurnTime}
-                                    onChange={(e) => setMaxTurnTime(Number(e.target.value))}
+                                    onChange={(e) =>
+                                        setMaxTurnTime(Number(e.target.value))
+                                    }
                                     className="w-20"
                                 />
                             </div>
-                            <div className={`text-2xl font-mono ${getTimerColor()}`}>
-                                {formatTime(turnTimer)} / {formatTime(maxTurnTime)}
+                            <div
+                                className={`text-2xl font-mono ${getTimerColor()}`}
+                            >
+                                {formatTime(turnTimer)} /{" "}
+                                {formatTime(maxTurnTime)}
                             </div>
                             <Button
                                 variant="outline"
                                 size="sm"
                                 onClick={toggleTimer}
                             >
-                                {timerActive ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+                                {timerActive ? (
+                                    <Pause className="h-4 w-4" />
+                                ) : (
+                                    <Play className="h-4 w-4" />
+                                )}
                             </Button>
                             <Button
                                 variant="outline"
@@ -537,10 +567,18 @@ export default function InitiativeTracker() {
                         <div className="w-full bg-gray-200 rounded-full h-2 mt-2">
                             <div
                                 className={`h-2 rounded-full transition-all duration-1000 ${
-                                    turnTimer >= maxTurnTime * 0.9 ? 'bg-red-500' :
-                                    turnTimer >= maxTurnTime * 0.75 ? 'bg-yellow-500' : 'bg-green-500'
+                                    turnTimer >= maxTurnTime * 0.9
+                                        ? "bg-red-500"
+                                        : turnTimer >= maxTurnTime * 0.75
+                                        ? "bg-yellow-500"
+                                        : "bg-green-500"
                                 }`}
-                                style={{ width: `${Math.min((turnTimer / maxTurnTime) * 100, 100)}%` }}
+                                style={{
+                                    width: `${Math.min(
+                                        (turnTimer / maxTurnTime) * 100,
+                                        100
+                                    )}%`,
+                                }}
                             />
                         </div>
                     </CardContent>
@@ -719,7 +757,9 @@ export default function InitiativeTracker() {
                                         <Button
                                             variant="ghost"
                                             size="sm"
-                                            onClick={() => rollInitiative(combatant.id)}
+                                            onClick={() =>
+                                                rollInitiative(combatant.id)
+                                            }
                                             className="h-6 text-xs"
                                         >
                                             Reroll
@@ -754,35 +794,65 @@ export default function InitiativeTracker() {
                                                     </span>
                                                     <span className="flex items-center">
                                                         <Target className="mr-1 h-4 w-4" />
-                                                        Init Mod: +{combatant.initiativeModifier}
+                                                        Init Mod: +
+                                                        {
+                                                            combatant.initiativeModifier
+                                                        }
                                                     </span>
                                                 </>
                                             )}
                                         </div>
-                                        
+
                                         {/* Conditions Display */}
-                                        {combatant.conditions && combatant.conditions.length > 0 && (
-                                            <div className="flex flex-wrap gap-1 mt-2">
-                                                {combatant.conditions.map((condition) => (
-                                                    <Badge
-                                                        key={condition}
-                                                        variant="secondary"
-                                                        className={`${CONDITIONS[condition]?.color} text-white text-xs cursor-pointer hover:opacity-80`}
-                                                        onClick={() => removeCondition(combatant.id, condition)}
-                                                        title={`${CONDITIONS[condition]?.description} (Click to remove)`}
-                                                    >
-                                                        {CONDITIONS[condition]?.icon}
-                                                        <span className="ml-1">{CONDITIONS[condition]?.name}</span>
-                                                    </Badge>
-                                                ))}
-                                            </div>
-                                        )}
+                                        {combatant.conditions &&
+                                            combatant.conditions.length > 0 && (
+                                                <div className="flex flex-wrap gap-1 mt-2">
+                                                    {combatant.conditions.map(
+                                                        (condition) => (
+                                                            <Badge
+                                                                key={condition}
+                                                                variant="secondary"
+                                                                className={`${CONDITIONS[condition]?.color} text-white text-xs cursor-pointer hover:opacity-80`}
+                                                                onClick={() =>
+                                                                    removeCondition(
+                                                                        combatant.id,
+                                                                        condition
+                                                                    )
+                                                                }
+                                                                title={`${CONDITIONS[condition]?.description} (Click to remove)`}
+                                                            >
+                                                                {
+                                                                    CONDITIONS[
+                                                                        condition
+                                                                    ]?.icon
+                                                                }
+                                                                <span className="ml-1">
+                                                                    {
+                                                                        CONDITIONS[
+                                                                            condition
+                                                                        ]?.name
+                                                                    }
+                                                                </span>
+                                                            </Badge>
+                                                        )
+                                                    )}
+                                                </div>
+                                            )}
                                     </div>
                                 </div>
-                                
+
                                 <div className="flex items-center gap-2">
                                     {/* Conditions Button */}
-                                    <Dialog open={showConditionDialog === combatant.id} onOpenChange={(open) => setShowConditionDialog(open ? combatant.id : null)}>
+                                    <Dialog
+                                        open={
+                                            showConditionDialog === combatant.id
+                                        }
+                                        onOpenChange={(open) =>
+                                            setShowConditionDialog(
+                                                open ? combatant.id : null
+                                            )
+                                        }
+                                    >
                                         <DialogTrigger asChild>
                                             <Button variant="outline" size="sm">
                                                 <AlertTriangle className="h-4 w-4" />
@@ -790,28 +860,53 @@ export default function InitiativeTracker() {
                                         </DialogTrigger>
                                         <DialogContent className="max-w-2xl">
                                             <DialogHeader>
-                                                <DialogTitle>Manage Conditions - {combatant.name}</DialogTitle>
+                                                <DialogTitle>
+                                                    Manage Conditions -{" "}
+                                                    {combatant.name}
+                                                </DialogTitle>
                                             </DialogHeader>
                                             <div className="grid grid-cols-2 md:grid-cols-3 gap-2 max-h-96 overflow-y-auto">
-                                                {Object.entries(CONDITIONS).map(([key, condition]) => (
-                                                    <Button
-                                                        key={key}
-                                                        variant={combatant.conditions?.includes(key) ? "default" : "outline"}
-                                                        size="sm"
-                                                        onClick={() => {
-                                                            if (combatant.conditions?.includes(key)) {
-                                                                removeCondition(combatant.id, key);
-                                                            } else {
-                                                                addCondition(combatant.id, key);
+                                                {Object.entries(CONDITIONS).map(
+                                                    ([key, condition]) => (
+                                                        <Button
+                                                            key={key}
+                                                            variant={
+                                                                combatant.conditions?.includes(
+                                                                    key
+                                                                )
+                                                                    ? "default"
+                                                                    : "outline"
                                                             }
-                                                        }}
-                                                        className="justify-start text-left"
-                                                        title={condition.description}
-                                                    >
-                                                        {condition.icon}
-                                                        <span className="ml-2">{condition.name}</span>
-                                                    </Button>
-                                                ))}
+                                                            size="sm"
+                                                            onClick={() => {
+                                                                if (
+                                                                    combatant.conditions?.includes(
+                                                                        key
+                                                                    )
+                                                                ) {
+                                                                    removeCondition(
+                                                                        combatant.id,
+                                                                        key
+                                                                    );
+                                                                } else {
+                                                                    addCondition(
+                                                                        combatant.id,
+                                                                        key
+                                                                    );
+                                                                }
+                                                            }}
+                                                            className="justify-start text-left"
+                                                            title={
+                                                                condition.description
+                                                            }
+                                                        >
+                                                            {condition.icon}
+                                                            <span className="ml-2">
+                                                                {condition.name}
+                                                            </span>
+                                                        </Button>
+                                                    )
+                                                )}
                                             </div>
                                         </DialogContent>
                                     </Dialog>
@@ -821,7 +916,9 @@ export default function InitiativeTracker() {
                                         <>
                                             <Input
                                                 type="number"
-                                                value={hpChange[combatant.id] || 1}
+                                                value={
+                                                    hpChange[combatant.id] || 1
+                                                }
                                                 onChange={(e) =>
                                                     handleHpChange(
                                                         combatant.id,
@@ -852,7 +949,9 @@ export default function InitiativeTracker() {
                                                 onClick={() =>
                                                     updateHP(
                                                         combatant.id,
-                                                        hpChange[combatant.id] || 1
+                                                        hpChange[
+                                                            combatant.id
+                                                        ] || 1
                                                     )
                                                 }
                                             >

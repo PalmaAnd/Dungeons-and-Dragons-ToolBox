@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useState, useEffect } from "react";
@@ -24,15 +26,25 @@ import {
     DialogHeader,
     DialogTitle,
 } from "@/components/ui/dialog";
-import { CharacterSheetPDFGenerator, printCharacterSheet, type CharacterSheetData } from "@/lib/pdf-generator";
-import { 
-    calculateRacialBonuses, 
-    calculateHitPointsForLevel, 
+import {
+    CharacterSheetPDFGenerator,
+    printCharacterSheet,
+    type CharacterSheetData,
+} from "@/lib/pdf-generator";
+import {
+    calculateRacialBonuses,
+    calculateHitPointsForLevel,
     calculateArmorClass,
-    validateCharacterData,
     getDefaultSpells,
-    getAvailableSpells
 } from "@/lib/character-calculations";
+
+// Add the missing CharacterData type
+type CharacterData = {
+    classes: string[];
+    races: string[];
+    alignments: string[];
+    traits: string[];
+};
 
 type ClassInfo = {
     hitDie: string;
@@ -59,7 +71,7 @@ type RaceInfo = {
     traits: string[];
     subraces?: Array<{
         name: string;
-        abilityScoreIncrease: Record<string, number>;
+        abilityScoreIncrease: Partial<Record<string, number>>;
         traits: string[];
     }>;
     variants?: Array<{
@@ -90,7 +102,7 @@ type Equipment = {
     contents?: string[];
 };
 
-type EnhancedCharacterData = {
+export type EnhancedCharacterData = {
     classes: Record<string, ClassInfo>;
     races: Record<string, RaceInfo>;
     backgrounds: Background[];
@@ -146,17 +158,13 @@ type EnhancedCharacterData = {
         racialSpells: Record<string, any>;
         classSpells: Record<string, any>;
     };
-    levelProgression: Record<string, {
-        proficiencyBonus: number;
-        features: string[];
-    }>;
-};
-
-type CharacterData = {
-    classes: string[];
-    races: string[];
-    alignments: string[];
-    traits: string[];
+    levelProgression: Record<
+        string,
+        {
+            proficiencyBonus: number;
+            features: string[];
+        }
+    >;
 };
 
 type Ability =
@@ -178,21 +186,20 @@ const abilities: Ability[] = [
 
 const alignments = [
     "Lawful Good",
-    "Neutral Good", 
+    "Neutral Good",
     "Chaotic Good",
     "Lawful Neutral",
     "True Neutral",
     "Chaotic Neutral",
     "Lawful Evil",
     "Neutral Evil",
-    "Chaotic Evil"
+    "Chaotic Evil",
 ];
 
 export function CharacterCreator({
-    characterData,
     enhancedData,
 }: {
-    characterData: CharacterData;
+    characterData?: CharacterData;
     enhancedData: EnhancedCharacterData;
 }) {
     const [character, setCharacter] = useState({
@@ -205,7 +212,7 @@ export function CharacterCreator({
         subrace: "",
         background: "",
         alignment: "",
-        
+
         // Abilities
         abilities: {
             strength: 10,
@@ -215,13 +222,13 @@ export function CharacterCreator({
             wisdom: 10,
             charisma: 10,
         },
-        
+
         // Character Details
         hitPoints: 0,
         armorClass: 10,
         speed: 30,
         proficiencyBonus: 2,
-        
+
         // Skills & Proficiencies
         skills: [] as string[],
         proficiencies: {
@@ -230,13 +237,13 @@ export function CharacterCreator({
             tools: [] as string[],
             languages: [] as string[],
         },
-        
+
         // Equipment
         equipment: [] as string[],
         weapons: [] as string[],
         armor: "",
         selectedPack: "",
-        
+
         // Spells (for spellcasters)
         spells: {
             cantrips: [] as string[],
@@ -244,14 +251,14 @@ export function CharacterCreator({
             level2: [] as string[],
             level3: [] as string[],
         },
-        
+
         // Character Story
         personality: "",
         ideals: "",
         bonds: "",
         flaws: "",
         backstory: "",
-        
+
         // Features & Traits
         features: [] as string[],
         traits: [] as string[],
@@ -262,44 +269,61 @@ export function CharacterCreator({
 
     // Calculate derived stats
     const getAbilityModifier = (score: number) => Math.floor((score - 10) / 2);
-    
+
     const calculateHitPoints = () => {
         if (!character.class) return 0;
-        const conModifier = getAbilityModifier(character.abilities.constitution);
-        return calculateHitPointsForLevel(character.level, character.class, conModifier, enhancedData);
+        const conModifier = getAbilityModifier(
+            character.abilities.constitution
+        );
+        return calculateHitPointsForLevel(
+            character.level,
+            character.class,
+            conModifier,
+            enhancedData
+        );
     };
 
     const calculateArmorClassValue = () => {
         const dexModifier = getAbilityModifier(character.abilities.dexterity);
-        return calculateArmorClass(dexModifier, character.armor, false, enhancedData);
+        return calculateArmorClass(
+            dexModifier,
+            character.armor,
+            false,
+            enhancedData
+        );
     };
 
     const applyRacialBonuses = () => {
         if (!character.race) return;
-        
+
         const modifiedAbilities = calculateRacialBonuses(
             character.race,
             character.subrace,
             enhancedData,
             character.abilities
         );
-        
-        setCharacter(prev => ({
+
+        setCharacter((prev) => ({
             ...prev,
             abilities: {
                 strength: modifiedAbilities.strength || prev.abilities.strength,
-                dexterity: modifiedAbilities.dexterity || prev.abilities.dexterity,
-                constitution: modifiedAbilities.constitution || prev.abilities.constitution,
-                intelligence: modifiedAbilities.intelligence || prev.abilities.intelligence,
+                dexterity:
+                    modifiedAbilities.dexterity || prev.abilities.dexterity,
+                constitution:
+                    modifiedAbilities.constitution ||
+                    prev.abilities.constitution,
+                intelligence:
+                    modifiedAbilities.intelligence ||
+                    prev.abilities.intelligence,
                 wisdom: modifiedAbilities.wisdom || prev.abilities.wisdom,
                 charisma: modifiedAbilities.charisma || prev.abilities.charisma,
-            }
+            },
         }));
     };
 
     const applyDefaultSpells = () => {
         if (!character.class) return;
-        
+
         const defaultSpells = getDefaultSpells(
             character.level,
             character.class,
@@ -307,27 +331,55 @@ export function CharacterCreator({
             character.subrace,
             enhancedData
         );
-        
-        setCharacter(prev => ({
+
+        setCharacter((prev) => ({
             ...prev,
             spells: {
-                cantrips: [...new Set([...prev.spells.cantrips, ...defaultSpells.cantrips])],
-                level1: [...new Set([...prev.spells.level1, ...defaultSpells.level1])],
-                level2: [...new Set([...prev.spells.level2, ...defaultSpells.level2])],
-                level3: [...new Set([...prev.spells.level3, ...defaultSpells.level3])],
-            }
+                cantrips: [
+                    ...new Set([
+                        ...prev.spells.cantrips,
+                        ...defaultSpells.cantrips,
+                    ]),
+                ],
+                level1: [
+                    ...new Set([
+                        ...prev.spells.level1,
+                        ...defaultSpells.level1,
+                    ]),
+                ],
+                level2: [
+                    ...new Set([
+                        ...prev.spells.level2,
+                        ...defaultSpells.level2,
+                    ]),
+                ],
+                level3: [
+                    ...new Set([
+                        ...prev.spells.level3,
+                        ...defaultSpells.level3,
+                    ]),
+                ],
+            },
         }));
     };
 
     useEffect(() => {
-        setCharacter(prev => ({
+        setCharacter((prev) => ({
             ...prev,
             hitPoints: calculateHitPoints(),
             armorClass: calculateArmorClassValue(),
         }));
-    }, [character.class, character.level, character.abilities.constitution, character.abilities.dexterity, character.armor]);
+    }, [
+        character.class,
+        character.level,
+        character.abilities.constitution,
+        character.abilities.dexterity,
+        character.armor,
+    ]);
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleInputChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
         setCharacter({ ...character, [e.target.name]: e.target.value });
     };
 
@@ -348,7 +400,10 @@ export function CharacterCreator({
 
     const rollAbilities = () => {
         const rollStat = () => {
-            const rolls = Array.from({ length: 4 }, () => Math.floor(Math.random() * 6) + 1);
+            const rolls = Array.from(
+                { length: 4 },
+                () => Math.floor(Math.random() * 6) + 1
+            );
             rolls.sort((a, b) => b - a);
             return rolls.slice(0, 3).reduce((sum, roll) => sum + roll, 0);
         };
@@ -381,7 +436,9 @@ export function CharacterCreator({
 
     const exportToJson = () => {
         const dataStr = JSON.stringify(character, null, 2);
-        const dataUri = "data:application/json;charset=utf-8," + encodeURIComponent(dataStr);
+        const dataUri =
+            "data:application/json;charset=utf-8," +
+            encodeURIComponent(dataStr);
         const exportFileDefaultName = (character.name || "character") + ".json";
 
         const linkElement = document.createElement("a");
@@ -391,32 +448,6 @@ export function CharacterCreator({
     };
 
     const exportToPDF = async () => {
-        const characterSheetData: CharacterSheetData = {
-            name: character.name,
-            level: character.level,
-            class: character.class,
-            subclass: character.subclass,
-            race: character.race,
-            subrace: character.subrace,
-            background: character.background,
-            alignment: character.alignment,
-            abilities: character.abilities,
-            hitPoints: character.hitPoints,
-            armorClass: character.armorClass,
-            speed: character.speed,
-            proficiencyBonus: character.proficiencyBonus,
-            skills: character.skills,
-            equipment: character.equipment,
-            selectedPack: character.selectedPack,
-            spells: character.spells,
-            personality: character.personality,
-            ideals: character.ideals,
-            bonds: character.bonds,
-            flaws: character.flaws,
-            backstory: character.backstory,
-        };
-        
-        // Show preview dialog first
         setShowExportDialog(true);
     };
 
@@ -445,7 +476,7 @@ export function CharacterCreator({
             flaws: character.flaws,
             backstory: character.backstory,
         };
-        
+
         CharacterSheetPDFGenerator.downloadPDF(characterSheetData);
         setShowExportDialog(false);
     };
@@ -475,7 +506,7 @@ export function CharacterCreator({
             flaws: character.flaws,
             backstory: character.backstory,
         };
-        
+
         printCharacterSheet(characterSheetData);
         setShowExportDialog(false);
     };
@@ -491,7 +522,7 @@ export function CharacterCreator({
                 const importedCharacter = JSON.parse(json);
                 setCharacter(importedCharacter);
             } catch (error) {
-                alert("Error importing character: Invalid JSON file");
+                alert("Error importing character: Invalid JSON file" + error);
             }
         };
         reader.readAsText(file);
@@ -500,28 +531,39 @@ export function CharacterCreator({
     const levelUp = () => {
         if (character.level < 20) {
             const newLevel = character.level + 1;
-            const levelData = enhancedData.levelProgression[newLevel.toString()];
-            
-            setCharacter(prev => ({
+            const levelData =
+                enhancedData.levelProgression[newLevel.toString()];
+
+            setCharacter((prev) => ({
                 ...prev,
                 level: newLevel,
-                proficiencyBonus: levelData?.proficiencyBonus || prev.proficiencyBonus,
+                proficiencyBonus:
+                    levelData?.proficiencyBonus || prev.proficiencyBonus,
             }));
         }
     };
 
     const getSelectedClassInfo = () => enhancedData.classes[character.class];
     const getSelectedRaceInfo = () => enhancedData.races[character.race];
-    const getSelectedBackground = () => enhancedData.backgrounds.find(bg => bg.name === character.background);
+    const getSelectedBackground = () =>
+        enhancedData.backgrounds.find((bg) => bg.name === character.background);
 
     return (
         <div className="max-w-6xl mx-auto p-4 space-y-6">
             <div className="text-center">
-                <h1 className="text-3xl font-bold">Enhanced Character Creator</h1>
-                <p className="text-muted-foreground">Create your D&D 5e character with all the details</p>
+                <h1 className="text-3xl font-bold">
+                    Enhanced Character Creator
+                </h1>
+                <p className="text-muted-foreground">
+                    Create your D&D 5e character with all the details
+                </p>
             </div>
 
-            <Tabs value={currentTab} onValueChange={setCurrentTab} className="w-full">
+            <Tabs
+                value={currentTab}
+                onValueChange={setCurrentTab}
+                className="w-full"
+            >
                 <TabsList className="grid w-full grid-cols-6">
                     <TabsTrigger value="basics">Basics</TabsTrigger>
                     <TabsTrigger value="abilities">Abilities</TabsTrigger>
@@ -548,7 +590,7 @@ export function CharacterCreator({
                                     required
                                 />
                             </div>
-                            
+
                             <div>
                                 <Label htmlFor="level">Level</Label>
                                 <div className="flex items-center gap-2">
@@ -559,9 +601,19 @@ export function CharacterCreator({
                                         min="1"
                                         max="20"
                                         value={character.level}
-                                        onChange={(e) => setCharacter({...character, level: parseInt(e.target.value) || 1})}
+                                        onChange={(e) =>
+                                            setCharacter({
+                                                ...character,
+                                                level:
+                                                    parseInt(e.target.value) ||
+                                                    1,
+                                            })
+                                        }
                                     />
-                                    <Button onClick={levelUp} disabled={character.level >= 20}>
+                                    <Button
+                                        onClick={levelUp}
+                                        disabled={character.level >= 20}
+                                    >
                                         Level Up
                                     </Button>
                                 </div>
@@ -572,98 +624,144 @@ export function CharacterCreator({
                                 <Select
                                     name="class"
                                     value={character.class}
-                                    onValueChange={(value) => handleSelectChange("class", value)}
+                                    onValueChange={(value) =>
+                                        handleSelectChange("class", value)
+                                    }
                                 >
                                     <SelectTrigger>
                                         <SelectValue placeholder="Select a class" />
                                     </SelectTrigger>
                                     <SelectContent>
-                                        {Object.keys(enhancedData.classes).map((className) => (
-                                            <SelectItem key={className} value={className}>
-                                                {className}
-                                            </SelectItem>
-                                        ))}
+                                        {Object.keys(enhancedData.classes).map(
+                                            (className) => (
+                                                <SelectItem
+                                                    key={className}
+                                                    value={className}
+                                                >
+                                                    {className}
+                                                </SelectItem>
+                                            )
+                                        )}
                                     </SelectContent>
                                 </Select>
                             </div>
 
-                            {character.class && getSelectedClassInfo()?.subclasses.length > 0 && (
-                                <div>
-                                    <Label htmlFor="subclass">Subclass</Label>
-                                    <Select
-                                        name="subclass"
-                                        value={character.subclass}
-                                        onValueChange={(value) => handleSelectChange("subclass", value)}
-                                    >
-                                        <SelectTrigger>
-                                            <SelectValue placeholder="Select a subclass" />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            {getSelectedClassInfo()?.subclasses.map((subclass) => (
-                                                <SelectItem key={subclass.name} value={subclass.name}>
-                                                    {subclass.name}
-                                                </SelectItem>
-                                            ))}
-                                        </SelectContent>
-                                    </Select>
-                                </div>
-                            )}
+                            {character.class &&
+                                getSelectedClassInfo()?.subclasses.length >
+                                    0 && (
+                                    <div>
+                                        <Label htmlFor="subclass">
+                                            Subclass
+                                        </Label>
+                                        <Select
+                                            name="subclass"
+                                            value={character.subclass}
+                                            onValueChange={(value) =>
+                                                handleSelectChange(
+                                                    "subclass",
+                                                    value
+                                                )
+                                            }
+                                        >
+                                            <SelectTrigger>
+                                                <SelectValue placeholder="Select a subclass" />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                {getSelectedClassInfo()?.subclasses.map(
+                                                    (subclass) => (
+                                                        <SelectItem
+                                                            key={subclass.name}
+                                                            value={
+                                                                subclass.name
+                                                            }
+                                                        >
+                                                            {subclass.name}
+                                                        </SelectItem>
+                                                    )
+                                                )}
+                                            </SelectContent>
+                                        </Select>
+                                    </div>
+                                )}
 
                             <div>
                                 <Label htmlFor="race">Race</Label>
                                 <Select
                                     name="race"
                                     value={character.race}
-                                    onValueChange={(value) => handleSelectChange("race", value)}
+                                    onValueChange={(value) =>
+                                        handleSelectChange("race", value)
+                                    }
                                 >
                                     <SelectTrigger>
                                         <SelectValue placeholder="Select a race" />
                                     </SelectTrigger>
                                     <SelectContent>
-                                        {Object.keys(enhancedData.races).map((raceName) => (
-                                            <SelectItem key={raceName} value={raceName}>
-                                                {raceName}
-                                            </SelectItem>
-                                        ))}
+                                        {Object.keys(enhancedData.races).map(
+                                            (raceName) => (
+                                                <SelectItem
+                                                    key={raceName}
+                                                    value={raceName}
+                                                >
+                                                    {raceName}
+                                                </SelectItem>
+                                            )
+                                        )}
                                     </SelectContent>
                                 </Select>
                             </div>
 
-                            {character.race && getSelectedRaceInfo()?.subraces && (
-                                <div>
-                                    <Label htmlFor="subrace">Subrace</Label>
-                                    <Select
-                                        name="subrace"
-                                        value={character.subrace}
-                                        onValueChange={(value) => handleSelectChange("subrace", value)}
-                                    >
-                                        <SelectTrigger>
-                                            <SelectValue placeholder="Select a subrace" />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            {getSelectedRaceInfo()?.subraces?.map((subrace) => (
-                                                <SelectItem key={subrace.name} value={subrace.name}>
-                                                    {subrace.name}
-                                                </SelectItem>
-                                            ))}
-                                        </SelectContent>
-                                    </Select>
-                                </div>
-                            )}
+                            {character.race &&
+                                getSelectedRaceInfo()?.subraces && (
+                                    <div>
+                                        <Label htmlFor="subrace">Subrace</Label>
+                                        <Select
+                                            name="subrace"
+                                            value={character.subrace}
+                                            onValueChange={(value) =>
+                                                handleSelectChange(
+                                                    "subrace",
+                                                    value
+                                                )
+                                            }
+                                        >
+                                            <SelectTrigger>
+                                                <SelectValue placeholder="Select a subrace" />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                {getSelectedRaceInfo()?.subraces?.map(
+                                                    (subrace) => (
+                                                        <SelectItem
+                                                            key={subrace.name}
+                                                            value={subrace.name}
+                                                        >
+                                                            {subrace.name}
+                                                        </SelectItem>
+                                                    )
+                                                )}
+                                            </SelectContent>
+                                        </Select>
+                                    </div>
+                                )}
 
                             <div>
                                 <Label htmlFor="background">Background</Label>
                                 <Select
                                     name="background"
                                     value={character.background}
-                                    onValueChange={(value) => handleSelectChange("background", value)}
+                                    onValueChange={(value) =>
+                                        handleSelectChange("background", value)
+                                    }
                                 >
                                     <SelectTrigger>
                                         <SelectValue placeholder="Select a background" />
                                     </SelectTrigger>
                                     <SelectContent>
                                         {enhancedData.backgrounds.map((bg) => (
-                                            <SelectItem key={bg.name} value={bg.name}>
+                                            <SelectItem
+                                                key={bg.name}
+                                                value={bg.name}
+                                            >
                                                 {bg.name}
                                             </SelectItem>
                                         ))}
@@ -676,14 +774,19 @@ export function CharacterCreator({
                                 <Select
                                     name="alignment"
                                     value={character.alignment}
-                                    onValueChange={(value) => handleSelectChange("alignment", value)}
+                                    onValueChange={(value) =>
+                                        handleSelectChange("alignment", value)
+                                    }
                                 >
                                     <SelectTrigger>
                                         <SelectValue placeholder="Select an alignment" />
                                     </SelectTrigger>
                                     <SelectContent>
                                         {alignments.map((alignment) => (
-                                            <SelectItem key={alignment} value={alignment}>
+                                            <SelectItem
+                                                key={alignment}
+                                                value={alignment}
+                                            >
                                                 {alignment}
                                             </SelectItem>
                                         ))}
@@ -701,20 +804,36 @@ export function CharacterCreator({
                         <CardContent>
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                                 <div className="text-center">
-                                    <p className="text-sm text-muted-foreground">Hit Points</p>
-                                    <p className="text-2xl font-bold">{character.hitPoints}</p>
+                                    <p className="text-sm text-muted-foreground">
+                                        Hit Points
+                                    </p>
+                                    <p className="text-2xl font-bold">
+                                        {character.hitPoints}
+                                    </p>
                                 </div>
                                 <div className="text-center">
-                                    <p className="text-sm text-muted-foreground">Armor Class</p>
-                                    <p className="text-2xl font-bold">{character.armorClass}</p>
+                                    <p className="text-sm text-muted-foreground">
+                                        Armor Class
+                                    </p>
+                                    <p className="text-2xl font-bold">
+                                        {character.armorClass}
+                                    </p>
                                 </div>
                                 <div className="text-center">
-                                    <p className="text-sm text-muted-foreground">Speed</p>
-                                    <p className="text-2xl font-bold">{character.speed} ft</p>
+                                    <p className="text-sm text-muted-foreground">
+                                        Speed
+                                    </p>
+                                    <p className="text-2xl font-bold">
+                                        {character.speed} ft
+                                    </p>
                                 </div>
                                 <div className="text-center">
-                                    <p className="text-sm text-muted-foreground">Proficiency Bonus</p>
-                                    <p className="text-2xl font-bold">+{character.proficiencyBonus}</p>
+                                    <p className="text-sm text-muted-foreground">
+                                        Proficiency Bonus
+                                    </p>
+                                    <p className="text-2xl font-bold">
+                                        +{character.proficiencyBonus}
+                                    </p>
                                 </div>
                             </div>
                         </CardContent>
@@ -726,17 +845,41 @@ export function CharacterCreator({
                             {character.class && (
                                 <Card>
                                     <CardHeader>
-                                        <CardTitle>{character.class} Information</CardTitle>
+                                        <CardTitle>
+                                            {character.class} Information
+                                        </CardTitle>
                                     </CardHeader>
                                     <CardContent className="space-y-2">
-                                        <p><strong>Hit Die:</strong> {getSelectedClassInfo()?.hitDie}</p>
-                                        <p><strong>Primary Abilities:</strong> {getSelectedClassInfo()?.primaryAbilities.join(", ")}</p>
-                                        <p><strong>Saving Throws:</strong> {getSelectedClassInfo()?.savingThrows.join(", ")}</p>
+                                        <p>
+                                            <strong>Hit Die:</strong>{" "}
+                                            {getSelectedClassInfo()?.hitDie}
+                                        </p>
+                                        <p>
+                                            <strong>Primary Abilities:</strong>{" "}
+                                            {getSelectedClassInfo()?.primaryAbilities.join(
+                                                ", "
+                                            )}
+                                        </p>
+                                        <p>
+                                            <strong>Saving Throws:</strong>{" "}
+                                            {getSelectedClassInfo()?.savingThrows.join(
+                                                ", "
+                                            )}
+                                        </p>
                                         {character.subclass && (
                                             <div>
-                                                <p><strong>Subclass:</strong> {character.subclass}</p>
+                                                <p>
+                                                    <strong>Subclass:</strong>{" "}
+                                                    {character.subclass}
+                                                </p>
                                                 <p className="text-sm text-muted-foreground">
-                                                    {getSelectedClassInfo()?.subclasses.find(sc => sc.name === character.subclass)?.description}
+                                                    {
+                                                        getSelectedClassInfo()?.subclasses.find(
+                                                            (sc) =>
+                                                                sc.name ===
+                                                                character.subclass
+                                                        )?.description
+                                                    }
                                                 </p>
                                             </div>
                                         )}
@@ -747,18 +890,40 @@ export function CharacterCreator({
                             {character.race && (
                                 <Card>
                                     <CardHeader>
-                                        <CardTitle>{character.race} Information</CardTitle>
+                                        <CardTitle>
+                                            {character.race} Information
+                                        </CardTitle>
                                     </CardHeader>
                                     <CardContent className="space-y-2">
-                                        <p><strong>Size:</strong> {getSelectedRaceInfo()?.size}</p>
-                                        <p><strong>Speed:</strong> {getSelectedRaceInfo()?.speed} feet</p>
-                                        <p><strong>Languages:</strong> {getSelectedRaceInfo()?.languages.join(", ")}</p>
+                                        <p>
+                                            <strong>Size:</strong>{" "}
+                                            {getSelectedRaceInfo()?.size}
+                                        </p>
+                                        <p>
+                                            <strong>Speed:</strong>{" "}
+                                            {getSelectedRaceInfo()?.speed} feet
+                                        </p>
+                                        <p>
+                                            <strong>Languages:</strong>{" "}
+                                            {getSelectedRaceInfo()?.languages.join(
+                                                ", "
+                                            )}
+                                        </p>
                                         <div>
-                                            <p><strong>Traits:</strong></p>
+                                            <p>
+                                                <strong>Traits:</strong>
+                                            </p>
                                             <div className="flex flex-wrap gap-1 mt-1">
-                                                {getSelectedRaceInfo()?.traits.map((trait) => (
-                                                    <Badge key={trait} variant="outline">{trait}</Badge>
-                                                ))}
+                                                {getSelectedRaceInfo()?.traits.map(
+                                                    (trait) => (
+                                                        <Badge
+                                                            key={trait}
+                                                            variant="outline"
+                                                        >
+                                                            {trait}
+                                                        </Badge>
+                                                    )
+                                                )}
                                             </div>
                                         </div>
                                     </CardContent>
@@ -773,19 +938,38 @@ export function CharacterCreator({
                         <CardHeader>
                             <CardTitle>Ability Scores</CardTitle>
                             <div className="flex gap-2">
-                                <Button onClick={rollAbilities} variant="outline">
+                                <Button
+                                    onClick={rollAbilities}
+                                    variant="outline"
+                                >
                                     Roll 4d6, Drop Lowest
                                 </Button>
-                                <Button onClick={standardArray} variant="outline">
+                                <Button
+                                    onClick={standardArray}
+                                    variant="outline"
+                                >
                                     Use Standard Array
                                 </Button>
                                 {character.race && (
-                                    <Button onClick={applyRacialBonuses} variant="outline">
+                                    <Button
+                                        onClick={applyRacialBonuses}
+                                        variant="outline"
+                                    >
                                         Apply Racial Bonuses
                                     </Button>
                                 )}
-                                {["Wizard", "Sorcerer", "Warlock", "Bard", "Cleric", "Druid"].includes(character.class) && (
-                                    <Button onClick={applyDefaultSpells} variant="outline">
+                                {[
+                                    "Wizard",
+                                    "Sorcerer",
+                                    "Warlock",
+                                    "Bard",
+                                    "Cleric",
+                                    "Druid",
+                                ].includes(character.class) && (
+                                    <Button
+                                        onClick={applyDefaultSpells}
+                                        variant="outline"
+                                    >
                                         Add Default Spells
                                     </Button>
                                 )}
@@ -795,8 +979,12 @@ export function CharacterCreator({
                             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                                 {abilities.map((ability) => (
                                     <div key={ability} className="space-y-2">
-                                        <Label htmlFor={ability} className="text-sm font-medium">
-                                            {ability.charAt(0).toUpperCase() + ability.slice(1)}
+                                        <Label
+                                            htmlFor={ability}
+                                            className="text-sm font-medium"
+                                        >
+                                            {ability.charAt(0).toUpperCase() +
+                                                ability.slice(1)}
                                         </Label>
                                         <Input
                                             id={ability}
@@ -805,13 +993,25 @@ export function CharacterCreator({
                                             min="3"
                                             max="20"
                                             value={character.abilities[ability]}
-                                            onChange={(e) => handleAbilityChange(ability, e.target.value)}
+                                            onChange={(e) =>
+                                                handleAbilityChange(
+                                                    ability,
+                                                    e.target.value
+                                                )
+                                            }
                                             className="text-center"
                                         />
                                         <div className="text-center">
                                             <span className="text-sm text-muted-foreground">
-                                                Modifier: {getAbilityModifier(character.abilities[ability]) >= 0 ? '+' : ''}
-                                                {getAbilityModifier(character.abilities[ability])}
+                                                Modifier:{" "}
+                                                {getAbilityModifier(
+                                                    character.abilities[ability]
+                                                ) >= 0
+                                                    ? "+"
+                                                    : ""}
+                                                {getAbilityModifier(
+                                                    character.abilities[ability]
+                                                )}
                                             </span>
                                         </div>
                                     </div>
@@ -829,15 +1029,36 @@ export function CharacterCreator({
                             <CardContent>
                                 <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                                     {abilities.map((ability) => {
-                                        const modifier = getAbilityModifier(character.abilities[ability]);
-                                        const isProficient = getSelectedClassInfo()?.savingThrows.includes(ability);
-                                        const totalBonus = modifier + (isProficient ? character.proficiencyBonus : 0);
-                                        
+                                        const modifier = getAbilityModifier(
+                                            character.abilities[ability]
+                                        );
+                                        const isProficient =
+                                            getSelectedClassInfo()?.savingThrows.includes(
+                                                ability
+                                            );
+                                        const totalBonus =
+                                            modifier +
+                                            (isProficient
+                                                ? character.proficiencyBonus
+                                                : 0);
+
                                         return (
-                                            <div key={ability} className="flex justify-between items-center p-2 border rounded">
-                                                <span className="capitalize">{ability}</span>
-                                                <span className={isProficient ? "font-bold" : ""}>
-                                                    {totalBonus >= 0 ? '+' : ''}{totalBonus}
+                                            <div
+                                                key={ability}
+                                                className="flex justify-between items-center p-2 border rounded"
+                                            >
+                                                <span className="capitalize">
+                                                    {ability}
+                                                </span>
+                                                <span
+                                                    className={
+                                                        isProficient
+                                                            ? "font-bold"
+                                                            : ""
+                                                    }
+                                                >
+                                                    {totalBonus >= 0 ? "+" : ""}
+                                                    {totalBonus}
                                                 </span>
                                             </div>
                                         );
@@ -857,9 +1078,14 @@ export function CharacterCreator({
                             {/* Skills would be implemented here */}
                             {character.class && (
                                 <div>
-                                    <h4 className="font-semibold mb-2">Available Skills for {character.class}</h4>
+                                    <h4 className="font-semibold mb-2">
+                                        Available Skills for {character.class}
+                                    </h4>
                                     <div className="text-sm text-muted-foreground">
-                                        Choose from: {getSelectedClassInfo()?.skillOptions.join(", ")}
+                                        Choose from:{" "}
+                                        {getSelectedClassInfo()?.skillOptions.join(
+                                            ", "
+                                        )}
                                     </div>
                                 </div>
                             )}
@@ -867,16 +1093,27 @@ export function CharacterCreator({
                             {/* Proficiencies */}
                             {character.class && (
                                 <div className="space-y-2">
-                                    <h4 className="font-semibold">Class Proficiencies</h4>
+                                    <h4 className="font-semibold">
+                                        Class Proficiencies
+                                    </h4>
                                     <div className="space-y-2 text-sm">
                                         <div>
-                                            <strong>Armor:</strong> {getSelectedClassInfo()?.proficiencies.armor.join(", ") || "None"}
+                                            <strong>Armor:</strong>{" "}
+                                            {getSelectedClassInfo()?.proficiencies.armor.join(
+                                                ", "
+                                            ) || "None"}
                                         </div>
                                         <div>
-                                            <strong>Weapons:</strong> {getSelectedClassInfo()?.proficiencies.weapons.join(", ") || "None"}
+                                            <strong>Weapons:</strong>{" "}
+                                            {getSelectedClassInfo()?.proficiencies.weapons.join(
+                                                ", "
+                                            ) || "None"}
                                         </div>
                                         <div>
-                                            <strong>Tools:</strong> {getSelectedClassInfo()?.proficiencies.tools.join(", ") || "None"}
+                                            <strong>Tools:</strong>{" "}
+                                            {getSelectedClassInfo()?.proficiencies.tools.join(
+                                                ", "
+                                            ) || "None"}
                                         </div>
                                     </div>
                                 </div>
@@ -885,19 +1122,31 @@ export function CharacterCreator({
                             {/* Background Proficiencies */}
                             {character.background && (
                                 <div className="space-y-2">
-                                    <h4 className="font-semibold">Background Proficiencies</h4>
+                                    <h4 className="font-semibold">
+                                        Background Proficiencies
+                                    </h4>
                                     <div className="space-y-2 text-sm">
                                         <div>
-                                            <strong>Skills:</strong> {getSelectedBackground()?.skillProficiencies.join(", ")}
+                                            <strong>Skills:</strong>{" "}
+                                            {getSelectedBackground()?.skillProficiencies.join(
+                                                ", "
+                                            )}
                                         </div>
-                                        {getSelectedBackground()?.toolProficiencies && (
+                                        {getSelectedBackground()
+                                            ?.toolProficiencies && (
                                             <div>
-                                                <strong>Tools:</strong> {getSelectedBackground()?.toolProficiencies?.join(", ")}
+                                                <strong>Tools:</strong>{" "}
+                                                {getSelectedBackground()?.toolProficiencies?.join(
+                                                    ", "
+                                                )}
                                             </div>
                                         )}
                                         {getSelectedBackground()?.languages && (
                                             <div>
-                                                <strong>Languages:</strong> {getSelectedBackground()?.languages?.join(", ")}
+                                                <strong>Languages:</strong>{" "}
+                                                {getSelectedBackground()?.languages?.join(
+                                                    ", "
+                                                )}
                                             </div>
                                         )}
                                     </div>
@@ -916,14 +1165,21 @@ export function CharacterCreator({
                             {/* Starting Equipment */}
                             {character.class && (
                                 <div>
-                                    <h4 className="font-semibold mb-2">Starting Equipment for {character.class}</h4>
+                                    <h4 className="font-semibold mb-2">
+                                        Starting Equipment for {character.class}
+                                    </h4>
                                     <ul className="text-sm space-y-1">
-                                        {getSelectedClassInfo()?.startingEquipment.map((item, index) => (
-                                            <li key={index} className="flex items-center gap-2">
-                                                <span>•</span>
-                                                <span>{item}</span>
-                                            </li>
-                                        ))}
+                                        {getSelectedClassInfo()?.startingEquipment.map(
+                                            (item, index) => (
+                                                <li
+                                                    key={index}
+                                                    className="flex items-center gap-2"
+                                                >
+                                                    <span>•</span>
+                                                    <span>{item}</span>
+                                                </li>
+                                            )
+                                        )}
                                     </ul>
                                 </div>
                             )}
@@ -931,38 +1187,57 @@ export function CharacterCreator({
                             {/* Background Equipment */}
                             {character.background && (
                                 <div>
-                                    <h4 className="font-semibold mb-2">Background Equipment</h4>
+                                    <h4 className="font-semibold mb-2">
+                                        Background Equipment
+                                    </h4>
                                     <ul className="text-sm space-y-1">
-                                        {getSelectedBackground()?.equipment.map((item, index) => (
-                                            <li key={index} className="flex items-center gap-2">
-                                                <span>•</span>
-                                                <span>{item}</span>
-                                            </li>
-                                        ))}
+                                        {getSelectedBackground()?.equipment.map(
+                                            (item, index) => (
+                                                <li
+                                                    key={index}
+                                                    className="flex items-center gap-2"
+                                                >
+                                                    <span>•</span>
+                                                    <span>{item}</span>
+                                                </li>
+                                            )
+                                        )}
                                     </ul>
                                 </div>
                             )}
 
                             {/* Equipment Packs */}
                             <div>
-                                <h4 className="font-semibold mb-2">Select Equipment Pack</h4>
+                                <h4 className="font-semibold mb-2">
+                                    Select Equipment Pack
+                                </h4>
                                 <Select
                                     name="selectedPack"
                                     value={character.selectedPack}
-                                    onValueChange={(value) => handleSelectChange("selectedPack", value)}
+                                    onValueChange={(value) =>
+                                        handleSelectChange(
+                                            "selectedPack",
+                                            value
+                                        )
+                                    }
                                 >
                                     <SelectTrigger>
                                         <SelectValue placeholder="Choose an equipment pack" />
                                     </SelectTrigger>
                                     <SelectContent>
-                                        {enhancedData.equipment.packs.map((pack) => (
-                                            <SelectItem key={pack.name} value={pack.name}>
-                                                {pack.name} ({pack.cost})
-                                            </SelectItem>
-                                        ))}
+                                        {enhancedData.equipment.packs.map(
+                                            (pack) => (
+                                                <SelectItem
+                                                    key={pack.name}
+                                                    value={pack.name}
+                                                >
+                                                    {pack.name} ({pack.cost})
+                                                </SelectItem>
+                                            )
+                                        )}
                                     </SelectContent>
                                 </Select>
-                                
+
                                 {character.selectedPack && (
                                     <div className="mt-4 p-4 border rounded-lg">
                                         <h5 className="font-medium mb-2">
@@ -970,13 +1245,22 @@ export function CharacterCreator({
                                         </h5>
                                         <ul className="text-sm space-y-1">
                                             {enhancedData.equipment.packs
-                                                .find(pack => pack.name === character.selectedPack)
-                                                ?.contents?.map((item, index) => (
-                                                    <li key={index} className="flex items-center gap-2">
-                                                        <span>•</span>
-                                                        <span>{item}</span>
-                                                    </li>
-                                                )) || []}
+                                                .find(
+                                                    (pack) =>
+                                                        pack.name ===
+                                                        character.selectedPack
+                                                )
+                                                ?.contents?.map(
+                                                    (item, index) => (
+                                                        <li
+                                                            key={index}
+                                                            className="flex items-center gap-2"
+                                                        >
+                                                            <span>•</span>
+                                                            <span>{item}</span>
+                                                        </li>
+                                                    )
+                                                ) || []}
                                         </ul>
                                     </div>
                                 )}
@@ -984,43 +1268,75 @@ export function CharacterCreator({
 
                             {/* Equipment Pack Overview */}
                             <div>
-                                <h4 className="font-semibold mb-2">All Available Equipment Packs</h4>
+                                <h4 className="font-semibold mb-2">
+                                    All Available Equipment Packs
+                                </h4>
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                    {enhancedData.equipment.packs.map((pack) => (
-                                        <Card key={pack.name} className={`p-3 cursor-pointer border-2 ${
-                                            character.selectedPack === pack.name 
-                                                ? 'border-primary bg-primary/5' 
-                                                : 'border-muted hover:border-muted-foreground/50'
-                                        }`}
-                                        onClick={() => handleSelectChange("selectedPack", pack.name)}
-                                        >
-                                            <h5 className="font-medium">{pack.name}</h5>
-                                            <p className="text-sm text-muted-foreground mb-2">Cost: {pack.cost}</p>
-                                            <div className="text-xs space-y-1">
-                                                {pack.contents?.slice(0, 3).map((item, index) => (
-                                                    <div key={index}>• {item}</div>
-                                                ))}
-                                                {pack.contents && pack.contents.length > 3 && (
-                                                    <div className="text-muted-foreground">
-                                                        ... and {pack.contents.length - 3} more items
-                                                    </div>
-                                                )}
-                                            </div>
-                                        </Card>
-                                    ))}
+                                    {enhancedData.equipment.packs.map(
+                                        (pack) => (
+                                            <Card
+                                                key={pack.name}
+                                                className={`p-3 cursor-pointer border-2 ${
+                                                    character.selectedPack ===
+                                                    pack.name
+                                                        ? "border-primary bg-primary/5"
+                                                        : "border-muted hover:border-muted-foreground/50"
+                                                }`}
+                                                onClick={() =>
+                                                    handleSelectChange(
+                                                        "selectedPack",
+                                                        pack.name
+                                                    )
+                                                }
+                                            >
+                                                <h5 className="font-medium">
+                                                    {pack.name}
+                                                </h5>
+                                                <p className="text-sm text-muted-foreground mb-2">
+                                                    Cost: {pack.cost}
+                                                </p>
+                                                <div className="text-xs space-y-1">
+                                                    {pack.contents
+                                                        ?.slice(0, 3)
+                                                        .map((item, index) => (
+                                                            <div key={index}>
+                                                                • {item}
+                                                            </div>
+                                                        ))}
+                                                    {pack.contents &&
+                                                        pack.contents.length >
+                                                            3 && (
+                                                            <div className="text-muted-foreground">
+                                                                ... and{" "}
+                                                                {pack.contents
+                                                                    .length -
+                                                                    3}{" "}
+                                                                more items
+                                                            </div>
+                                                        )}
+                                                </div>
+                                            </Card>
+                                        )
+                                    )}
                                 </div>
                             </div>
 
                             {/* Custom Equipment */}
                             <div>
-                                <h4 className="font-semibold mb-2">Additional Equipment</h4>
+                                <h4 className="font-semibold mb-2">
+                                    Additional Equipment
+                                </h4>
                                 <Textarea
                                     placeholder="Add custom equipment, weapons, armor, etc..."
-                                    value={character.equipment.join('\n')}
-                                    onChange={(e) => setCharacter({
-                                        ...character,
-                                        equipment: e.target.value.split('\n').filter(item => item.trim())
-                                    })}
+                                    value={character.equipment.join("\n")}
+                                    onChange={(e) =>
+                                        setCharacter({
+                                            ...character,
+                                            equipment: e.target.value
+                                                .split("\n")
+                                                .filter((item) => item.trim()),
+                                        })
+                                    }
                                     rows={4}
                                 />
                             </div>
@@ -1032,37 +1348,85 @@ export function CharacterCreator({
                     <Card>
                         <CardHeader>
                             <CardTitle>Spells & Magic</CardTitle>
-                            {["Wizard", "Sorcerer", "Warlock", "Bard", "Cleric", "Druid"].includes(character.class) && (
-                                <Button onClick={applyDefaultSpells} variant="outline" size="sm">
+                            {[
+                                "Wizard",
+                                "Sorcerer",
+                                "Warlock",
+                                "Bard",
+                                "Cleric",
+                                "Druid",
+                            ].includes(character.class) && (
+                                <Button
+                                    onClick={applyDefaultSpells}
+                                    variant="outline"
+                                    size="sm"
+                                >
                                     Add Recommended Spells
                                 </Button>
                             )}
                         </CardHeader>
                         <CardContent>
-                            {["Wizard", "Sorcerer", "Warlock", "Bard", "Cleric", "Druid", "Paladin", "Ranger"].includes(character.class) ? (
+                            {[
+                                "Wizard",
+                                "Sorcerer",
+                                "Warlock",
+                                "Bard",
+                                "Cleric",
+                                "Druid",
+                                "Paladin",
+                                "Ranger",
+                            ].includes(character.class) ? (
                                 <div className="space-y-6">
                                     {/* Racial Spells Info */}
-                                    {(character.race === "High Elf" || character.race === "Drow" || character.race === "Tiefling") && (
+                                    {(character.race === "High Elf" ||
+                                        character.race === "Drow" ||
+                                        character.race === "Tiefling") && (
                                         <div className="p-4 border rounded-lg bg-muted/50">
-                                            <h4 className="font-semibold mb-2">Racial Spells</h4>
+                                            <h4 className="font-semibold mb-2">
+                                                Racial Spells
+                                            </h4>
                                             <p className="text-sm text-muted-foreground mb-2">
-                                                Your race grants you access to certain spells:
+                                                Your race grants you access to
+                                                certain spells:
                                             </p>
                                             {character.race === "High Elf" && (
-                                                <p className="text-sm">• Choose 1 Wizard cantrip</p>
+                                                <p className="text-sm">
+                                                    • Choose 1 Wizard cantrip
+                                                </p>
                                             )}
                                             {character.race === "Drow" && (
                                                 <div className="text-sm">
-                                                    <p>• Dancing Lights (cantrip)</p>
-                                                    <p>• Faerie Fire (1st level, once per long rest at 1st level)</p>
-                                                    <p>• Darkness (2nd level, once per long rest at 3rd level)</p>
+                                                    <p>
+                                                        • Dancing Lights
+                                                        (cantrip)
+                                                    </p>
+                                                    <p>
+                                                        • Faerie Fire (1st
+                                                        level, once per long
+                                                        rest at 1st level)
+                                                    </p>
+                                                    <p>
+                                                        • Darkness (2nd level,
+                                                        once per long rest at
+                                                        3rd level)
+                                                    </p>
                                                 </div>
                                             )}
                                             {character.race === "Tiefling" && (
                                                 <div className="text-sm">
-                                                    <p>• Thaumaturgy (cantrip)</p>
-                                                    <p>• Hellish Rebuke (1st level, once per long rest at 1st level)</p>
-                                                    <p>• Darkness (2nd level, once per long rest at 3rd level)</p>
+                                                    <p>
+                                                        • Thaumaturgy (cantrip)
+                                                    </p>
+                                                    <p>
+                                                        • Hellish Rebuke (1st
+                                                        level, once per long
+                                                        rest at 1st level)
+                                                    </p>
+                                                    <p>
+                                                        • Darkness (2nd level,
+                                                        once per long rest at
+                                                        3rd level)
+                                                    </p>
                                                 </div>
                                             )}
                                         </div>
@@ -1070,50 +1434,78 @@ export function CharacterCreator({
 
                                     {/* Cantrips */}
                                     <div>
-                                        <h4 className="font-semibold mb-2">Cantrips Known</h4>
+                                        <h4 className="font-semibold mb-2">
+                                            Cantrips Known
+                                        </h4>
                                         <Textarea
                                             placeholder="List your cantrips..."
-                                            value={character.spells.cantrips.join('\n')}
-                                            onChange={(e) => setCharacter({
-                                                ...character,
-                                                spells: {
-                                                    ...character.spells,
-                                                    cantrips: e.target.value.split('\n').filter(spell => spell.trim())
-                                                }
-                                            })}
+                                            value={character.spells.cantrips.join(
+                                                "\n"
+                                            )}
+                                            onChange={(e) =>
+                                                setCharacter({
+                                                    ...character,
+                                                    spells: {
+                                                        ...character.spells,
+                                                        cantrips: e.target.value
+                                                            .split("\n")
+                                                            .filter((spell) =>
+                                                                spell.trim()
+                                                            ),
+                                                    },
+                                                })
+                                            }
                                             rows={4}
                                         />
-                                        
+
                                         {/* Available Cantrips */}
                                         <div className="mt-2">
                                             <details className="text-sm">
                                                 <summary className="cursor-pointer text-muted-foreground hover:text-foreground">
-                                                    Available {character.class} Cantrips
+                                                    Available {character.class}{" "}
+                                                    Cantrips
                                                 </summary>
                                                 <div className="mt-2 grid grid-cols-2 md:grid-cols-3 gap-1 max-h-40 overflow-y-auto">
                                                     {enhancedData.spells.cantrips
-                                                        .filter((spell: any) => spell.classes.includes(character.class))
+                                                        .filter((spell: any) =>
+                                                            spell.classes.includes(
+                                                                character.class
+                                                            )
+                                                        )
                                                         .map((spell: any) => (
-                                                            <Badge 
-                                                                key={spell.name} 
-                                                                variant="outline" 
+                                                            <Badge
+                                                                key={spell.name}
+                                                                variant="outline"
                                                                 className="text-xs cursor-pointer hover:bg-primary hover:text-primary-foreground"
                                                                 onClick={() => {
-                                                                    if (!character.spells.cantrips.includes(spell.name)) {
-                                                                        setCharacter(prev => ({
-                                                                            ...prev,
-                                                                            spells: {
-                                                                                ...prev.spells,
-                                                                                cantrips: [...prev.spells.cantrips, spell.name]
-                                                                            }
-                                                                        }));
+                                                                    if (
+                                                                        !character.spells.cantrips.includes(
+                                                                            spell.name
+                                                                        )
+                                                                    ) {
+                                                                        setCharacter(
+                                                                            (
+                                                                                prev
+                                                                            ) => ({
+                                                                                ...prev,
+                                                                                spells: {
+                                                                                    ...prev.spells,
+                                                                                    cantrips:
+                                                                                        [
+                                                                                            ...prev
+                                                                                                .spells
+                                                                                                .cantrips,
+                                                                                            spell.name,
+                                                                                        ],
+                                                                                },
+                                                                            })
+                                                                        );
                                                                     }
                                                                 }}
                                                             >
                                                                 {spell.name}
                                                             </Badge>
-                                                        ))
-                                                    }
+                                                        ))}
                                                 </div>
                                             </details>
                                         </div>
@@ -1121,50 +1513,77 @@ export function CharacterCreator({
 
                                     {/* 1st Level Spells */}
                                     <div>
-                                        <h4 className="font-semibold mb-2">1st Level Spells</h4>
+                                        <h4 className="font-semibold mb-2">
+                                            1st Level Spells
+                                        </h4>
                                         <Textarea
                                             placeholder="List your 1st level spells..."
-                                            value={character.spells.level1.join('\n')}
-                                            onChange={(e) => setCharacter({
-                                                ...character,
-                                                spells: {
-                                                    ...character.spells,
-                                                    level1: e.target.value.split('\n').filter(spell => spell.trim())
-                                                }
-                                            })}
+                                            value={character.spells.level1.join(
+                                                "\n"
+                                            )}
+                                            onChange={(e) =>
+                                                setCharacter({
+                                                    ...character,
+                                                    spells: {
+                                                        ...character.spells,
+                                                        level1: e.target.value
+                                                            .split("\n")
+                                                            .filter((spell) =>
+                                                                spell.trim()
+                                                            ),
+                                                    },
+                                                })
+                                            }
                                             rows={4}
                                         />
-                                        
+
                                         {/* Available 1st Level Spells */}
                                         <div className="mt-2">
                                             <details className="text-sm">
                                                 <summary className="cursor-pointer text-muted-foreground hover:text-foreground">
-                                                    Available {character.class} 1st Level Spells
+                                                    Available {character.class}{" "}
+                                                    1st Level Spells
                                                 </summary>
                                                 <div className="mt-2 grid grid-cols-2 md:grid-cols-3 gap-1 max-h-40 overflow-y-auto">
                                                     {enhancedData.spells.level1
-                                                        .filter((spell: any) => spell.classes.includes(character.class))
+                                                        .filter((spell: any) =>
+                                                            spell.classes.includes(
+                                                                character.class
+                                                            )
+                                                        )
                                                         .map((spell: any) => (
-                                                            <Badge 
-                                                                key={spell.name} 
-                                                                variant="outline" 
+                                                            <Badge
+                                                                key={spell.name}
+                                                                variant="outline"
                                                                 className="text-xs cursor-pointer hover:bg-primary hover:text-primary-foreground"
                                                                 onClick={() => {
-                                                                    if (!character.spells.level1.includes(spell.name)) {
-                                                                        setCharacter(prev => ({
-                                                                            ...prev,
-                                                                            spells: {
-                                                                                ...prev.spells,
-                                                                                level1: [...prev.spells.level1, spell.name]
-                                                                            }
-                                                                        }));
+                                                                    if (
+                                                                        !character.spells.level1.includes(
+                                                                            spell.name
+                                                                        )
+                                                                    ) {
+                                                                        setCharacter(
+                                                                            (
+                                                                                prev
+                                                                            ) => ({
+                                                                                ...prev,
+                                                                                spells: {
+                                                                                    ...prev.spells,
+                                                                                    level1: [
+                                                                                        ...prev
+                                                                                            .spells
+                                                                                            .level1,
+                                                                                        spell.name,
+                                                                                    ],
+                                                                                },
+                                                                            })
+                                                                        );
                                                                     }
                                                                 }}
                                                             >
                                                                 {spell.name}
                                                             </Badge>
-                                                        ))
-                                                    }
+                                                        ))}
                                                 </div>
                                             </details>
                                         </div>
@@ -1173,50 +1592,88 @@ export function CharacterCreator({
                                     {/* 2nd Level Spells */}
                                     {character.level >= 3 && (
                                         <div>
-                                            <h4 className="font-semibold mb-2">2nd Level Spells</h4>
+                                            <h4 className="font-semibold mb-2">
+                                                2nd Level Spells
+                                            </h4>
                                             <Textarea
                                                 placeholder="List your 2nd level spells..."
-                                                value={character.spells.level2.join('\n')}
-                                                onChange={(e) => setCharacter({
-                                                    ...character,
-                                                    spells: {
-                                                        ...character.spells,
-                                                        level2: e.target.value.split('\n').filter(spell => spell.trim())
-                                                    }
-                                                })}
+                                                value={character.spells.level2.join(
+                                                    "\n"
+                                                )}
+                                                onChange={(e) =>
+                                                    setCharacter({
+                                                        ...character,
+                                                        spells: {
+                                                            ...character.spells,
+                                                            level2: e.target.value
+                                                                .split("\n")
+                                                                .filter(
+                                                                    (spell) =>
+                                                                        spell.trim()
+                                                                ),
+                                                        },
+                                                    })
+                                                }
                                                 rows={3}
                                             />
-                                            
+
                                             {/* Available 2nd Level Spells */}
                                             <div className="mt-2">
                                                 <details className="text-sm">
                                                     <summary className="cursor-pointer text-muted-foreground hover:text-foreground">
-                                                        Available {character.class} 2nd Level Spells
+                                                        Available{" "}
+                                                        {character.class} 2nd
+                                                        Level Spells
                                                     </summary>
                                                     <div className="mt-2 grid grid-cols-2 md:grid-cols-3 gap-1 max-h-40 overflow-y-auto">
                                                         {enhancedData.spells.level2
-                                                            .filter((spell: any) => spell.classes.includes(character.class))
-                                                            .map((spell: any) => (
-                                                                <Badge 
-                                                                    key={spell.name} 
-                                                                    variant="outline" 
-                                                                    className="text-xs cursor-pointer hover:bg-primary hover:text-primary-foreground"
-                                                                    onClick={() => {
-                                                                        if (!character.spells.level2.includes(spell.name)) {
-                                                                            setCharacter(prev => ({
-                                                                                ...prev,
-                                                                                spells: {
-                                                                                    ...prev.spells,
-                                                                                    level2: [...prev.spells.level2, spell.name]
-                                                                                }
-                                                                            }));
+                                                            .filter(
+                                                                (spell: any) =>
+                                                                    spell.classes.includes(
+                                                                        character.class
+                                                                    )
+                                                            )
+                                                            .map(
+                                                                (
+                                                                    spell: any
+                                                                ) => (
+                                                                    <Badge
+                                                                        key={
+                                                                            spell.name
                                                                         }
-                                                                    }}
-                                                                >
-                                                                    {spell.name}
-                                                                </Badge>
-                                                            ))
-                                                        }
+                                                                        variant="outline"
+                                                                        className="text-xs cursor-pointer hover:bg-primary hover:text-primary-foreground"
+                                                                        onClick={() => {
+                                                                            if (
+                                                                                !character.spells.level2.includes(
+                                                                                    spell.name
+                                                                                )
+                                                                            ) {
+                                                                                setCharacter(
+                                                                                    (
+                                                                                        prev
+                                                                                    ) => ({
+                                                                                        ...prev,
+                                                                                        spells: {
+                                                                                            ...prev.spells,
+                                                                                            level2: [
+                                                                                                ...prev
+                                                                                                    .spells
+                                                                                                    .level2,
+                                                                                                spell.name,
+                                                                                            ],
+                                                                                        },
+                                                                                    })
+                                                                                );
+                                                                            }
+                                                                        }}
+                                                                    >
+                                                                        {
+                                                                            spell.name
+                                                                        }
+                                                                    </Badge>
+                                                                )
+                                                            )}
                                                     </div>
                                                 </details>
                                             </div>
@@ -1226,50 +1683,88 @@ export function CharacterCreator({
                                     {/* 3rd Level Spells */}
                                     {character.level >= 5 && (
                                         <div>
-                                            <h4 className="font-semibold mb-2">3rd Level Spells</h4>
+                                            <h4 className="font-semibold mb-2">
+                                                3rd Level Spells
+                                            </h4>
                                             <Textarea
                                                 placeholder="List your 3rd level spells..."
-                                                value={character.spells.level3.join('\n')}
-                                                onChange={(e) => setCharacter({
-                                                    ...character,
-                                                    spells: {
-                                                        ...character.spells,
-                                                        level3: e.target.value.split('\n').filter(spell => spell.trim())
-                                                    }
-                                                })}
+                                                value={character.spells.level3.join(
+                                                    "\n"
+                                                )}
+                                                onChange={(e) =>
+                                                    setCharacter({
+                                                        ...character,
+                                                        spells: {
+                                                            ...character.spells,
+                                                            level3: e.target.value
+                                                                .split("\n")
+                                                                .filter(
+                                                                    (spell) =>
+                                                                        spell.trim()
+                                                                ),
+                                                        },
+                                                    })
+                                                }
                                                 rows={3}
                                             />
-                                            
+
                                             {/* Available 3rd Level Spells */}
                                             <div className="mt-2">
                                                 <details className="text-sm">
                                                     <summary className="cursor-pointer text-muted-foreground hover:text-foreground">
-                                                        Available {character.class} 3rd Level Spells
+                                                        Available{" "}
+                                                        {character.class} 3rd
+                                                        Level Spells
                                                     </summary>
                                                     <div className="mt-2 grid grid-cols-2 md:grid-cols-3 gap-1 max-h-40 overflow-y-auto">
                                                         {enhancedData.spells.level3
-                                                            .filter((spell: any) => spell.classes.includes(character.class))
-                                                            .map((spell: any) => (
-                                                                <Badge 
-                                                                    key={spell.name} 
-                                                                    variant="outline" 
-                                                                    className="text-xs cursor-pointer hover:bg-primary hover:text-primary-foreground"
-                                                                    onClick={() => {
-                                                                        if (!character.spells.level3.includes(spell.name)) {
-                                                                            setCharacter(prev => ({
-                                                                                ...prev,
-                                                                                spells: {
-                                                                                    ...prev.spells,
-                                                                                    level3: [...prev.spells.level3, spell.name]
-                                                                                }
-                                                                            }));
+                                                            .filter(
+                                                                (spell: any) =>
+                                                                    spell.classes.includes(
+                                                                        character.class
+                                                                    )
+                                                            )
+                                                            .map(
+                                                                (
+                                                                    spell: any
+                                                                ) => (
+                                                                    <Badge
+                                                                        key={
+                                                                            spell.name
                                                                         }
-                                                                    }}
-                                                                >
-                                                                    {spell.name}
-                                                                </Badge>
-                                                            ))
-                                                        }
+                                                                        variant="outline"
+                                                                        className="text-xs cursor-pointer hover:bg-primary hover:text-primary-foreground"
+                                                                        onClick={() => {
+                                                                            if (
+                                                                                !character.spells.level3.includes(
+                                                                                    spell.name
+                                                                                )
+                                                                            ) {
+                                                                                setCharacter(
+                                                                                    (
+                                                                                        prev
+                                                                                    ) => ({
+                                                                                        ...prev,
+                                                                                        spells: {
+                                                                                            ...prev.spells,
+                                                                                            level3: [
+                                                                                                ...prev
+                                                                                                    .spells
+                                                                                                    .level3,
+                                                                                                spell.name,
+                                                                                            ],
+                                                                                        },
+                                                                                    })
+                                                                                );
+                                                                            }
+                                                                        }}
+                                                                    >
+                                                                        {
+                                                                            spell.name
+                                                                        }
+                                                                    </Badge>
+                                                                )
+                                                            )}
                                                     </div>
                                                 </details>
                                             </div>
@@ -1278,7 +1773,9 @@ export function CharacterCreator({
                                 </div>
                             ) : (
                                 <div className="text-center text-muted-foreground">
-                                    This class does not typically use spells. Select a spellcasting class to manage spells.
+                                    This class does not typically use spells.
+                                    Select a spellcasting class to manage
+                                    spells.
                                 </div>
                             )}
                         </CardContent>
@@ -1293,18 +1790,23 @@ export function CharacterCreator({
                         <CardContent className="space-y-4">
                             {character.background && (
                                 <div>
-                                    <h4 className="font-semibold mb-2">Background: {character.background}</h4>
+                                    <h4 className="font-semibold mb-2">
+                                        Background: {character.background}
+                                    </h4>
                                     <p className="text-sm text-muted-foreground mb-2">
                                         {getSelectedBackground()?.description}
                                     </p>
                                     <p className="text-sm">
-                                        <strong>Feature:</strong> {getSelectedBackground()?.feature}
+                                        <strong>Feature:</strong>{" "}
+                                        {getSelectedBackground()?.feature}
                                     </p>
                                 </div>
                             )}
 
                             <div>
-                                <Label htmlFor="personality">Personality Traits</Label>
+                                <Label htmlFor="personality">
+                                    Personality Traits
+                                </Label>
                                 <Textarea
                                     id="personality"
                                     name="personality"
@@ -1379,10 +1881,10 @@ export function CharacterCreator({
                     <Button variant="outline" asChild>
                         <span>Import from JSON</span>
                     </Button>
-                    <Input 
-                        type="file" 
-                        accept=".json" 
-                        onChange={importFromJson} 
+                    <Input
+                        type="file"
+                        accept=".json"
+                        onChange={importFromJson}
                         className="hidden"
                     />
                 </label>
@@ -1394,32 +1896,65 @@ export function CharacterCreator({
                     <DialogHeader>
                         <DialogTitle>Character Sheet Preview</DialogTitle>
                         <DialogDescription>
-                            This is a preview of your character sheet. In a full implementation, this would generate a PDF.
+                            This is a preview of your character sheet. In a full
+                            implementation, this would generate a PDF.
                         </DialogDescription>
                     </DialogHeader>
-                    
+
                     <div className="space-y-4 text-sm">
                         <div className="grid grid-cols-2 gap-4">
-                            <div><strong>Name:</strong> {character.name}</div>
-                            <div><strong>Level:</strong> {character.level}</div>
-                            <div><strong>Class:</strong> {character.class} {character.subclass && `(${character.subclass})`}</div>
-                            <div><strong>Race:</strong> {character.race} {character.subrace && `(${character.subrace})`}</div>
-                            <div><strong>Background:</strong> {character.background}</div>
-                            <div><strong>Alignment:</strong> {character.alignment}</div>
+                            <div>
+                                <strong>Name:</strong> {character.name}
+                            </div>
+                            <div>
+                                <strong>Level:</strong> {character.level}
+                            </div>
+                            <div>
+                                <strong>Class:</strong> {character.class}{" "}
+                                {character.subclass &&
+                                    `(${character.subclass})`}
+                            </div>
+                            <div>
+                                <strong>Race:</strong> {character.race}{" "}
+                                {character.subrace && `(${character.subrace})`}
+                            </div>
+                            <div>
+                                <strong>Background:</strong>{" "}
+                                {character.background}
+                            </div>
+                            <div>
+                                <strong>Alignment:</strong>{" "}
+                                {character.alignment}
+                            </div>
                         </div>
 
                         <Separator />
 
                         <div>
-                            <h4 className="font-semibold mb-2">Ability Scores</h4>
+                            <h4 className="font-semibold mb-2">
+                                Ability Scores
+                            </h4>
                             <div className="grid grid-cols-3 gap-2">
                                 {abilities.map((ability) => (
-                                    <div key={ability} className="text-center border rounded p-2">
-                                        <div className="font-medium capitalize">{ability}</div>
-                                        <div className="text-lg">{character.abilities[ability]}</div>
+                                    <div
+                                        key={ability}
+                                        className="text-center border rounded p-2"
+                                    >
+                                        <div className="font-medium capitalize">
+                                            {ability}
+                                        </div>
+                                        <div className="text-lg">
+                                            {character.abilities[ability]}
+                                        </div>
                                         <div className="text-xs text-muted-foreground">
-                                            {getAbilityModifier(character.abilities[ability]) >= 0 ? '+' : ''}
-                                            {getAbilityModifier(character.abilities[ability])}
+                                            {getAbilityModifier(
+                                                character.abilities[ability]
+                                            ) >= 0
+                                                ? "+"
+                                                : ""}
+                                            {getAbilityModifier(
+                                                character.abilities[ability]
+                                            )}
                                         </div>
                                     </div>
                                 ))}
@@ -1429,34 +1964,67 @@ export function CharacterCreator({
                         <Separator />
 
                         <div className="grid grid-cols-2 gap-4">
-                            <div><strong>Hit Points:</strong> {character.hitPoints}</div>
-                            <div><strong>Armor Class:</strong> {character.armorClass}</div>
-                            <div><strong>Speed:</strong> {character.speed} ft</div>
-                            <div><strong>Proficiency Bonus:</strong> +{character.proficiencyBonus}</div>
+                            <div>
+                                <strong>Hit Points:</strong>{" "}
+                                {character.hitPoints}
+                            </div>
+                            <div>
+                                <strong>Armor Class:</strong>{" "}
+                                {character.armorClass}
+                            </div>
+                            <div>
+                                <strong>Speed:</strong> {character.speed} ft
+                            </div>
+                            <div>
+                                <strong>Proficiency Bonus:</strong> +
+                                {character.proficiencyBonus}
+                            </div>
                         </div>
 
                         {character.personality && (
                             <>
                                 <Separator />
                                 <div>
-                                    <h4 className="font-semibold mb-2">Character Details</h4>
-                                    {character.personality && <p><strong>Personality:</strong> {character.personality}</p>}
-                                    {character.ideals && <p><strong>Ideals:</strong> {character.ideals}</p>}
-                                    {character.bonds && <p><strong>Bonds:</strong> {character.bonds}</p>}
-                                    {character.flaws && <p><strong>Flaws:</strong> {character.flaws}</p>}
+                                    <h4 className="font-semibold mb-2">
+                                        Character Details
+                                    </h4>
+                                    {character.personality && (
+                                        <p>
+                                            <strong>Personality:</strong>{" "}
+                                            {character.personality}
+                                        </p>
+                                    )}
+                                    {character.ideals && (
+                                        <p>
+                                            <strong>Ideals:</strong>{" "}
+                                            {character.ideals}
+                                        </p>
+                                    )}
+                                    {character.bonds && (
+                                        <p>
+                                            <strong>Bonds:</strong>{" "}
+                                            {character.bonds}
+                                        </p>
+                                    )}
+                                    {character.flaws && (
+                                        <p>
+                                            <strong>Flaws:</strong>{" "}
+                                            {character.flaws}
+                                        </p>
+                                    )}
                                 </div>
                             </>
                         )}
                     </div>
 
                     <DialogFooter>
-                        <Button onClick={() => setShowExportDialog(false)}>Close</Button>
+                        <Button onClick={() => setShowExportDialog(false)}>
+                            Close
+                        </Button>
                         <Button onClick={printCharacter} variant="outline">
                             Print Character Sheet
                         </Button>
-                        <Button onClick={generatePDF}>
-                            Download PDF
-                        </Button>
+                        <Button onClick={generatePDF}>Download PDF</Button>
                     </DialogFooter>
                 </DialogContent>
             </Dialog>
